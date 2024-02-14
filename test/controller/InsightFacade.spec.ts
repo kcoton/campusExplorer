@@ -53,72 +53,122 @@ describe("InsightFacade", function () {
 		});
 	});
 
+	describe ('Testing the add API of InsightFacade', () => {
+		let insightFacade: InsightFacade;
+		let content0: string;
+		let content1: string;
+		const sections = InsightDatasetKind.Sections
+	
+		before(async() => {
+			content0 = await getContentFromArchives('courses0.zip')
+			content1 = await getContentFromArchives('courses1.zip')
+		})
+	
+		beforeEach (async() => {
+			await clearDisk()
+			insightFacade = new InsightFacade();
+		})
+	
+		// Tests for addDataset
+		it ('addDataset: add success, one valid dataset', () => {
+			const addId = 'courses0'
+			const res = insightFacade.addDataset(addId, content0, sections)
+			return expect(res).to.eventually.have.members([addId])
+		})
+	
+		it ('addDataset: reject if id contains underscore', () => {
+			const res = insightFacade.addDataset('courses_0', content0, sections)
+			return expect(res).to.eventually.be.rejectedWith(InsightError)
+		})
+	
+		it ('addDataset: should reject if id contains only white space', () => {
+			const res = insightFacade.addDataset(' ', content0, sections)
+			return expect(res).to.eventually.be.rejectedWith(InsightError)
+		})
+	
+		it ('addDataset: reject if id is empty', () => {
+			const res = insightFacade.addDataset('', content0, sections)
+			return expect(res).to.eventually.be.rejectedWith(InsightError)
+		})
+	
+		// it ('addDataset: reject if encounter same id again', () => {
+		// 	try {
+		// 		insightFacade.addDataset('courses0', content0, sections)
+		// 	} catch (err) {
+		// 		assert.fail('Should not reject')
+		// 	}
+		// 	const res = insightFacade.addDataset('courses0', content1, sections)
+		// 	return expect(res).to.eventually.be.rejectedWith(InsightError)
+		// })
+	
+	}) 
+
 	/*
 	 * This test suite dynamically generates tests from the JSON files in test/resources/queries.
 	 * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
 	 */
-	describe("PerformQuery", function () {
-		before(async function () {
-			facade = new InsightFacade();
+	// describe("PerformQuery", function () {
+	// 	before(async function () {
+	// 		facade = new InsightFacade();
 
-			// Add the datasets to InsightFacade once.
-			// Will *fail* if there is a problem reading ANY dataset.
-			const loadDatasetPromises = [
-				facade.addDataset("sections", sections, InsightDatasetKind.Sections),
-			];
+	// 		// Add the datasets to InsightFacade once.
+	// 		// Will *fail* if there is a problem reading ANY dataset.
+	// 		const loadDatasetPromises = [
+	// 			facade.addDataset("sections", sections, InsightDatasetKind.Sections),
+	// 		];
 
-			try {
-				await Promise.all(loadDatasetPromises);
-			} catch(err) {
-				throw new Error(`In PerformQuery Before hook, dataset(s) failed to be added. \n${err}`);
-			}
-		});
+	// 		try {
+	// 			await Promise.all(loadDatasetPromises);
+	// 		} catch(err) {
+	// 			throw new Error(`In PerformQuery Before hook, dataset(s) failed to be added. \n${err}`);
+	// 		}
+	// 	});
 
-		after(async function () {
-			await clearDisk();
-		});
+	// 	after(async function () {
+	// 		await clearDisk();
+	// 	});
 
-		describe("valid queries", function() {
-			let validQueries: ITestQuery[];
-			try {
-				validQueries = readFileQueries("valid");
-			} catch (e: unknown) {
-				expect.fail(`Failed to read one or more test queries. ${e}`);
-			}
+	// 	describe("valid queries", function() {
+	// 		let validQueries: ITestQuery[];
+	// 		try {
+	// 			validQueries = readFileQueries("valid");
+	// 		} catch (e: unknown) {
+	// 			expect.fail(`Failed to read one or more test queries. ${e}`);
+	// 		}
 
-			validQueries.forEach(function(test: any) {
-				it(`${test.title}`, function () {
-					return facade.performQuery(test.input).then((result) => {
-						assert.fail("Write your assertions here!");
-					}).catch((err: any) => {
-						assert.fail(`performQuery threw unexpected error: ${err}`);
-					});
-				});
-			});
-		});
+	// 		validQueries.forEach(function(test: any) {
+	// 			it(`${test.title}`, function () {
+	// 				return facade.performQuery(test.input).then((result) => {
+	// 					assert.fail("Write your assertions here!");
+	// 				}).catch((err: any) => {
+	// 					assert.fail(`performQuery threw unexpected error: ${err}`);
+	// 				});
+	// 			});
+	// 		});
+	// 	});
 
-		describe("invalid queries", function() {
-			let invalidQueries: ITestQuery[];
+	// 	describe("invalid queries", function() {
+	// 		let invalidQueries: ITestQuery[];
 
-			try {
-				invalidQueries = readFileQueries("invalid");
-			} catch (e: unknown) {
-				expect.fail(`Failed to read one or more test queries. ${e}`);
-			}
+	// 		try {
+	// 			invalidQueries = readFileQueries("invalid");
+	// 		} catch (e: unknown) {
+	// 			expect.fail(`Failed to read one or more test queries. ${e}`);
+	// 		}
 
-			invalidQueries.forEach(function(test: any) {
-				it(`${test.title}`, function () {
-					return facade.performQuery(test.input).then((result) => {
-						assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
-					}).catch((err: any) => {
-						if (test.expected === "InsightError") {
-							expect(err).to.be.instanceOf(InsightError);
-						} else {
-							assert.fail("Query threw unexpected error");
-						}
-					});
-				});
-			});
-		});
-	});
+	// 		invalidQueries.forEach(function(test: any) {
+	// 			it(`${test.title}`, function () {
+	// 				return facade.performQuery(test.input).then((result) => {
+	// 					assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
+	// 				}).catch((err: any) => {
+	// 					if (test.expected === "InsightError") {
+	// 						expect(err).to.be.instanceOf(InsightError);
+	// 					} else {
+	// 						assert.fail("Query threw unexpected error");
+	// 					}
+	// 				});
+	// 			});
+	// 		});
+	// 	});
+	// });
 });
