@@ -1,5 +1,12 @@
 import JSZip from "jszip";
-import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, InsightResult} from "./IInsightFacade";
+import {
+	IInsightFacade,
+	InsightDataset,
+	InsightDatasetKind,
+	InsightResult,
+	InsightError,
+	NotFoundError
+} from "./IInsightFacade";
 import {Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
@@ -76,7 +83,24 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async removeDataset(id: string): Promise<string> {
-		return Promise.reject("Not implemented.");
+		if (!isValidId(id)) {
+			return Promise.reject(new InsightError("Invalid ID!"));
+		}
+		if (!this.datasetIds.has(id)) {
+			return Promise.reject(new NotFoundError("ID does not exist: never added in the first place!"));
+		}
+
+		// delete the associated file of the dataset and delete id from datasetIds
+		try {
+			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
+			await fs.remove(filePath);
+			this.datasetIds.delete(id);
+			console.log("delete success!");
+			return Promise.resolve(id);
+		} catch (err) {
+			console.error(err);
+			return Promise.reject(new InsightError("An error occurred while trying to remove"));
+		}
 	}
 
 	public async performQuery(query: unknown): Promise<InsightResult[]> {
