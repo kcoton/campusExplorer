@@ -53,6 +53,56 @@ describe("InsightFacade", function () {
 		});
 	});
 
+	// Adding tests for addDataset from C0
+	describe ("Testing the add API of InsightFacade", () => {
+		let insightFacade: InsightFacade;
+		let content0: string;
+		let content1: string;
+		const sectionsType = InsightDatasetKind.Sections;
+
+		before(async () => {
+			content0 = await getContentFromArchives("courses0.zip");
+			content1 = await getContentFromArchives("courses1.zip");
+		});
+
+		beforeEach (async () => {
+			await clearDisk();
+			insightFacade = new InsightFacade();
+		});
+
+		it ("addDataset: add success, one valid dataset", () => {
+			const addId = "courses0";
+			const res = insightFacade.addDataset(addId, content0, sectionsType);
+			return expect(res).to.eventually.have.members([addId]);
+		});
+
+		it ("addDataset: reject if id contains underscore", () => {
+			const res = insightFacade.addDataset("courses_0", content0, sectionsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it ("addDataset: should reject if id contains only white space", () => {
+			const res = insightFacade.addDataset(" ", content0, sectionsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it ("addDataset: reject if id is empty", () => {
+			const res = insightFacade.addDataset("", content0, sectionsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it ("addDataset: reject if encounter same id again", async () => {
+			try {
+				await insightFacade.addDataset("courses0", content0, sectionsType);
+			} catch (err) {
+				assert.fail("Should not reject");
+			}
+			const res = insightFacade.addDataset("courses0", content1, sectionsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+	});
+
 	/*
 	 * This test suite dynamically generates tests from the JSON files in test/resources/queries.
 	 * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
