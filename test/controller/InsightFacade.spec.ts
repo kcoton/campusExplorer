@@ -1,7 +1,8 @@
 import {
 	IInsightFacade,
 	InsightDatasetKind,
-	InsightError
+	InsightError,
+	NotFoundError
 } from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
 
@@ -103,10 +104,57 @@ describe("InsightFacade", function () {
 
 	});
 
-	/*
-	 * This test suite dynamically generates tests from the JSON files in test/resources/queries.
-	 * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
-	 */
+	// Adding tests for removeDataset from c0
+	describe("remove api", function() {
+		let insightFacade: InsightFacade;
+		let content0: string;
+		let content1: string;
+		const sectionsType = InsightDatasetKind.Sections;
+
+		before(async () => {
+			content0 = await getContentFromArchives("courses0.zip");
+			content1 = await getContentFromArchives("courses1.zip");
+		});
+
+		beforeEach (async () => {
+			insightFacade = new InsightFacade();
+
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			await insightFacade.addDataset("courses1", content1, sectionsType);
+		});
+
+		this.afterEach(async () => {
+			await clearDisk();
+		});
+
+		it ("removeDataset: remove 1 id success", async () => {
+			const res =  await insightFacade.removeDataset("courses0");
+			return expect(res).to.equal("courses0");
+		});
+
+		it ("removeDataset: remove unavailable id, rejected", () => {
+			const res =  insightFacade.removeDataset("coursesNA");
+			return expect(res).to.eventually.be.rejectedWith(NotFoundError);
+		});
+
+		it ("removeDataset: invalid id underscore", () => {
+			const res =  insightFacade.removeDataset("courses_0");
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+		it ("removeDataset: invalid id with only white space", () => {
+			const res = insightFacade.removeDataset("  ");
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+		it ("removeDataset: invalid id empty", () => {
+			const res =  insightFacade.removeDataset("");
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+	});
+
+	// /*
+	//  * This test suite dynamically generates tests from the JSON files in test/resources/queries.
+	//  * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
+	//  */
 	describe("PerformQuery", function () {
 		before(async function () {
 			facade = new InsightFacade();
