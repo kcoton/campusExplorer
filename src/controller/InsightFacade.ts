@@ -10,14 +10,20 @@ import {isValidId} from "../utils";
  *
  */
 export default class InsightFacade implements IInsightFacade {
+	public datasetIds: Set<string>; // array of ids to be returned
+
 	constructor() {
+		this.datasetIds = new Set();
 		console.log("InsightFacadeImpl::init()");
 	}
 
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		// Check if an id is valid
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("ID is invalid!"));
+		}
+
+		if (this.datasetIds.has(id)) {
+			return Promise.reject(new InsightError("ID already exists!"));
 		}
 
 		try {
@@ -33,7 +39,6 @@ export default class InsightFacade implements IInsightFacade {
 
 				await zip.file(course)?.async("string").then((fileContent) => {
 					const jsonContent = JSON.parse(fileContent);
-
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
 							datasetList.push({
@@ -53,19 +58,21 @@ export default class InsightFacade implements IInsightFacade {
 				});
 			}));
 
-			// write the new array into a file for storage
-			console.log(datasetList.length);
+			if (datasetList.length === 0) {
+				return Promise.reject(new InsightError("No valid section inside the dataset!"));
+			}
+
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			fs.outputJson(filePath, JSON.stringify(datasetList, null, 2))
-				.then(() => {
-					console.log("success addDataset write!");
-				}).catch((err) => {
+				.catch((err) => {
 					console.log(err);
 				});
+
+			this.datasetIds.add(id);
+			return Promise.resolve(Array.from(this.datasetIds));
 		} catch (error) {
-			return Promise.reject("Error while adding Dataset!");
+			return Promise.reject("Error while adding new dataset!");
 		}
-		return Promise.reject("Not done implemented");
 	}
 
 	public async removeDataset(id: string): Promise<string> {
