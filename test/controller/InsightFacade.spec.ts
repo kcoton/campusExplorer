@@ -151,6 +151,59 @@ describe("InsightFacade", function () {
 		});
 	});
 
+	// Add tests for listDataset
+	describe ("list api", function() {
+		let insightFacade: InsightFacade;
+		let content0: string;
+		let content1: string;
+		const sectionsType = InsightDatasetKind.Sections;
+
+		before(async () => {
+			content0 = await getContentFromArchives("courses0.zip");
+			content1 = await getContentFromArchives("courses1.zip");
+		});
+
+		beforeEach (async () => {
+			await clearDisk();
+			insightFacade = new InsightFacade();
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+		});
+
+		// Tests for listDatasets
+		it ("listDatasets: add 1, list 1, remove 0", async () => {
+			// await insightFacade.addDataset('courses0', content0, sections)
+			const result = await insightFacade.listDatasets();
+			expect(result).to.have.length(1);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[0].numRows).to.deep.equal(4);
+		});
+
+		it ("listDatasets: add 2, remove none, and then remove 1", async () => {
+			await insightFacade.addDataset("courses1", content1, sectionsType);
+			const result = await insightFacade.listDatasets();
+			expect(result).to.have.length(2);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[1].id).to.equal("courses1");
+			expect(result[1].kind).to.deep.equal(sectionsType);
+			expect(result[1].numRows).to.deep.equal(2);
+
+			// remove 1, expect 1
+			await insightFacade.removeDataset("courses1");
+			const result2 = await insightFacade.listDatasets();
+			expect(result2).to.have.length(1);
+			expect(result2[0].id).to.equal("courses0");
+			expect(result2[0].kind).to.deep.equal(sectionsType);
+
+			// remove 1, expect 0
+			await insightFacade.removeDataset("courses0");
+			const result3 = await insightFacade.listDatasets();
+			expect(result3).to.have.length(0);
+		});
+	});
+
+
 	// /*
 	//  * This test suite dynamically generates tests from the JSON files in test/resources/queries.
 	//  * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
