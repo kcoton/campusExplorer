@@ -1,22 +1,12 @@
-import * as fs from "fs-extra";
 import {Section} from "../type/Section";
 import {InsightResult} from "./IInsightFacade";
 
-export interface Query {
-	WHERE: any[];
-	OPTIONS: Options;
-}
-
 export interface Options {
 	COLUMNS: string[];
-	ORDER: string;
+	ORDER?: string;
 }
 
-// Reads query from json file
-export async function getQuery(path: string): Promise<Query> {
-	const query = await JSON.parse(fs.readFileSync(path, "utf-8"));
-	return query;
-}
+const columnKeys = ["avg", "pass", "fail", "audit", "year", "dept", "id", "instructor", "title", "uuid"];
 
 // Takes columns in options query, and filters for each section
 function filterColumns(columns: string[], section: any): InsightResult {
@@ -46,4 +36,44 @@ export async function handleOptions(data: Section[], options: Options): Promise<
 	// iterate through data, reduce to only columns specified
 	const res: InsightResult[] = data.map((section: Section) => filterColumns(options.COLUMNS, section));
 	return res;
+}
+
+
+// Takes column key and returns true if it is valid
+export function isValidKey(key: string): boolean {
+	if (key in columnKeys) {
+		return true;
+	}
+	return false;
+}
+
+// Iterate through columns in options and returns true if all valid
+export function isValidColumns(options: Options): boolean {
+	for (const column of options.COLUMNS) {
+		const key = column.split("_")[1];
+		if (!isValidKey(key)) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+// Validates options are formatted correctly to EBNF
+export function isValidOptions(options: Options): boolean {
+	if (!options.COLUMNS) {
+		return false;
+	}
+
+	if (options.ORDER) {
+		if (options.ORDER in columnKeys === false) {
+			return false;
+		}
+	}
+
+	if (!isValidColumns(options)) {
+		return false;
+	}
+
+	return true;
 }
