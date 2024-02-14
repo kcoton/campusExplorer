@@ -100,10 +100,6 @@ export default class InsightFacade implements IInsightFacade {
 		}
 	}
 
-	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		return Promise.reject("Not implemented.");
-	}
-
 	public async listDatasets(): Promise<InsightDataset[]> {
 		let dataset: InsightDataset[] = [];
 
@@ -120,5 +116,9 @@ export default class InsightFacade implements IInsightFacade {
 		}));
 
 		return Promise.resolve(dataset);
+	}
+
+	public async performQuery(query: unknown): Promise<InsightResult[]> {
+		return Promise.reject("Not implemented.");
 	}
 }
