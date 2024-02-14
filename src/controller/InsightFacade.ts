@@ -63,10 +63,7 @@ export default class InsightFacade implements IInsightFacade {
 			}
 
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
-			fs.outputJson(filePath, JSON.stringify(datasetList, null, 2))
-				.catch((err) => {
-					console.log(err);
-				});
+			await fs.outputJson(filePath, JSON.stringify(datasetList, null, 2));
 
 			this.datasetIds.add(id);
 			return Promise.resolve(Array.from(this.datasetIds));
