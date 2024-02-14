@@ -34,7 +34,7 @@ export function isValidQuery(query: Query): boolean {
 }
 
 export function handleCompare(section: Section, query: Query) {
-	// if
+	//
 }
 
 export async function handleWhere(data: Section[], query: Query) {
@@ -44,9 +44,12 @@ export async function handleWhere(data: Section[], query: Query) {
 
 /** local testing -- ignore */
 export async function main() {
+	let orderAndSortResult;
 	const dataResult = await getData("../mock/mock-courses.json");
 	const queryResult = await getQuery("../mock/mock-query.json");
-	const orderAndSortResult = await handleOptions(dataResult.data, queryResult.OPTIONS);
+	if (isValidQuery(queryResult)) {
+		orderAndSortResult = await handleOptions(dataResult.data, queryResult.OPTIONS);
+	}
 }
 
 void main();
