@@ -31,7 +31,6 @@ export default class InsightFacade implements IInsightFacade {
 		console.log("InsightFacadeImpl::init()");
 	}
 
-	// eslint-disable-next-line max-lines-per-function
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("ID is invalid!"));
