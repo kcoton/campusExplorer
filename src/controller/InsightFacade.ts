@@ -92,7 +92,8 @@ export default class InsightFacade implements IInsightFacade {
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("Invalid ID!"));
 		}
-		if (!checkExistingId(id)) {
+		const existsId = await checkExistingId(id);
+		if (!existsId) {
 			return Promise.reject(new NotFoundError("ID does not exist: never added in the first place!"));
 		}
 
