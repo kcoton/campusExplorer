@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import {Options, handleOptions, isValidOptions} from "./PerformQueryOptions";
 import {Condition, handleWhere} from "./PerformQueryWhere";
+import {InsightError} from "./IInsightFacade";
 
 export interface Query {
 	WHERE: Condition;
@@ -21,7 +22,13 @@ export async function getQuery(path: string): Promise<Query> {
 
 // TODO: validate WHERE condition
 // Validates query format is valid to EBNF
-export function isValidQuery(query: Query): boolean {
+export function isValidQuery(uncheckedQuery: unknown): boolean {
+	if (typeof uncheckedQuery !== "object") {
+		return false;
+	}
+
+	const query: Query = uncheckedQuery as Query;
+
 	if (!query.WHERE || !query.OPTIONS) {
 		return false;
 	}
@@ -40,15 +47,15 @@ export function getKeyId(key: string): string {
 }
 
 
-/** local testing -- ignore */
-export async function main() {
-	const dataResult = await getData("../mock/mock-courses.json");
-	const queryResult = await getQuery("../mock/mock-query.json");
+// /** local testing -- ignore */
+// export async function main() {
+// 	const dataResult = await getData("../mock/mock-courses.json");
+// 	const queryResult = await getQuery("../mock/mock-query.json");
 
-	if (isValidQuery(queryResult)) {
-		const whereResult = await handleWhere(dataResult.data, queryResult); // TODO: validWhere
-		const orderAndSortResult = await handleOptions(whereResult, queryResult.OPTIONS);
-	}
-}
+// 	if (isValidQuery(queryResult)) {
+// 		const whereResult = await handleWhere(dataResult.data, queryResult); // TODO: validWhere
+// 		const orderAndSortResult = await handleOptions(whereResult, queryResult.OPTIONS);
+// 	}
+// }
 
-void main();
+// void main();

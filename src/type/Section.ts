@@ -10,3 +10,7 @@ export interface Section {
 	fail: number;
 	audit: number;
 }
+
+export interface Dataset {
+	[key: string]: Section[];
+}

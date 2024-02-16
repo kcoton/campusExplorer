@@ -1,4 +1,5 @@
 import {Section} from "../type/Section";
+import {InsightError} from "./IInsightFacade";
 import {Query, getKeyId} from "./PerformQueryHelper";
 
 export interface Comparator {
@@ -15,7 +16,7 @@ export interface Condition {
 	NOT?: Comparator;
 }
 
-export function handleCondition(section: Section, condition: Condition): boolean {
+function handleCondition(section: Section, condition: Condition): boolean {
 	if (condition.AND) {
 		return condition.AND.every((cond) => handleCondition(section, cond));
 
@@ -43,14 +44,19 @@ export function handleCondition(section: Section, condition: Condition): boolean
 	} else if (condition.IS) { // TODO: match wildcard for IS
 		const field = Object.keys(condition.IS)[0];
 		const id = getKeyId(field);
-		return true;
-		// return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
+		return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
 
 	} else if (condition.NOT) {
 		return !handleCondition(section, condition.NOT);
 	}
 
-	throw new Error("Invalid condition");
+	throw new InsightError("performQuery: not a valid comparator");
+}
+
+function matchWithWildcard(value: string | number, pattern: string): boolean {
+    // Implement pattern matching with wildcard (e.g., using RegExp)
+	// TODO: need to double check this is correct
+	return new RegExp(pattern.split("*").join(".*")).test(value as string);
 }
 
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
