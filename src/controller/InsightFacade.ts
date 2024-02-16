@@ -32,12 +32,8 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (!isValidId(id)) {
+		if (!isValidId(id) || this.datasetIds.has(id)) {
 			return Promise.reject(new InsightError("ID is invalid!"));
-		}
-
-		if (this.datasetIds.has(id)) {
-			return Promise.reject(new InsightError("ID already exists!"));
 		}
 
 		try {
