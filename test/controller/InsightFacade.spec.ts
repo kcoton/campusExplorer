@@ -98,6 +98,14 @@ describe("InsightFacade", function () {
 			const res = insightFacade.addDataset("courses0", content1, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
+
+		it ("caching: new instance cannot add new id if it was added by old one", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+
+			const newInstance = new InsightFacade();
+			const result = newInstance.addDataset("courses0", content0, sectionsType);
+			return expect(result).to.be.eventually.rejectedWith(InsightError);
+		});
 	});
 
 	// Adding tests for removeDataset from c0
@@ -205,6 +213,19 @@ describe("InsightFacade", function () {
 			const result3 = await insightFacade.listDatasets();
 			expect(result3).to.have.length(0);
 		});
+
+		it ("caching: list works for new instance", async () => {
+			await insightFacade.addDataset("courses1", content1, sectionsType);
+
+			const newInstance = new InsightFacade();
+			const result = await newInstance.listDatasets();
+			expect(result).to.have.length(2);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[1].id).to.equal("courses1");
+			expect(result[1].kind).to.deep.equal(sectionsType);
+			expect(result[1].numRows).to.deep.equal(2);
+		});
 	});
 
 	// /*
@@ -213,6 +234,7 @@ describe("InsightFacade", function () {
 	//  */
 	describe("PerformQuery", function () {
 		before(async function () {
+			await clearDisk();
 			facade = new InsightFacade();
 			courses1 = await getContentFromArchives("courses1.zip");
 
