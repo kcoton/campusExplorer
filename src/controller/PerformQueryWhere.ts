@@ -26,33 +26,27 @@ function handleCondition(section: Section, condition: Condition): boolean {
 	if (condition.AND) {
 		const res = condition.AND.every((cond) => handleCondition(section, cond));
 		return res;
-
 	} else if (condition.OR) {
 		return condition.OR.some((cond) => handleCondition(section, cond));
-
 	} else if (condition.GT) {
 		const field = Object.keys(condition.GT)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] > condition.GT[field];
 		return res;
-
 	} else if (condition.LT) {
 		const field = Object.keys(condition.LT)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] < condition.LT[field];
 		return res;
-
 	} else if (condition.EQ) {
 		const field = Object.keys(condition.EQ)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] === condition.EQ[field];
 		return res;
-
 	} else if (condition.IS) {
 		const field = Object.keys(condition.IS)[0];
 		const id = getKeyId(field);
 		return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
-
 	} else if (condition.NOT) {
 		return !handleCondition(section, condition.NOT);
 	}
@@ -77,46 +71,27 @@ export async function handleWhere(data: Section[], query: Query): Promise<Sectio
 	if (Object.keys(query.WHERE).length === 0) {
 		return data;
 	}
-
 	const filteredData: Section[] = data.filter((section) => handleCondition(section, query.WHERE));
 	return filteredData;
 }
 
 // Validates conditions are formatted correctly to EBNF
 export function isValidCondition(condition: Condition): boolean {
-
-	// logic comparison
-	if (condition.AND && (condition.AND.length === 0 || !Array.isArray(condition.AND))) {
+	if (condition.AND && (condition.AND.length === 0 || !Array.isArray(condition.AND))) { // logic comparison
 		return false;
-	}
-
-	if (condition.OR && (condition.OR.length === 0 || !Array.isArray(condition.OR))) {
+	} else if (condition.OR && (condition.OR.length === 0 || !Array.isArray(condition.OR))) {
 		return false;
-	}
-
-	// m comparison
-	if (condition.LT && (typeof condition.LT !== "object" || Object.keys(condition.LT).length === 0)) {
+	} else if (condition.LT && (typeof condition.LT !== "object" || Object.keys(condition.LT).length === 0)) { // m comparison
 		return false;
-	}
-
-	if (condition.GT && (typeof condition.GT !== "object" || Object.keys(condition.GT).length === 0)) {
+	} else if (condition.GT && (typeof condition.GT !== "object" || Object.keys(condition.GT).length === 0)) {
 		return false;
-	}
-
-	if (condition.EQ && (typeof condition.EQ !== "object" || Object.keys(condition.EQ).length === 0)) {
+	} else if (condition.EQ && (typeof condition.EQ !== "object" || Object.keys(condition.EQ).length === 0)) {
 		return false;
-	}
-
-	// s comparison
-	if (condition.IS && (typeof condition.IS !== "object" || Object.keys(condition.IS).length === 0)) {
+	} else if (condition.IS && (typeof condition.IS !== "object" || Object.keys(condition.IS).length === 0)) { // s comparison
 		return false;
-	}
-
-	// negation
-	if (condition.NOT && (typeof condition.NOT !== "object" || Object.keys(condition.NOT).length === 0)) {
+	} else if (condition.NOT && (typeof condition.NOT !== "object" || Object.keys(condition.NOT).length === 0)) { // negation
 		return false;
 	}
 
 	return true;
 }
-

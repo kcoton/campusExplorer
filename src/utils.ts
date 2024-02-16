@@ -1,4 +1,3 @@
-
 // Takes in the id of a dataset, returns true if the id is valid, false otherwise
 export function isValidId(id: string) {
 	const regex = /^[^_]+$/;
