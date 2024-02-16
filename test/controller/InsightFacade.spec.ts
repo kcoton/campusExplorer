@@ -151,6 +151,16 @@ describe("InsightFacade", function () {
 			const res =  insightFacade.removeDataset("");
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
+
+		it ("caching: remove works for new instance", async () => {
+			await insightFacade.removeDataset("courses1");
+			await insightFacade.addDataset("courses1", content1, sectionsType);
+
+			// newInstance should still access courses0
+			const newInstance = new InsightFacade();
+			const result = await newInstance.removeDataset("courses1");
+			expect(result).to.equal("courses1");
+		});
 	});
 
 	// Add tests for listDataset

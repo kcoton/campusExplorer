@@ -1,3 +1,6 @@
+import {truncate} from "fs";
+import fs from "fs-extra";
+import path from "path";
 
 // Takes in the id of a dataset, returns true if the id is valid, false otherwise
 export function isValidId(id: string) {
@@ -12,4 +15,13 @@ export function isValidId(id: string) {
 		return false;
 	}
 	return true;
+}
+
+export async function checkExistingId(id: string) {
+	const filePath = path.join(__dirname, "../data/", `${id}.json`);
+	const exists = await fs.pathExists(filePath);
+	if (exists) {
+		return true;
+	}
+	return false;
 }

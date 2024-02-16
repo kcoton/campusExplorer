@@ -11,7 +11,7 @@ import {
 import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
-import {isValidId} from "../utils";
+import {isValidId, checkExistingId} from "../utils";
 import {Query, isValidQuery} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
 import {handleOptions} from "./PerformQueryOptions";
@@ -21,9 +21,12 @@ import {handleOptions} from "./PerformQueryOptions";
  * Method documentation is in IInsightFacade
  *
  */
+
+
 export default class InsightFacade implements IInsightFacade {
 	public datasetIds: Set<string>; // array of ids to be returned
 	public datasetCache: Dataset; // array of all sections with id key
+
 
 	constructor() {
 		this.datasetIds = new Set();
@@ -89,7 +92,7 @@ export default class InsightFacade implements IInsightFacade {
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("Invalid ID!"));
 		}
-		if (!this.datasetIds.has(id)) {
+		if (!checkExistingId(id)) {
 			return Promise.reject(new NotFoundError("ID does not exist: never added in the first place!"));
 		}
 
@@ -97,8 +100,10 @@ export default class InsightFacade implements IInsightFacade {
 		try {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.remove(filePath);
-			this.datasetIds.delete(id);
-			this.datasetCache[id].pop();
+			if (this.datasetIds.has(id)) {
+				this.datasetIds.delete(id);
+				this.datasetCache[id].pop();
+			}
 
 			console.log("delete success!");
 			return Promise.resolve(id);
