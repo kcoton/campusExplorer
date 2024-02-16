@@ -52,7 +52,7 @@ export default class InsightFacade implements IInsightFacade {
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
 							const formattedSection: Section = {
-								uuid: id,
+								uuid: section.id.toString(),
 								id: section.Course,
 								title: section.Title,
 								instructor: section.Professor,

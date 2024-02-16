@@ -41,7 +41,7 @@ function handleCondition(section: Section, condition: Condition): boolean {
 		const res = section[id as keyof typeof section] === condition.EQ[field];
 		return res;
 
-	} else if (condition.IS) { // TODO: match wildcard for IS
+	} else if (condition.IS) {
 		const field = Object.keys(condition.IS)[0];
 		const id = getKeyId(field);
 		return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
@@ -60,7 +60,8 @@ function matchWithWildcard(value: string | number, pattern: string): boolean {
 
 	regexPattern = `^${regexPattern}$`;
 	const regex = new RegExp(regexPattern);
-	return regex.test(value as string);
+	const result = regex.test(value as string);
+	return result;
 }
 
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
