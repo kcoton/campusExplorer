@@ -31,6 +31,7 @@ export default class InsightFacade implements IInsightFacade {
 		console.log("InsightFacadeImpl::init()");
 	}
 
+	// eslint-disable-next-line max-lines-per-function
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("ID is invalid!"));
@@ -55,9 +56,12 @@ export default class InsightFacade implements IInsightFacade {
 					const jsonContent = JSON.parse(fileContent);
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
+							// if (section.Section === "overall") {
+							// 	continue;
+							// }
 							const formattedSection: Section = {
-								uuid: id + course.split("/").pop() + datasetList.length.toString(),
-								id: id + course.split("/").pop(),
+								uuid: section.Id,
+								id: section.Course,
 								title: section.Title,
 								instructor: section.Professor,
 								dept: section.Subject,
