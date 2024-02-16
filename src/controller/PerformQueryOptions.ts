@@ -14,9 +14,7 @@ function filterColumns(columns: string[], section: any): InsightResult {
 	const result: InsightResult = {};
 	for (const column of columns) {
 		const id = getKeyId(column);
-		if (id in section) {
-			result[column] = section[id];
-		}
+		result[column] = section[id];
 	}
 	return result;
 }
