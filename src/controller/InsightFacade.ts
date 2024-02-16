@@ -11,7 +11,7 @@ import {
 import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
-import {isValidId} from "../utils";
+import {isValidId, checkExistingId} from "../utils";
 import {Query, isValidQuery} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
 import {handleOptions} from "./PerformQueryOptions";
@@ -21,18 +21,19 @@ import {handleOptions} from "./PerformQueryOptions";
  * Method documentation is in IInsightFacade
  *
  */
+
+
 export default class InsightFacade implements IInsightFacade {
-	public datasetIds: Set<string>; // array of ids to be returned
 	public datasetCache: Dataset; // array of all sections with id key
 
 	constructor() {
-		this.datasetIds = new Set();
 		this.datasetCache = {};
 		console.log("InsightFacadeImpl::init()");
 	}
 
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (!isValidId(id) || this.datasetIds.has(id)) {
+		const idExists = await checkExistingId(id);
+		if (!isValidId(id) || idExists) {
 			return Promise.reject(new InsightError("ID is invalid!"));
 		}
 
@@ -77,9 +78,8 @@ export default class InsightFacade implements IInsightFacade {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.outputJson(filePath, JSON.stringify(datasetList, null, 2));
 
-			this.datasetIds.add(id);
 			this.datasetCache[id] = datasetList;
-			return Promise.resolve(Array.from(this.datasetIds));
+			return Promise.resolve(Object.keys(this.datasetCache));
 		} catch (error) {
 			return Promise.reject("Error while adding new dataset!");
 		}
@@ -89,16 +89,18 @@ export default class InsightFacade implements IInsightFacade {
 		if (!isValidId(id)) {
 			return Promise.reject(new InsightError("Invalid ID!"));
 		}
-		if (!this.datasetIds.has(id)) {
+		const existsId = await checkExistingId(id);
+		if (!existsId) {
 			return Promise.reject(new NotFoundError("ID does not exist: never added in the first place!"));
 		}
 
-		// delete the associated file of the dataset and delete id from datasetIds
+		// delete the associated file of the dataset and delete id from datasetCache
 		try {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.remove(filePath);
-			this.datasetIds.delete(id);
-			this.datasetCache[id].pop();
+			if (this.datasetCache[id]) {
+				this.datasetCache[id].pop();
+			}
 
 			console.log("delete success!");
 			return Promise.resolve(id);
@@ -111,8 +113,10 @@ export default class InsightFacade implements IInsightFacade {
 	public async listDatasets(): Promise<InsightDataset[]> {
 		let dataset: InsightDataset[] = [];
 
-		await Promise.all(Array.from(this.datasetIds).map(async (id) => {
-			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
+		const files = await fs.readdir(path.join(__dirname, "../../data/"));
+		await Promise.all(files.map(async (file) => {
+			const id = file.split(".")[0];
+			const filePath = path.join(__dirname, "../../data/", file);
 			const datasetContent = await fs.readJson(filePath);
 
 			let insightData: InsightDataset = {
