@@ -1,0 +1,23 @@
+{
+
+    "title": "Query missing OPTIONS",
+  
+    "input": {
+  
+        "WHERE": {
+  
+            "GT": {
+    
+               "Avg": 94
+    
+            }
+    
+         }
+  
+    },
+  
+    "errorExpected": true,
+  
+    "expected": "InsightError"
+  
+  }
