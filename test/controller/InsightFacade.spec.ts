@@ -24,10 +24,12 @@ describe("InsightFacade", function () {
 
 	// Declare datasets used in tests. You should add more datasets like this!
 	let sections: string;
+	let courses0: string;
 
 	before(async function () {
 		// This block runs once and loads the datasets.
 		sections = await getContentFromArchives("pair.zip");
+		courses0 = await getContentFromArchives("courses0.zip");
 
 		// Just in case there is anything hanging around from a previous run of the test suite
 		await clearDisk();
@@ -238,7 +240,7 @@ describe("InsightFacade", function () {
 			}
 
 			validQueries.forEach(function(test: any) {
-				it(`${test.title}`, async function () {
+				it.only(`${test.title}`, async function () {
 					if (test.errorExpected) {
 						try {
 							await facade.performQuery(test.input);
@@ -250,7 +252,8 @@ describe("InsightFacade", function () {
 					} else {
 						try {
 							const result = await facade.performQuery(test.input);
-							// console.log(result); // print results
+							console.log(result); // print results
+							console.log(test.expected);
 
 							expect(result).to.deep.equal(test.expected);
 						} catch(e) {

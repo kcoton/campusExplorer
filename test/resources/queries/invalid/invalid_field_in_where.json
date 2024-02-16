@@ -1,0 +1,38 @@
+{
+
+    "title": "Query invalid field in WHERE",
+  
+    "input": {
+  
+       "WHERE": {
+  
+          "GT": {
+  
+             "naField": "example"
+  
+          }
+  
+       },
+  
+       "OPTIONS": {
+  
+          "COLUMNS": [
+  
+             "Title",
+
+             "Section",
+  
+             "Avg"
+  
+          ],
+  
+          "ORDER": "Avg"
+  
+       }
+  
+    },
+  
+    "errorExpected": true,
+  
+    "expected": "InsightError"
+  }

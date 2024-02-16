@@ -1,0 +1,38 @@
+{
+
+    "title": "Typo in FILTER key makes it invalid",
+  
+    "input": {
+  
+       "WHERE": {
+  
+          "RANDOMKEY": {
+  
+             "Avg": 94
+  
+          }
+  
+       },
+  
+       "OPTIONS": {
+  
+          "COLUMNS": [
+  
+             "Title",
+
+             "Section",
+  
+             "Avg"
+  
+          ],
+  
+          "ORDER": "Avg"
+  
+       }
+  
+    },
+  
+    "errorExpected": true,
+  
+    "expected": "InsightError"
+  }
