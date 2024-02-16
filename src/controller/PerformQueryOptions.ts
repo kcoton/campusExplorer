@@ -1,5 +1,6 @@
 import {Section} from "../type/Section";
 import {InsightResult} from "./IInsightFacade";
+import {getKeyId} from "./PerformQueryHelper";
 
 export interface Options {
 	COLUMNS: string[];
@@ -12,7 +13,7 @@ const columnKeys = ["avg", "pass", "fail", "audit", "year", "dept", "id", "instr
 function filterColumns(columns: string[], section: any): InsightResult {
 	const result: InsightResult = {};
 	for (const column of columns) {
-		const id = column.split("_")[1];
+		const id = getKeyId(column);
 		if (id in section) {
 			result[column] = section[id];
 		}
@@ -24,9 +25,9 @@ function filterColumns(columns: string[], section: any): InsightResult {
 export async function handleOptions(data: Section[], options: Options): Promise<InsightResult[]> {
 	// sorted by specified column in asc order
 	if (options.ORDER) {
-		const orderBy = options.ORDER.split("_")[1];
-		data.sort((a: any, b: any) => {
-			if (a[orderBy] < b[orderBy]) {
+		const orderBy = getKeyId(options.ORDER);
+		data.sort((a: Section, b: Section) => {
+			if (a[orderBy as keyof typeof a] < b[orderBy as keyof typeof b]) {
 				return -1;
 			}
 			return 1;
@@ -50,7 +51,7 @@ export function isValidKey(key: string): boolean {
 // Iterate through columns in options and returns true if all valid
 export function isValidColumns(options: Options): boolean {
 	for (const column of options.COLUMNS) {
-		const key = column.split("_")[1];
+		const key = getKeyId(column);
 		if (!isValidKey(key)) {
 			return false;
 		}
@@ -66,7 +67,7 @@ export function isValidOptions(options: Options): boolean {
 	}
 
 	if (options.ORDER) {
-		const orderKey = options.ORDER.split("_")[1];
+		const orderKey = getKeyId(options.ORDER);
 		if (!columnKeys.includes(orderKey)) {
 			return false;
 		}
