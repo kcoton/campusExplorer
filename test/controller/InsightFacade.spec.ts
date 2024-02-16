@@ -250,16 +250,22 @@ describe("InsightFacade", function () {
 							await facade.performQuery(test.input);
 							assert.fail("performQuery: expected an error but none was thrown");
 						} catch(e) {
-							// expected error
+								// expected error
 							console.log(`performQuery: expected error: ${e}`);
 						}
 					} else {
 						try {
 							const result = await facade.performQuery(test.input);
-							console.log("result: ", result); // print results
-							console.log("expected: ", test.expected);
 
+							// unsorted test
+							if (test.input?.OPTIONS && !test.input.OPTIONS.ORDER) {
+								return expect(result).to.deep.members(test.expected);
+							}
+							// sorted test
 							expect(result).to.deep.equal(test.expected);
+
+							// console.log("result: ", result); // print results
+							// console.log("expected: ", test.expected);
 						} catch(e) {
 							assert.fail(`performQuery: threw an unexpected error: ${e}`);
 						}
