@@ -1,9 +1,9 @@
 import * as fs from "fs-extra";
 import {Options, handleOptions, isValidOptions} from "./PerformQueryOptions";
-import {Section} from "../type/Section";
+import {Condition, handleWhere} from "./PerformQueryWhere";
 
 export interface Query {
-	WHERE: any[];
+	WHERE: Condition;
 	OPTIONS: Options;
 }
 
@@ -33,22 +33,21 @@ export function isValidQuery(query: Query): boolean {
 	return true;
 }
 
-export function handleCompare(section: Section, query: Query) {
-	//
-}
-
-export async function handleWhere(data: Section[], query: Query) {
-	const res = data.map((section: Section) => handleCompare(section, query));
+// Extracts the id from the key (i.e. section_avg -> avg)
+export function getKeyId(key: string): string {
+	const id = key.split("_")[1];
+	return id;
 }
 
 
 /** local testing -- ignore */
 export async function main() {
-	let orderAndSortResult;
 	const dataResult = await getData("../mock/mock-courses.json");
 	const queryResult = await getQuery("../mock/mock-query.json");
+
 	if (isValidQuery(queryResult)) {
-		orderAndSortResult = await handleOptions(dataResult.data, queryResult.OPTIONS);
+		const whereResult = await handleWhere(dataResult.data, queryResult); // TODO: validWhere
+		const orderAndSortResult = await handleOptions(whereResult, queryResult.OPTIONS);
 	}
 }
 
