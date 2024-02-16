@@ -1,39 +1,39 @@
 {
 
-    "title": "Invalid field in options - columns",
-  
+    "title": "Invalid field in options - invalid order and columns",
+
     "input": {
-  
+
        "WHERE": {
-  
+
           "GT": {
-  
+
              "Avg": 94
-  
+
           }
-  
+
        },
-  
+
        "OPTIONS": {
-  
+
           "COLUMNS": [
-  
+
              "Title",
 
              "aRandomField",
-  
+
              "Avg"
-  
+
           ],
-  
+
           "ORDER": "Avg"
-  
+
        }
-  
+
     },
-  
+
     "errorExpected": true,
-  
+
     "expected": "InsightError"
-  
+
   }
