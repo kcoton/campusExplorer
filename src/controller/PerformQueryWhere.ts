@@ -1,6 +1,7 @@
 import {Section} from "../type/Section";
 import {InsightError} from "./IInsightFacade";
 import {Query, getKeyId} from "./PerformQueryHelper";
+import {isValidKey} from "./PerformQueryOptions";
 
 export interface Comparator {
 	[key: string]: number | string;
@@ -73,6 +74,10 @@ function matchWithWildcard(value: string | number, pattern: string): boolean {
 
 // Takes data of Section[] and query, returns results using filtered where condition
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
+	if (Object.keys(query.WHERE).length === 0) {
+		return data;
+	}
+
 	const filteredData: Section[] = data.filter((section) => handleCondition(section, query.WHERE));
 	return filteredData;
 }
@@ -90,25 +95,25 @@ export function isValidCondition(condition: Condition): boolean {
 	}
 
 	// m comparison
-	if (condition.LT && typeof condition.LT !== "object") {
+	if (condition.LT && (typeof condition.LT !== "object" || Object.keys(condition.LT).length === 0)) {
 		return false;
 	}
 
-	if (condition.GT && typeof condition.GT !== "object") {
+	if (condition.GT && (typeof condition.GT !== "object" || Object.keys(condition.GT).length === 0)) {
 		return false;
 	}
 
-	if (condition.EQ && typeof condition.EQ !== "object") {
+	if (condition.EQ && (typeof condition.EQ !== "object" || Object.keys(condition.EQ).length === 0)) {
 		return false;
 	}
 
 	// s comparison
-	if (condition.IS && typeof condition.IS !== "object") {
+	if (condition.IS && (typeof condition.IS !== "object" || Object.keys(condition.IS).length === 0)) {
 		return false;
 	}
 
 	// negation
-	if (condition.NOT && typeof condition.NOT !== "object") {
+	if (condition.NOT && (typeof condition.NOT !== "object" || Object.keys(condition.NOT).length === 0)) {
 		return false;
 	}
 

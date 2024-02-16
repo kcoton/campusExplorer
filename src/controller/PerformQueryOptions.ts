@@ -67,11 +67,14 @@ export function isValidColumns(options: Options): boolean {
 
 // Validates options are formatted correctly to EBNF
 export function isValidOptions(options: Options): boolean {
-	if (!options.COLUMNS) {
+	if (!options.COLUMNS || !Array.isArray(options.COLUMNS)) {
 		return false;
 	}
 
 	if (options.ORDER) {
+		if (typeof options.ORDER !== "string") {
+			return false;
+		}
 		const orderKey = getKeyId(options.ORDER);
 		if (!columnKeys.includes(orderKey)) {
 			return false;
