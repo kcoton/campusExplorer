@@ -1,0 +1,15 @@
+{
+	"title": "invalid syntax columns - not an object",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "cpsc"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": ""
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

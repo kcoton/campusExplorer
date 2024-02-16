@@ -1,0 +1,33 @@
+{
+	"title": "invalid_LT - not an object",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"NOT": {
+						"IS": {
+							"sections_dept": "engl"
+						}
+					}
+				},
+				{
+					"GT": {
+						"sections_avg": 95
+					}
+				},
+				{
+					"LT": []
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_pass"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

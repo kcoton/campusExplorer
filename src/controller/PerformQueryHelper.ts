@@ -8,19 +8,6 @@ export interface Query {
 	OPTIONS: Options;
 }
 
-// Reads course data from json file
-export async function getData(path: string): Promise<any> {
-	const data = await JSON.parse(fs.readFileSync(path, "utf-8"));
-	return data;
-}
-
-// Reads query from json file
-export async function getQuery(path: string): Promise<Query> {
-	const query = await JSON.parse(fs.readFileSync(path, "utf-8"));
-	return query;
-}
-
-// TODO: validate WHERE condition
 // Validates query format is valid to EBNF
 export function isValidQuery(uncheckedQuery: unknown): boolean {
 	if (typeof uncheckedQuery !== "object") {
@@ -30,6 +17,10 @@ export function isValidQuery(uncheckedQuery: unknown): boolean {
 	const query: Query = uncheckedQuery as Query;
 
 	if (!query.WHERE || !query.OPTIONS) {
+		return false;
+	}
+
+	if (typeof query.WHERE !== "object" || typeof query.OPTIONS !== "object" || Array.isArray(query.WHERE)) {
 		return false;
 	}
 
@@ -46,14 +37,13 @@ export function getKeyId(key: string): string {
 	return id;
 }
 
-
 // /** local testing -- ignore */
 // export async function main() {
 // 	const dataResult = await getData("../mock/mock-courses.json");
 // 	const queryResult = await getQuery("../mock/mock-query.json");
 
 // 	if (isValidQuery(queryResult)) {
-// 		const whereResult = await handleWhere(dataResult.data, queryResult); // TODO: validWhere
+// 		const whereResult = await handleWhere(dataResult.data, queryResult);
 // 		const orderAndSortResult = await handleOptions(whereResult, queryResult.OPTIONS);
 // 	}
 // }

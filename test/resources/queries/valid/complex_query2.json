@@ -1,0 +1,1167 @@
+{
+	"title": "complex_query2",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"AND": [
+						{
+							"OR": [
+								{
+									"IS": {
+										"sections_title": "*Intro*"
+									}
+								},
+								{
+									"IS": {
+										"sections_title": "*adv*"
+									}
+								}
+							]
+						},
+						{
+							"IS": {
+								"sections_dept": "c*"
+							}
+						},
+						{
+							"AND": [
+								{
+									"GT": {
+										"sections_avg": 70
+									}
+								},
+								{
+									"LT": {
+										"sections_avg": 80
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 79.82
+		},
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 79.82
+		},
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 77.5
+		},
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 77.5
+		},
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 75.33
+		},
+		{
+			"sections_title": "adv bioorg chem",
+			"sections_dept": "chem",
+			"sections_avg": 75.33
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 73.11
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 73.11
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 71.12
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 71.12
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 75.96
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 75.96
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 72.43
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 72.43
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 74.62
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 74.62
+		},
+		{
+			"sections_title": "adv clas chin 2",
+			"sections_dept": "chin",
+			"sections_avg": 74.23
+		},
+		{
+			"sections_title": "adv clas chin 2",
+			"sections_dept": "chin",
+			"sections_avg": 76.4
+		},
+		{
+			"sections_title": "adv clas chin 2",
+			"sections_dept": "chin",
+			"sections_avg": 75.5
+		},
+		{
+			"sections_title": "adv clas chin 2",
+			"sections_dept": "chin",
+			"sections_avg": 71.5
+		},
+		{
+			"sections_title": "adv clas chin 1",
+			"sections_dept": "chin",
+			"sections_avg": 76.61
+		},
+		{
+			"sections_title": "adv clas chin 1",
+			"sections_dept": "chin",
+			"sections_avg": 77
+		},
+		{
+			"sections_title": "adv clas chin 1",
+			"sections_dept": "chin",
+			"sections_avg": 77.32
+		},
+		{
+			"sections_title": "adv clas chin 1",
+			"sections_dept": "chin",
+			"sections_avg": 75.84
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.41
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.63
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.88
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.35
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.56
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.4
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.56
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.11
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.61
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.12
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73.04
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73.91
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73.25
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.48
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.7
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 77.29
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.7
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.57
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.79
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.3
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.63
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 77.3
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.09
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 77.56
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 77.56
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.14
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 74.14
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.24
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 76.24
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73.79
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 73.79
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.15
+		},
+		{
+			"sections_title": "adv chin r&wr ii",
+			"sections_dept": "chin",
+			"sections_avg": 75.15
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 76.41
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 76.41
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 76.56
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 76.56
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 73.91
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 73.91
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 73.22
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 73.22
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 72.4
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 72.4
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 78.15
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 78.15
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 78.29
+		},
+		{
+			"sections_title": "adv chin r&wr i",
+			"sections_dept": "chin",
+			"sections_avg": 78.29
+		},
+		{
+			"sections_title": "adv soil mech",
+			"sections_dept": "civl",
+			"sections_avg": 79.38
+		},
+		{
+			"sections_title": "adv soil mech",
+			"sections_dept": "civl",
+			"sections_avg": 79.38
+		},
+		{
+			"sections_title": "adv soil mech",
+			"sections_dept": "civl",
+			"sections_avg": 77.69
+		},
+		{
+			"sections_title": "adv soil mech",
+			"sections_dept": "civl",
+			"sections_avg": 77.69
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 76.48
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 76.48
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 78.05
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 78.05
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 79.06
+		},
+		{
+			"sections_title": "adv struc analys",
+			"sections_dept": "civl",
+			"sections_avg": 79.68
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 79.96
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 79.96
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.61
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.61
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.7
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.7
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 75.19
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 75.19
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.24
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 78.24
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 79.77
+		},
+		{
+			"sections_title": "adv conc design",
+			"sections_dept": "civl",
+			"sections_avg": 79.77
+		},
+		{
+			"sections_title": "adv rdng cl chin",
+			"sections_dept": "clch",
+			"sections_avg": 73
+		},
+		{
+			"sections_title": "adv rdng cl chin",
+			"sections_dept": "clch",
+			"sections_avg": 73
+		},
+		{
+			"sections_title": "adv tpc emp corp",
+			"sections_dept": "comm",
+			"sections_avg": 79.76
+		},
+		{
+			"sections_title": "adv tpc emp corp",
+			"sections_dept": "comm",
+			"sections_avg": 79.76
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.13
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 71.12
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.02
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 74.95
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 76.71
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 72.44
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.3
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.29
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 79.91
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.16
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 75.35
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.76
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 74.33
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 79.05
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 79.72
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 79.05
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 72.45
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 76.68
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 76.68
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.99
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 73.12
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.74
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 76.25
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 72.59
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 74.95
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.93
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 78.59
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.07
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 73.11
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 76.38
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 73.26
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.98
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.47
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 71.71
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 77.69
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.13
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.2
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.03
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.19
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.85
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 73.6
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 79.66
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 79.56
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 79.77
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.78
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 77.97
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 75
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.54
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 77.25
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.16
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.36
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 75.83
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.79
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 74.38
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 78.95
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 76.22
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 77.31
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 79.24
+		},
+		{
+			"sections_title": "adv bus logistic",
+			"sections_dept": "comm",
+			"sections_avg": 75.15
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.06
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.06
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.93
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.93
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.64
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.64
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 72.46
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 72.46
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.03
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.03
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 78.32
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 78.32
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.04
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.04
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.37
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.37
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 72
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 72
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.7
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.7
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.87
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.87
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.13
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.13
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.33
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.33
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.28
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.28
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.28
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.28
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 76.96
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 76.96
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.25
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.25
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.04
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.04
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79.62
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79.62
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79.39
+		},
+		{
+			"sections_title": "adv software eng",
+			"sections_dept": "cpsc",
+			"sections_avg": 79.39
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.54
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.97
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.24
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.68
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.22
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.41
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 70.96
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 71.97
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.08
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 77.76
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 79.44
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.44
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.72
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 72.57
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 77.95
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.7
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 75.58
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.33
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.88
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 74.34
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 73.27
+		}
+	]
+}

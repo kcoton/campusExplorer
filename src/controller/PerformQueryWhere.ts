@@ -1,6 +1,7 @@
 import {Section} from "../type/Section";
 import {InsightError} from "./IInsightFacade";
 import {Query, getKeyId} from "./PerformQueryHelper";
+import {isValidKey} from "./PerformQueryOptions";
 
 export interface Comparator {
 	[key: string]: number | string;
@@ -16,36 +17,36 @@ export interface Condition {
 	NOT?: Comparator;
 }
 
+// Takes section and returns true if evaluated to be query condition
 function handleCondition(section: Section, condition: Condition): boolean {
-	if (condition.AND) {
-		return condition.AND.every((cond) => handleCondition(section, cond));
+	if (!isValidCondition(condition)) {
+		throw new InsightError("performQuery: invalid condition or comparator");
+	}
 
+	if (condition.AND) {
+		const res = condition.AND.every((cond) => handleCondition(section, cond));
+		return res;
 	} else if (condition.OR) {
 		return condition.OR.some((cond) => handleCondition(section, cond));
-
 	} else if (condition.GT) {
 		const field = Object.keys(condition.GT)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] > condition.GT[field];
 		return res;
-
 	} else if (condition.LT) {
 		const field = Object.keys(condition.LT)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] < condition.LT[field];
 		return res;
-
 	} else if (condition.EQ) {
 		const field = Object.keys(condition.EQ)[0];
 		const id = getKeyId(field);
 		const res = section[id as keyof typeof section] === condition.EQ[field];
 		return res;
-
-	} else if (condition.IS) { // TODO: match wildcard for IS
+	} else if (condition.IS) {
 		const field = Object.keys(condition.IS)[0];
 		const id = getKeyId(field);
 		return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
-
 	} else if (condition.NOT) {
 		return !handleCondition(section, condition.NOT);
 	}
@@ -53,6 +54,7 @@ function handleCondition(section: Section, condition: Condition): boolean {
 	throw new InsightError("performQuery: not a valid comparator");
 }
 
+// IS values with wildcards return true if matches
 function matchWithWildcard(value: string | number, pattern: string): boolean {
 	let regexPattern = pattern
 		.replace(/([.+?^=!:${}()|[\]/\\])/g, "\\$1")
@@ -60,11 +62,36 @@ function matchWithWildcard(value: string | number, pattern: string): boolean {
 
 	regexPattern = `^${regexPattern}$`;
 	const regex = new RegExp(regexPattern);
-	return regex.test(value as string);
+	const result = regex.test(value as string);
+	return result;
 }
 
+// Takes data of Section[] and query, returns results using filtered where condition
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
+	if (Object.keys(query.WHERE).length === 0) {
+		return data;
+	}
 	const filteredData: Section[] = data.filter((section) => handleCondition(section, query.WHERE));
 	return filteredData;
 }
 
+// Validates conditions are formatted correctly to EBNF
+export function isValidCondition(condition: Condition): boolean {
+	if (condition.AND && (condition.AND.length === 0 || !Array.isArray(condition.AND))) { // logic comparison
+		return false;
+	} else if (condition.OR && (condition.OR.length === 0 || !Array.isArray(condition.OR))) {
+		return false;
+	} else if (condition.LT && (typeof condition.LT !== "object" || Object.keys(condition.LT).length === 0)) { // m comparison
+		return false;
+	} else if (condition.GT && (typeof condition.GT !== "object" || Object.keys(condition.GT).length === 0)) {
+		return false;
+	} else if (condition.EQ && (typeof condition.EQ !== "object" || Object.keys(condition.EQ).length === 0)) {
+		return false;
+	} else if (condition.IS && (typeof condition.IS !== "object" || Object.keys(condition.IS).length === 0)) { // s comparison
+		return false;
+	} else if (condition.NOT && (typeof condition.NOT !== "object" || Object.keys(condition.NOT).length === 0)) { // negation
+		return false;
+	}
+
+	return true;
+}

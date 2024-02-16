@@ -55,7 +55,7 @@ export default class InsightFacade implements IInsightFacade {
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
 							const formattedSection: Section = {
-								uuid: id,
+								uuid: section.id.toString(),
 								id: section.Course,
 								title: section.Title,
 								instructor: section.Professor,
@@ -133,19 +133,18 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		if (!isValidQuery(query as Query)) {
+		if (!isValidQuery(query)) {
 			throw new InsightError("performQuery: Not a valid query");
 		}
 
-		// Create an array of promises for each id in the datasetCache
-		const results = await Promise.all(Object.keys(this.datasetCache).map(async (id) => {
-			const data = this.datasetCache[id];
-			const whereResult = await handleWhere(data, query as Query);
-			const optionsResult = await handleOptions(whereResult, (query as Query).OPTIONS);
-			return optionsResult;
-		}));
+		// Gets datasetId from the query
+		const id = (query as Query).OPTIONS.COLUMNS[0].split("_")[0];
+		const data = this.datasetCache[id];
 
-		const queryResult = results.flat(); // .flat() will concatenate all the arrays into a single array
+		// Handles where and options to return array result
+		const whereResult = await handleWhere(data, query as Query);
+		const optionsResult = await handleOptions(whereResult, (query as Query).OPTIONS);
+		const queryResult = optionsResult.flat(); // .flat() will concatenate all the arrays into a single array
 
 		if (queryResult.length > 5000) {
 			throw new ResultTooLargeError("performQuery: number of results greater > 5000");

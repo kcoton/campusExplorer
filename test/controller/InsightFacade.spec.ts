@@ -1,9 +1,4 @@
-import {
-	IInsightFacade,
-	InsightDatasetKind,
-	InsightError,
-	NotFoundError
-} from "../../src/controller/IInsightFacade";
+import {IInsightFacade, InsightDatasetKind, InsightError, NotFoundError} from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
 
 import {assert, expect, use} from "chai";
@@ -25,6 +20,7 @@ describe("InsightFacade", function () {
 	// Declare datasets used in tests. You should add more datasets like this!
 	let sections: string;
 	let courses0: string;
+	let courses1: string;
 
 	before(async function () {
 		// This block runs once and loads the datasets.
@@ -36,7 +32,6 @@ describe("InsightFacade", function () {
 	});
 
 	describe("AddDataset", function () {
-
 		beforeEach(function () {
 			// This section resets the insightFacade instance
 			// This runs before each test
@@ -57,7 +52,7 @@ describe("InsightFacade", function () {
 	});
 
 	// Adding tests for addDataset from C0
-	describe ("Testing the add API of InsightFacade", () => {
+	describe("Testing the add API of InsightFacade", () => {
 		let insightFacade: InsightFacade;
 		let content0: string;
 		let content1: string;
@@ -68,33 +63,33 @@ describe("InsightFacade", function () {
 			content1 = await getContentFromArchives("courses1.zip");
 		});
 
-		beforeEach (async () => {
+		beforeEach(async () => {
 			await clearDisk();
 			insightFacade = new InsightFacade();
 		});
 
-		it ("addDataset: add success, one valid dataset", () => {
+		it("addDataset: add success, one valid dataset", () => {
 			const addId = "courses0";
 			const res = insightFacade.addDataset(addId, content0, sectionsType);
 			return expect(res).to.eventually.have.members([addId]);
 		});
 
-		it ("addDataset: reject if id contains underscore", () => {
+		it("addDataset: reject if id contains underscore", () => {
 			const res = insightFacade.addDataset("courses_0", content0, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("addDataset: should reject if id contains only white space", () => {
+		it("addDataset: should reject if id contains only white space", () => {
 			const res = insightFacade.addDataset(" ", content0, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("addDataset: reject if id is empty", () => {
+		it("addDataset: reject if id is empty", () => {
 			const res = insightFacade.addDataset("", content0, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("addDataset: reject if encounter same id again", async () => {
+		it("addDataset: reject if encounter same id again", async () => {
 			try {
 				await insightFacade.addDataset("courses0", content0, sectionsType);
 			} catch (err) {
@@ -103,11 +98,10 @@ describe("InsightFacade", function () {
 			const res = insightFacade.addDataset("courses0", content1, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
-
 	});
 
 	// Adding tests for removeDataset from c0
-	describe("remove api", function() {
+	describe("remove api", function () {
 		let insightFacade: InsightFacade;
 		let content0: string;
 		let content1: string;
@@ -118,7 +112,7 @@ describe("InsightFacade", function () {
 			content1 = await getContentFromArchives("courses1.zip");
 		});
 
-		beforeEach (async () => {
+		beforeEach(async () => {
 			insightFacade = new InsightFacade();
 
 			await insightFacade.addDataset("courses0", content0, sectionsType);
@@ -129,26 +123,26 @@ describe("InsightFacade", function () {
 			await clearDisk();
 		});
 
-		it ("removeDataset: remove 1 id success", async () => {
-			const res =  await insightFacade.removeDataset("courses0");
+		it("removeDataset: remove 1 id success", async () => {
+			const res = await insightFacade.removeDataset("courses0");
 			return expect(res).to.equal("courses0");
 		});
 
-		it ("removeDataset: remove unavailable id, rejected", () => {
-			const res =  insightFacade.removeDataset("coursesNA");
+		it("removeDataset: remove unavailable id, rejected", () => {
+			const res = insightFacade.removeDataset("coursesNA");
 			return expect(res).to.eventually.be.rejectedWith(NotFoundError);
 		});
 
-		it ("removeDataset: invalid id underscore", () => {
-			const res =  insightFacade.removeDataset("courses_0");
+		it("removeDataset: invalid id underscore", () => {
+			const res = insightFacade.removeDataset("courses_0");
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
-		it ("removeDataset: invalid id with only white space", () => {
+		it("removeDataset: invalid id with only white space", () => {
 			const res = insightFacade.removeDataset("  ");
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
-		it ("removeDataset: invalid id empty", () => {
-			const res =  insightFacade.removeDataset("");
+		it("removeDataset: invalid id empty", () => {
+			const res = insightFacade.removeDataset("");
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
 		});
 
@@ -164,7 +158,7 @@ describe("InsightFacade", function () {
 	});
 
 	// Add tests for listDataset
-	describe ("list api", function() {
+	describe("list api", function () {
 		let insightFacade: InsightFacade;
 		let content0: string;
 		let content1: string;
@@ -175,14 +169,14 @@ describe("InsightFacade", function () {
 			content1 = await getContentFromArchives("courses1.zip");
 		});
 
-		beforeEach (async () => {
+		beforeEach(async () => {
 			await clearDisk();
 			insightFacade = new InsightFacade();
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 		});
 
 		// Tests for listDatasets
-		it ("listDatasets: add 1, list 1, remove 0", async () => {
+		it("listDatasets: add 1, list 1, remove 0", async () => {
 			// await insightFacade.addDataset('courses0', content0, sections)
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
@@ -191,7 +185,7 @@ describe("InsightFacade", function () {
 			expect(result[0].numRows).to.deep.equal(4);
 		});
 
-		it ("listDatasets: add 2, remove none, and then remove 1", async () => {
+		it("listDatasets: add 2, remove none, and then remove 1", async () => {
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(2);
@@ -215,7 +209,6 @@ describe("InsightFacade", function () {
 		});
 	});
 
-
 	// /*
 	//  * This test suite dynamically generates tests from the JSON files in test/resources/queries.
 	//  * You can and should still make tests the normal way, this is just a convenient tool for a majority of queries.
@@ -223,16 +216,19 @@ describe("InsightFacade", function () {
 	describe("PerformQuery", function () {
 		before(async function () {
 			facade = new InsightFacade();
+			courses1 = await getContentFromArchives("courses1.zip");
 
 			// Add the datasets to InsightFacade once.
 			// Will *fail* if there is a problem reading ANY dataset.
 			const loadDatasetPromises = [
 				facade.addDataset("sections", sections, InsightDatasetKind.Sections),
+				facade.addDataset("courses0", courses0, InsightDatasetKind.Sections),
+				facade.addDataset("courses1", courses1, InsightDatasetKind.Sections),
 			];
 
 			try {
 				await Promise.all(loadDatasetPromises);
-			} catch(err) {
+			} catch (err) {
 				throw new Error(`In PerformQuery Before hook, dataset(s) failed to be added. \n${err}`);
 			}
 		});
@@ -241,7 +237,7 @@ describe("InsightFacade", function () {
 			await clearDisk();
 		});
 
-		describe("valid queries", function() {
+		describe("valid queries", function () {
 			let validQueries: ITestQuery[];
 			try {
 				validQueries = readFileQueries("valid");
@@ -249,24 +245,30 @@ describe("InsightFacade", function () {
 				expect.fail(`Failed to read one or more test queries. ${e}`);
 			}
 
-			validQueries.forEach(function(test: any) {
+			validQueries.forEach(function (test: any) {
 				it(`${test.title}`, async function () {
 					if (test.errorExpected) {
 						try {
 							await facade.performQuery(test.input);
 							assert.fail("performQuery: expected an error but none was thrown");
-						} catch(e) {
+						} catch (e) {
 							// expected error
 							console.log(`performQuery: expected error: ${e}`);
 						}
 					} else {
 						try {
 							const result = await facade.performQuery(test.input);
-							console.log(result); // print results
-							console.log(test.expected);
 
+							// unsorted test
+							if (test.input?.OPTIONS && !test.input.OPTIONS.ORDER) {
+								return expect(result).to.deep.members(test.expected);
+							}
+							// sorted test
 							expect(result).to.deep.equal(test.expected);
-						} catch(e) {
+
+							// console.log("result: ", result); // print results
+							// console.log("expected: ", test.expected);
+						} catch (e) {
 							assert.fail(`performQuery: threw an unexpected error: ${e}`);
 						}
 					}
@@ -274,7 +276,7 @@ describe("InsightFacade", function () {
 			});
 		});
 
-		describe("invalid queries", function() {
+		describe("invalid queries", function () {
 			let invalidQueries: ITestQuery[];
 
 			try {
@@ -283,17 +285,18 @@ describe("InsightFacade", function () {
 				expect.fail(`Failed to read one or more test queries. ${e}`);
 			}
 
-			invalidQueries.forEach(function(test: any) {
-				it(`${test.title}`, function () {
-					return facade.performQuery(test.input).then((result) => {
+			invalidQueries.forEach(function (test: ITestQuery) {
+				it(`${test.title}`, async function () {
+					try {
+						const result = await facade.performQuery(test.input);
 						assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
-					}).catch((err: any) => {
+					} catch (err) {
 						if (test.expected === "InsightError") {
 							expect(err).to.be.instanceOf(InsightError);
 						} else {
 							assert.fail("Query threw unexpected error");
 						}
-					});
+					}
 				});
 			});
 		});
