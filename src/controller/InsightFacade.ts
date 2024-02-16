@@ -35,7 +35,8 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (!isValidId(id) || this.datasetIds.has(id)) {
+		const idExists = await checkExistingId(id);
+		if (!isValidId(id) || idExists) {
 			return Promise.reject(new InsightError("ID is invalid!"));
 		}
 
@@ -117,8 +118,10 @@ export default class InsightFacade implements IInsightFacade {
 	public async listDatasets(): Promise<InsightDataset[]> {
 		let dataset: InsightDataset[] = [];
 
-		await Promise.all(Array.from(this.datasetIds).map(async (id) => {
-			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
+		const files = await fs.readdir(path.join(__dirname, "../../data/"));
+		await Promise.all(files.map(async (file) => {
+			const id = file.split(".")[0];
+			const filePath = path.join(__dirname, "../../data/", file);
 			const datasetContent = await fs.readJson(filePath);
 
 			let insightData: InsightDataset = {

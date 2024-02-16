@@ -113,15 +113,13 @@ describe("InsightFacade", function () {
 		});
 
 		beforeEach(async () => {
+			await clearDisk();
 			insightFacade = new InsightFacade();
 
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 		});
 
-		this.afterEach(async () => {
-			await clearDisk();
-		});
 
 		it("removeDataset: remove 1 id success", async () => {
 			const res = await insightFacade.removeDataset("courses0");

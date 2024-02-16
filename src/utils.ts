@@ -17,6 +17,7 @@ export function isValidId(id: string) {
 	return true;
 }
 
+// If an ID exists, there there must be a file with such path
 export async function checkExistingId(id: string) {
 	const filePath = path.join(__dirname, "../data/", `${id}.json`);
 	const exists = await fs.pathExists(filePath);
