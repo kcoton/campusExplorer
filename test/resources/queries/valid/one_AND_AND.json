@@ -1,0 +1,35 @@
+{
+	"title": "one_AND_AND",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"AND": [
+						{
+							"GT": {
+								"sections_audit": 20
+							}
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_year"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_year": 1900
+		},
+		{
+			"sections_year": 1900
+		},
+		{
+			"sections_year": 1900
+		}
+	]
+}

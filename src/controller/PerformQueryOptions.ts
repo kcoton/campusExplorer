@@ -14,9 +14,7 @@ function filterColumns(columns: string[], section: any): InsightResult {
 	const result: InsightResult = {};
 	for (const column of columns) {
 		const id = getKeyId(column);
-		if (id in section) {
-			result[column] = section[id];
-		}
+		result[column] = section[id];
 	}
 	return result;
 }
@@ -27,7 +25,8 @@ export async function handleOptions(data: Section[], options: Options): Promise<
 	if (options.ORDER) {
 		const orderBy = getKeyId(options.ORDER);
 		data.sort((a: Section, b: Section) => {
-			if (a[orderBy as keyof typeof a] < b[orderBy as keyof typeof b]) {
+			const field = orderBy as keyof typeof a;
+			if (a[field] <= b[field]) {
 				return -1;
 			}
 			return 1;
@@ -35,10 +34,13 @@ export async function handleOptions(data: Section[], options: Options): Promise<
 	}
 
 	// iterate through data, reduce to only columns specified
-	const res: InsightResult[] = data.map((section: Section) => filterColumns(options.COLUMNS, section));
-	return res;
+	const result: InsightResult[] = [];
+	data.forEach((section: Section) => {
+		const filteredSection = filterColumns(options.COLUMNS, section);
+		result.push(filteredSection);
+	});
+	return result;
 }
-
 
 // Takes column key and returns true if it is valid
 export function isValidKey(key: string): boolean {
@@ -62,13 +64,16 @@ export function isValidColumns(options: Options): boolean {
 
 // Validates options are formatted correctly to EBNF
 export function isValidOptions(options: Options): boolean {
-	if (!options.COLUMNS) {
+	if (!options.COLUMNS || !Array.isArray(options.COLUMNS)) {
 		return false;
 	}
 
 	if (options.ORDER) {
+		if (typeof options.ORDER !== "string" || options.ORDER.length === 0) {
+			return false;
+		}
 		const orderKey = getKeyId(options.ORDER);
-		if (!columnKeys.includes(orderKey)) {
+		if (!orderKey || orderKey.length === 0 || !columnKeys.includes(orderKey)) {
 			return false;
 		}
 	}
