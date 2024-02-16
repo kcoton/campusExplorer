@@ -16,9 +16,15 @@ export interface Condition {
 	NOT?: Comparator;
 }
 
+// Takes section and returns true if evaluated to be query condition
 function handleCondition(section: Section, condition: Condition): boolean {
+	if (!isValidCondition(condition)) {
+		throw new InsightError("performQuery: invalid condition or comparator");
+	}
+
 	if (condition.AND) {
-		return condition.AND.every((cond) => handleCondition(section, cond));
+		const res = condition.AND.every((cond) => handleCondition(section, cond));
+		return res;
 
 	} else if (condition.OR) {
 		return condition.OR.some((cond) => handleCondition(section, cond));
@@ -53,6 +59,7 @@ function handleCondition(section: Section, condition: Condition): boolean {
 	throw new InsightError("performQuery: not a valid comparator");
 }
 
+// IS values with wildcards return true if matches
 function matchWithWildcard(value: string | number, pattern: string): boolean {
 	let regexPattern = pattern
 		.replace(/([.+?^=!:${}()|[\]/\\])/g, "\\$1")
@@ -64,8 +71,47 @@ function matchWithWildcard(value: string | number, pattern: string): boolean {
 	return result;
 }
 
+// Takes data of Section[] and query, returns results using filtered where condition
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
 	const filteredData: Section[] = data.filter((section) => handleCondition(section, query.WHERE));
 	return filteredData;
+}
+
+// Validates conditions are formatted correctly to EBNF
+export function isValidCondition(condition: Condition): boolean {
+
+	// logic comparison
+	if (condition.AND && (condition.AND.length === 0 || !Array.isArray(condition.AND))) {
+		return false;
+	}
+
+	if (condition.OR && (condition.OR.length === 0 || !Array.isArray(condition.OR))) {
+		return false;
+	}
+
+	// m comparison
+	if (condition.LT && typeof condition.LT !== "object") {
+		return false;
+	}
+
+	if (condition.GT && typeof condition.GT !== "object") {
+		return false;
+	}
+
+	if (condition.EQ && typeof condition.EQ !== "object") {
+		return false;
+	}
+
+	// s comparison
+	if (condition.IS && typeof condition.IS !== "object") {
+		return false;
+	}
+
+	// negation
+	if (condition.NOT && typeof condition.NOT !== "object") {
+		return false;
+	}
+
+	return true;
 }
 
