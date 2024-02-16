@@ -7,7 +7,7 @@ export interface Options {
 	ORDER?: string;
 }
 
-const columnKeys = ["avg", "pass", "fail", "audit", "year", "dept", "id", "instructor", "title", "uuid"];
+export const columnKeys = ["avg", "pass", "fail", "audit", "year", "dept", "id", "instructor", "title", "uuid"];
 
 // Takes columns in options query, and filters for each section
 function filterColumns(columns: string[], section: any): InsightResult {

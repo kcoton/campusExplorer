@@ -27,10 +27,10 @@ export function isValidQuery(uncheckedQuery: unknown): boolean {
 	return true;
 }
 
-// Extracts the id from the key (i.e. section_avg -> avg)
-export function getKeyId(key: string): string {
-	const id = key.split("_")[1];
-	return id;
+// Extracts the id from the key (i.e. section_avg -> avg) or datasetId (i.e. section_avg -> section)
+export function getKeyId(key: string, dataset?: boolean): string {
+	const id = key.split("_");
+	return dataset ? id[0] : id[1];
 }
 
 // /** local testing -- ignore */
