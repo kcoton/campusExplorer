@@ -51,15 +51,13 @@ export default class InsightFacade implements IInsightFacade {
 					const jsonContent = JSON.parse(fileContent);
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
-							const courseIdIndex = course.match(/\d+/)?.index ?? 0; // find the index of the first occurrence of a number
-							const courseId = course.substring(courseIdIndex);
 							const formattedSection: Section = {
-								uuid: id + course.split("/").pop() + datasetList.length.toString(),
-								id: courseId,
+								uuid: section.Id,
+								id: section.Course,
 								title: section.Title,
 								instructor: section.Professor,
 								dept: section.Subject,
-								year: parseInt(section.Year, 10),
+								year: section.Section === "overall" ? 1900 : parseInt(section.Year, 10),
 								avg: section.Avg,
 								pass: section.Pass,
 								fail: section.Fail,

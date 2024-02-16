@@ -54,9 +54,13 @@ function handleCondition(section: Section, condition: Condition): boolean {
 }
 
 function matchWithWildcard(value: string | number, pattern: string): boolean {
-    // Implement pattern matching with wildcard (e.g., using RegExp)
-	// TODO: need to double check this is correct
-	return new RegExp(pattern.split("*").join(".*")).test(value as string);
+	let regexPattern = pattern
+		.replace(/([.+?^=!:${}()|[\]/\\])/g, "\\$1")
+		.replace(/\*/g, ".*");
+
+	regexPattern = `^${regexPattern}$`;
+	const regex = new RegExp(regexPattern);
+	return regex.test(value as string);
 }
 
 export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
