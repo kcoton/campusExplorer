@@ -240,7 +240,7 @@ describe("InsightFacade", function () {
 			}
 
 			validQueries.forEach(function(test: any) {
-				it.only(`${test.title}`, async function () {
+				it(`${test.title}`, async function () {
 					if (test.errorExpected) {
 						try {
 							await facade.performQuery(test.input);
