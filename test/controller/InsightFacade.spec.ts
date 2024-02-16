@@ -25,6 +25,7 @@ describe("InsightFacade", function () {
 	// Declare datasets used in tests. You should add more datasets like this!
 	let sections: string;
 	let courses0: string;
+	let courses1: string;
 
 	before(async function () {
 		// This block runs once and loads the datasets.
@@ -213,11 +214,14 @@ describe("InsightFacade", function () {
 	describe("PerformQuery", function () {
 		before(async function () {
 			facade = new InsightFacade();
+			courses1 = await getContentFromArchives("courses1.zip");
 
 			// Add the datasets to InsightFacade once.
 			// Will *fail* if there is a problem reading ANY dataset.
 			const loadDatasetPromises = [
 				facade.addDataset("sections", sections, InsightDatasetKind.Sections),
+				facade.addDataset("courses0", courses0, InsightDatasetKind.Sections),
+				facade.addDataset("courses1", courses1, InsightDatasetKind.Sections),
 			];
 
 			try {
@@ -252,8 +256,8 @@ describe("InsightFacade", function () {
 					} else {
 						try {
 							const result = await facade.performQuery(test.input);
-							console.log(result); // print results
-							console.log(test.expected);
+							console.log("result: ", result); // print results
+							console.log("expected: ", test.expected);
 
 							expect(result).to.deep.equal(test.expected);
 						} catch(e) {
@@ -274,16 +278,17 @@ describe("InsightFacade", function () {
 			}
 
 			invalidQueries.forEach(function(test: any) {
-				it(`${test.title}`, function () {
-					return facade.performQuery(test.input).then((result) => {
+				it(`${test.title}`, async function () {
+					try {
+						const result = await facade.performQuery(test.input);
 						assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
-					}).catch((err: any) => {
+					} catch (err) {
 						if (test.expected === "InsightError") {
 							expect(err).to.be.instanceOf(InsightError);
 						} else {
 							assert.fail("Query threw unexpected error");
 						}
-					});
+					}
 				});
 			});
 		});
