@@ -16,10 +16,6 @@ export function isValidQuery(uncheckedQuery: unknown): boolean {
 
 	const query: Query = uncheckedQuery as Query;
 
-	if (!query.WHERE || !query.OPTIONS) {
-		return false;
-	}
-
 	if (typeof query.WHERE !== "object" || typeof query.OPTIONS !== "object" || Array.isArray(query.WHERE)) {
 		return false;
 	}
