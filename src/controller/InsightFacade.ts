@@ -12,7 +12,7 @@ import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
 import {isValidId, checkExistingId} from "../utils";
-import {Query, isValidQuery} from "./PerformQueryHelper";
+import {Query, getKeyId, isValidQuery} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
 import {handleOptions} from "./PerformQueryOptions";
 
@@ -134,14 +134,22 @@ export default class InsightFacade implements IInsightFacade {
 		if (!isValidQuery(query)) {
 			throw new InsightError("performQuery: Not a valid query");
 		}
+		const checkedQuery: Query = query as Query;
+		const columnDatasetIds = checkedQuery.OPTIONS.COLUMNS
+			.filter((column) => column.includes("_")) // Ensure the column references a dataset
+			.map((column) => getKeyId(column, true)); // Extract dataset ID
 
-		// Gets datasetId from the query
-		const id = (query as Query).OPTIONS.COLUMNS[0].split("_")[0];
+		// Ensure all extracted IDs are the same, as we cannot mix datasets in a single query
+		const datasetIds = [...new Set(columnDatasetIds)];
+		if (datasetIds.length !== 1 || !this.datasetCache[datasetIds[0]]) {
+			throw new InsightError("performQuery: incorrect multiple datasets in query or no dataset");
+		}
+		const id = datasetIds[0];
 		const data = this.datasetCache[id];
 
 		// Handles where and options to return array result
-		const whereResult = await handleWhere(data, query as Query);
-		const optionsResult = await handleOptions(whereResult, (query as Query).OPTIONS);
+		const whereResult = await handleWhere(data, checkedQuery);
+		const optionsResult = await handleOptions(whereResult, checkedQuery.OPTIONS);
 		const queryResult = optionsResult.flat(); // .flat() will concatenate all the arrays into a single array
 
 		if (queryResult.length > 5000) {
