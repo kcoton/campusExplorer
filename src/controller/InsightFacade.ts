@@ -24,12 +24,10 @@ import {handleOptions} from "./PerformQueryOptions";
 
 
 export default class InsightFacade implements IInsightFacade {
-	public datasetIds: Set<string>; // array of ids to be returned
 	public datasetCache: Dataset; // array of all sections with id key
 
 
 	constructor() {
-		this.datasetIds = new Set();
 		this.datasetCache = {};
 		console.log("InsightFacadeImpl::init()");
 	}
@@ -81,9 +79,8 @@ export default class InsightFacade implements IInsightFacade {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.outputJson(filePath, JSON.stringify(datasetList, null, 2));
 
-			this.datasetIds.add(id);
 			this.datasetCache[id] = datasetList;
-			return Promise.resolve(Array.from(this.datasetIds));
+			return Promise.resolve(Object.keys(this.datasetCache));
 		} catch (error) {
 			return Promise.reject("Error while adding new dataset!");
 		}
@@ -98,12 +95,11 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new NotFoundError("ID does not exist: never added in the first place!"));
 		}
 
-		// delete the associated file of the dataset and delete id from datasetIds
+		// delete the associated file of the dataset and delete id from datasetCache
 		try {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.remove(filePath);
-			if (this.datasetIds.has(id)) {
-				this.datasetIds.delete(id);
+			if (this.datasetCache[id]) {
 				this.datasetCache[id].pop();
 			}
 
