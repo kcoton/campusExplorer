@@ -26,7 +26,6 @@ import {handleOptions} from "./PerformQueryOptions";
 export default class InsightFacade implements IInsightFacade {
 	public datasetCache: Dataset; // array of all sections with id key
 
-
 	constructor() {
 		this.datasetCache = {};
 		console.log("InsightFacadeImpl::init()");
