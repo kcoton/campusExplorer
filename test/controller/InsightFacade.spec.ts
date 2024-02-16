@@ -226,6 +226,21 @@ describe("InsightFacade", function () {
 			expect(result[1].kind).to.deep.equal(sectionsType);
 			expect(result[1].numRows).to.deep.equal(2);
 		});
+
+		it ("caching: new instance can add more and list", async () => {
+			const newInstance = new InsightFacade();
+
+			await newInstance.addDataset("courses1", content1, sectionsType);
+			const result = await newInstance.listDatasets();
+			expect(result).to.have.length(2);
+
+			// old instance remove, new instance list gets updated
+			await insightFacade.removeDataset("courses1");
+			const res = await newInstance.listDatasets();
+			expect(res).to.have.length(1);
+			expect(res[0].id).to.equal("courses0");
+			expect(res[0].kind).to.deep.equal(sectionsType);
+		});
 	});
 
 	// /*
