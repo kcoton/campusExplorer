@@ -5,12 +5,17 @@ import {
 	InsightDatasetKind,
 	InsightResult,
 	InsightError,
-	NotFoundError
+	NotFoundError,
+	ResultTooLargeError
 } from "./IInsightFacade";
-import {Section} from "../type/Section";
+import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
 import {isValidId} from "../utils";
+import {Query, isValidQuery} from "./PerformQueryHelper";
+import {handleWhere} from "./PerformQueryWhere";
+import {handleOptions} from "./PerformQueryOptions";
+
 /**
  * This is the main programmatic entry point for the project.
  * Method documentation is in IInsightFacade
@@ -18,9 +23,11 @@ import {isValidId} from "../utils";
  */
 export default class InsightFacade implements IInsightFacade {
 	public datasetIds: Set<string>; // array of ids to be returned
+	public datasetCache: Dataset; // array of all sections with id key
 
 	constructor() {
 		this.datasetIds = new Set();
+		this.datasetCache = {};
 		console.log("InsightFacadeImpl::init()");
 	}
 
@@ -48,7 +55,7 @@ export default class InsightFacade implements IInsightFacade {
 					const jsonContent = JSON.parse(fileContent);
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
-							datasetList.push({
+							const formattedSection: Section = {
 								uuid: id + course.split("/").pop() + datasetList.length.toString(),
 								id: id + course.split("/").pop(),
 								title: section.Title,
@@ -59,11 +66,13 @@ export default class InsightFacade implements IInsightFacade {
 								pass: section.Pass,
 								fail: section.Fail,
 								audit: section.Audit
-							});
+							};
+							datasetList.push(formattedSection);
 						}
 					}
 				});
 			}));
+
 
 			if (datasetList.length === 0) {
 				return Promise.reject(new InsightError("No valid section inside the dataset!"));
@@ -73,6 +82,7 @@ export default class InsightFacade implements IInsightFacade {
 			await fs.outputJson(filePath, JSON.stringify(datasetList, null, 2));
 
 			this.datasetIds.add(id);
+			this.datasetCache[id] = datasetList;
 			return Promise.resolve(Array.from(this.datasetIds));
 		} catch (error) {
 			return Promise.reject("Error while adding new dataset!");
@@ -92,16 +102,14 @@ export default class InsightFacade implements IInsightFacade {
 			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 			await fs.remove(filePath);
 			this.datasetIds.delete(id);
+			this.datasetCache[id].pop();
+
 			console.log("delete success!");
 			return Promise.resolve(id);
 		} catch (err) {
 			console.error(err);
 			return Promise.reject(new InsightError("An error occurred while trying to remove"));
 		}
-	}
-
-	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		return Promise.reject("Not implemented.");
 	}
 
 	public async listDatasets(): Promise<InsightDataset[]> {
@@ -120,5 +128,27 @@ export default class InsightFacade implements IInsightFacade {
 		}));
 
 		return Promise.resolve(dataset);
+	}
+
+	public async performQuery(query: unknown): Promise<InsightResult[]> {
+		if (!isValidQuery(query as Query)) {
+			throw new InsightError("performQuery: Not a valid query");
+		}
+
+		// Create an array of promises for each id in the datasetCache
+		const results = await Promise.all(Object.keys(this.datasetCache).map(async (id) => {
+			const data = this.datasetCache[id];
+			const whereResult = await handleWhere(data, query as Query);
+			const optionsResult = await handleOptions(whereResult, (query as Query).OPTIONS);
+			return optionsResult;
+		}));
+
+		const queryResult = results.flat(); // .flat() will concatenate all the arrays into a single array
+
+		if (queryResult.length > 5000) {
+			throw new ResultTooLargeError("performQuery: number of results greater > 5000");
+		}
+
+		return Promise.resolve(queryResult);
 	}
 }

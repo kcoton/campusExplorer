@@ -238,12 +238,25 @@ describe("InsightFacade", function () {
 			}
 
 			validQueries.forEach(function(test: any) {
-				it(`${test.title}`, function () {
-					return facade.performQuery(test.input).then((result) => {
-						assert.fail("Write your assertions here!");
-					}).catch((err: any) => {
-						assert.fail(`performQuery threw unexpected error: ${err}`);
-					});
+				it(`${test.title}`, async function () {
+					if (test.errorExpected) {
+						try {
+							await facade.performQuery(test.input);
+							assert.fail("performQuery: expected an error but none was thrown");
+						} catch(e) {
+							// expected error
+							console.log(`performQuery: expected error: ${e}`);
+						}
+					} else {
+						try {
+							const result = await facade.performQuery(test.input);
+							// console.log(result); // print results
+
+							expect(result).to.deep.equal(test.expected);
+						} catch(e) {
+							assert.fail(`performQuery: threw an unexpected error: ${e}`);
+						}
+					}
 				});
 			});
 		});
