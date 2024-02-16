@@ -56,9 +56,9 @@ export default class InsightFacade implements IInsightFacade {
 					const jsonContent = JSON.parse(fileContent);
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
-							if (section.Section === "overall") {
-								continue;
-							}
+							// if (section.Section === "overall") {
+							// 	continue;
+							// }
 							const formattedSection: Section = {
 								uuid: section.Id,
 								id: section.Course,
