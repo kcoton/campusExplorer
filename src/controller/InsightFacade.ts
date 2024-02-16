@@ -32,12 +32,8 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (!isValidId(id)) {
+		if (!isValidId(id) || this.datasetIds.has(id)) {
 			return Promise.reject(new InsightError("ID is invalid!"));
-		}
-
-		if (this.datasetIds.has(id)) {
-			return Promise.reject(new InsightError("ID already exists!"));
 		}
 
 		try {
@@ -55,9 +51,11 @@ export default class InsightFacade implements IInsightFacade {
 					const jsonContent = JSON.parse(fileContent);
 					if (jsonContent.result && jsonContent.result.length > 0) {
 						for (let section of jsonContent.result) {
+							const courseIdIndex = course.match(/\d+/)?.index ?? 0; // find the index of the first occurrence of a number
+							const courseId = course.substring(courseIdIndex);
 							const formattedSection: Section = {
 								uuid: id + course.split("/").pop() + datasetList.length.toString(),
-								id: id + course.split("/").pop(),
+								id: courseId,
 								title: section.Title,
 								instructor: section.Professor,
 								dept: section.Subject,
