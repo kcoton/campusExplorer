@@ -1,0 +1,523 @@
+{
+  "title": "valid_neg_AND",
+  "input": {
+    "WHERE": {
+      "NOT": {
+        "AND": [
+          {
+            "LT": {
+              "sections_fail": 100
+            }
+          },
+          {
+            "LT": {
+              "sections_audit": 30
+            }
+          }
+        ]
+      }
+    },
+    "OPTIONS": {
+      "COLUMNS": ["sections_dept", "sections_id"]
+    }
+  },
+  "errorExpected": false,
+  "expected": [
+    {
+      "sections_dept": "apsc",
+      "sections_id": "160"
+    },
+    {
+      "sections_dept": "apsc",
+      "sections_id": "160"
+    },
+    {
+      "sections_dept": "apsc",
+      "sections_id": "160"
+    },
+    {
+      "sections_dept": "apsc",
+      "sections_id": "160"
+    },
+    {
+      "sections_dept": "apsc",
+      "sections_id": "160"
+    },
+    {
+      "sections_dept": "apsc",
+      "sections_id": "201"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "112"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "121"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "123"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "123"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "123"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "123"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "123"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "chem",
+      "sections_id": "233"
+    },
+    {
+      "sections_dept": "comm",
+      "sections_id": "290"
+    },
+    {
+      "sections_dept": "comm",
+      "sections_id": "293"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "110"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "110"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "110"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "110"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "econ",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "100"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "100"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "100"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "103"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "104"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "105"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "105"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "105"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "105"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "105"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "184"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "184"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "math",
+      "sections_id": "200"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "170"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "170"
+    },
+    {
+      "sections_dept": "phys",
+      "sections_id": "170"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "102"
+    },
+    {
+      "sections_dept": "psyc",
+      "sections_id": "102"
+    }
+  ]
+}

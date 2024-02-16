@@ -1,0 +1,227 @@
+{
+	"title": "coverage query 9",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"AND": [
+						{
+							"OR": [
+								{
+									"IS": {
+										"sections_title": "*Intro*"
+									}
+								},
+								{
+									"IS": {
+										"sections_title": "*adv*"
+									}
+								}
+							]
+						},
+						{
+							"IS": {
+								"sections_dept": "c*"
+							}
+						},
+						{
+							"AND": [
+								{
+									"GT": {
+										"sections_avg": 60
+									}
+								},
+								{
+									"LT": {
+										"sections_avg": 70
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 69.45
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 69.45
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 69
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 69
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 68.97
+		},
+		{
+			"sections_title": "adv org life sc",
+			"sections_dept": "chem",
+			"sections_avg": 68.97
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 66.47
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 66.47
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 64.55
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 64.55
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 65.77
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 65.77
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 67.06
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 67.06
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 66.5
+		},
+		{
+			"sections_title": "adv org chem",
+			"sections_dept": "chem",
+			"sections_avg": 66.5
+		},
+		{
+			"sections_title": "adv rdng cl chin",
+			"sections_dept": "clch",
+			"sections_avg": 69.76
+		},
+		{
+			"sections_title": "adv rdng cl chin",
+			"sections_dept": "clch",
+			"sections_avg": 69.76
+		},
+		{
+			"sections_title": "finan acct adv",
+			"sections_dept": "comm",
+			"sections_avg": 69
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.58
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.76
+		},
+		{
+			"sections_title": "adv rel databse",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.63
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.25
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.25
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.81
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.81
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.79
+		},
+		{
+			"sections_title": "adv opertng sysm",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.79
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.77
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 68.77
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.35
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.35
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.58
+		},
+		{
+			"sections_title": "adv alg dsgn&anl",
+			"sections_dept": "cpsc",
+			"sections_avg": 69.58
+		}
+	]
+}

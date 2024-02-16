@@ -1,0 +1,103 @@
+{
+	"title": "valid_OR_EQ",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"EQ": {
+						"sections_pass": 233
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "apbi",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "bafi",
+			"sections_id": "500"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_id": "112"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_id": "112"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_id": "353"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "123"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_id": "290"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_id": "498"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_id": "326"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_id": "114"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_id": "310"
+		},
+		{
+			"sections_dept": "fnh",
+			"sections_id": "355"
+		},
+		{
+			"sections_dept": "kin",
+			"sections_id": "361"
+		},
+		{
+			"sections_dept": "lfs",
+			"sections_id": "350"
+		},
+		{
+			"sections_dept": "math",
+			"sections_id": "215"
+		},
+		{
+			"sections_dept": "micb",
+			"sections_id": "202"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_id": "157"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_id": "320"
+		}
+	]
+}

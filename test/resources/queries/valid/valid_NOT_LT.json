@@ -1,0 +1,158 @@
+{
+  "title": "valid_neg_mcomparison",
+  "input": {
+    "WHERE": {
+      "NOT": {
+        "LT": {
+          "sections_audit": 10
+        }
+      }
+    },
+    "OPTIONS": {
+      "COLUMNS": ["sections_dept", "sections_id"]
+    }
+  },
+  "errorExpected": false,
+  "expected": [
+    {
+      "sections_dept": "biol",
+      "sections_id": "509"
+    },
+    {
+      "sections_dept": "biol",
+      "sections_id": "509"
+    },
+    {
+      "sections_dept": "cnto",
+      "sections_id": "301"
+    },
+    {
+      "sections_dept": "cons",
+      "sections_id": "340"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "340"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "340"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "540"
+    },
+    {
+      "sections_dept": "cpsc",
+      "sections_id": "540"
+    },
+    {
+      "sections_dept": "fren",
+      "sections_id": "101"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "430"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "frst",
+      "sections_id": "530"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "501"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "501"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "501"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "501"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "501"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "503"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "503"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "503"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "503"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "503"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "505"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "505"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "507"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "507"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "507"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "509"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "509"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "509"
+    },
+    {
+      "sections_dept": "rhsc",
+      "sections_id": "509"
+    }
+  ]
+}

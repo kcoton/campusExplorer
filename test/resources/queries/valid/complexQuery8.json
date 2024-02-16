@@ -1,0 +1,18 @@
+{
+	"title": "complex query 8",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_instructor": "Dr.*Johnson"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_id",
+				"sections_avg"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

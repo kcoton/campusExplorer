@@ -1,0 +1,1011 @@
+{
+	"title": "valid_OR_str_num",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"IS": {
+						"sections_dept": "scie"
+					}
+				},
+				{
+					"LT": {
+						"sections_pass": 2
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arch"
+		},
+		{
+			"sections_dept": "arth"
+		},
+		{
+			"sections_dept": "arth"
+		},
+		{
+			"sections_dept": "arth"
+		},
+		{
+			"sections_dept": "bioc"
+		},
+		{
+			"sections_dept": "bmeg"
+		},
+		{
+			"sections_dept": "bmeg"
+		},
+		{
+			"sections_dept": "bmeg"
+		},
+		{
+			"sections_dept": "busi"
+		},
+		{
+			"sections_dept": "busi"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "chbe"
+		},
+		{
+			"sections_dept": "chbe"
+		},
+		{
+			"sections_dept": "chem"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "chil"
+		},
+		{
+			"sections_dept": "civl"
+		},
+		{
+			"sections_dept": "cnrs"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "crwr"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "dent"
+		},
+		{
+			"sections_dept": "eece"
+		},
+		{
+			"sections_dept": "eece"
+		},
+		{
+			"sections_dept": "eece"
+		},
+		{
+			"sections_dept": "eece"
+		},
+		{
+			"sections_dept": "eece"
+		},
+		{
+			"sections_dept": "engl"
+		},
+		{
+			"sections_dept": "engl"
+		},
+		{
+			"sections_dept": "engl"
+		},
+		{
+			"sections_dept": "engl"
+		},
+		{
+			"sections_dept": "eosc"
+		},
+		{
+			"sections_dept": "fopr"
+		},
+		{
+			"sections_dept": "fopr"
+		},
+		{
+			"sections_dept": "fopr"
+		},
+		{
+			"sections_dept": "frst"
+		},
+		{
+			"sections_dept": "frst"
+		},
+		{
+			"sections_dept": "frst"
+		},
+		{
+			"sections_dept": "geog"
+		},
+		{
+			"sections_dept": "geog"
+		},
+		{
+			"sections_dept": "grsj"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "hist"
+		},
+		{
+			"sections_dept": "iar"
+		},
+		{
+			"sections_dept": "iar"
+		},
+		{
+			"sections_dept": "lfs"
+		},
+		{
+			"sections_dept": "lfs"
+		},
+		{
+			"sections_dept": "libr"
+		},
+		{
+			"sections_dept": "math"
+		},
+		{
+			"sections_dept": "math"
+		},
+		{
+			"sections_dept": "math"
+		},
+		{
+			"sections_dept": "math"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "mech"
+		},
+		{
+			"sections_dept": "medi"
+		},
+		{
+			"sections_dept": "mine"
+		},
+		{
+			"sections_dept": "mine"
+		},
+		{
+			"sections_dept": "mine"
+		},
+		{
+			"sections_dept": "mine"
+		},
+		{
+			"sections_dept": "mine"
+		},
+		{
+			"sections_dept": "mtrl"
+		},
+		{
+			"sections_dept": "mtrl"
+		},
+		{
+			"sections_dept": "mtrl"
+		},
+		{
+			"sections_dept": "mtrl"
+		},
+		{
+			"sections_dept": "mtrl"
+		},
+		{
+			"sections_dept": "musc"
+		},
+		{
+			"sections_dept": "nrsc"
+		},
+		{
+			"sections_dept": "nrsc"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "nurs"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "obst"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "path"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "pcth"
+		},
+		{
+			"sections_dept": "phar"
+		},
+		{
+			"sections_dept": "phar"
+		},
+		{
+			"sections_dept": "phar"
+		},
+		{
+			"sections_dept": "phil"
+		},
+		{
+			"sections_dept": "phil"
+		},
+		{
+			"sections_dept": "phth"
+		},
+		{
+			"sections_dept": "phth"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "psyc"
+		},
+		{
+			"sections_dept": "rhsc"
+		},
+		{
+			"sections_dept": "rhsc"
+		},
+		{
+			"sections_dept": "rhsc"
+		},
+		{
+			"sections_dept": "rmes"
+		},
+		{
+			"sections_dept": "rmes"
+		},
+		{
+			"sections_dept": "rsot"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "scie"
+		},
+		{
+			"sections_dept": "stat"
+		},
+		{
+			"sections_dept": "stat"
+		},
+		{
+			"sections_dept": "stat"
+		},
+		{
+			"sections_dept": "wood"
+		},
+		{
+			"sections_dept": "wood"
+		},
+		{
+			"sections_dept": "zool"
+		},
+		{
+			"sections_dept": "zool"
+		}
+	]
+}

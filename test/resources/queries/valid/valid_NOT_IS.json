@@ -1,0 +1,31 @@
+{
+  "title": "valid_neg_scomparison",
+  "input": {
+    "WHERE": {
+      "AND": [
+        {
+          "NOT": {
+            "IS": {
+              "sections_dept": "*c"
+            }
+          }
+        },
+        {
+          "IS": {
+            "sections_uuid": "3802"
+          }
+        }
+      ]
+    },
+    "OPTIONS": {
+      "COLUMNS": ["sections_dept", "sections_id"]
+    }
+  },
+  "errorExpected": false,
+  "expected": [
+    {
+      "sections_dept": "math",
+      "sections_id": "152"
+    }
+  ]
+}

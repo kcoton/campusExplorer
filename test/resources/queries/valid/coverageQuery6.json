@@ -1,0 +1,479 @@
+{
+	"title": "coverage query 6",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_dept": "math"
+					}
+				},
+				{
+					"EQ": {
+						"sections_year": 2015
+					}
+				},
+				{
+					"IS": {
+						"sections_title": "*cal*"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_year",
+				"sections_title"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc ap ph sc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap ph s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "df calc app lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap lf s"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dff calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "int calc ap c&ss"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "diff calculus"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "diff calculus"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "diff calculus"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "diff calculus"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "differ calculus"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "integral calculu"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dif calc phys ap"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dif calc phys ap"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "dif calc phys ap"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calc socsci comm"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus survey"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus 3"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "mltvar&vctr calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "adv calculus i"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "adv calculus ii"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "multivrbl calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "multivrbl calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "multivrbl calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "multivrbl calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "multivrbl calc"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "vctr calc el eng"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "vctr calc el eng"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus iv"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus iv"
+		},
+		{
+			"sections_dept": "math",
+			"sections_year": 2015,
+			"sections_title": "calculus iv"
+		}
+	]
+}

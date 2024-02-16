@@ -1,0 +1,22 @@
+{
+	"title": "valid_OR_LT",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"LT": {
+						"sections_year": 1800
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}

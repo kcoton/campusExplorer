@@ -1,0 +1,29 @@
+{
+	"title": "complex query 6",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_uuid": "10236"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id",
+				"sections_title",
+				"sections_avg",
+				"sections_uuid"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "eece",
+			"sections_id": "541",
+			"sections_title": "multimedia sys",
+			"sections_avg": 98.75,
+			"sections_uuid": "10236"
+		}
+	]
+}

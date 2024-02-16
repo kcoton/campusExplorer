@@ -1,0 +1,1098 @@
+{
+	"title": "complex query 12",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_title": "intro*"
+					}
+				},
+				{
+					"EQ": {
+						"sections_year": 2014
+					}
+				},
+				{
+					"GT": {
+						"sections_avg": 70
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_id",
+				"sections_title",
+				"sections_avg",
+				"sections_year"
+			],
+			"ORDER": "sections_title"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_id": "101",
+			"sections_title": "intro abrhmc rel",
+			"sections_avg": 78.28,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 76.31,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 74,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 75.92,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 75.33,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 72.58,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 73.83,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 77.21,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro acad writ",
+			"sections_avg": 77.54,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "325",
+			"sections_title": "intro anml mech",
+			"sections_avg": 80,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "334",
+			"sections_title": "intro asian lgl",
+			"sections_avg": 78.73,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intro biochem",
+			"sections_avg": 72.46,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intro biochem",
+			"sections_avg": 78.6,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intro biochem",
+			"sections_avg": 73.56,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro buddhism",
+			"sections_avg": 74.88,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "intro can cin",
+			"sections_avg": 78.65,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "intro classcl ii",
+			"sections_avg": 79,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "570",
+			"sections_title": "intro cln lab ro",
+			"sections_avg": 86,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "570",
+			"sections_title": "intro cln lab ro",
+			"sections_avg": 85.38,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "intro comp sys",
+			"sections_avg": 75.68,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "intro comp sys",
+			"sections_avg": 74.97,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "intro comp sys",
+			"sections_avg": 74.22,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "intro comp sys",
+			"sections_avg": 79.98,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "intro cptnl phys",
+			"sections_avg": 89.65,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "intro engl honrs",
+			"sections_avg": 86.26,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "intro entomology",
+			"sections_avg": 78.89,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intro envr eng",
+			"sections_avg": 85.38,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_avg": 89.59,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_avg": 91.67,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_avg": 96.9,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro film stdy",
+			"sections_avg": 73.66,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro film stdy",
+			"sections_avg": 72.15,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro film stdy",
+			"sections_avg": 70.82,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "478",
+			"sections_title": "intro fish scien",
+			"sections_avg": 71.62,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "intro global pol",
+			"sections_avg": 70.06,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "intro global pol",
+			"sections_avg": 73.48,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "intro global pol",
+			"sections_avg": 74.22,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "intro global pol",
+			"sections_avg": 74.89,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "intro global pol",
+			"sections_avg": 71.47,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "375",
+			"sections_title": "intro human path",
+			"sections_avg": 82.39,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 74.17,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 75.25,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 73.85,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 76.69,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 71.21,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 74.17,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 76.57,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 75.03,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 74.94,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 74.85,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "intro lin prog",
+			"sections_avg": 75.24,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "intro lin prog",
+			"sections_avg": 70.75,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "intro lin prog",
+			"sections_avg": 71.35,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 72.23,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 76.3,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 74.37,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 74.23,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.41,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 70.39,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 75.71,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 72.17,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 75.55,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.09,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.99,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 74.15,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 73.06,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 70.65,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 73.35,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.67,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 72.95,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.29,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.39,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 77.68,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 76.42,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 76.32,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 76.02,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 76.21,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 77.41,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 75.93,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 79.84,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 79.29,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 75.81,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 76.41,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 75.98,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 73.59,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 74.58,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 73.63,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 74.72,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intro math phys",
+			"sections_avg": 74.45,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "intro med phys",
+			"sections_avg": 77.67,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "227",
+			"sections_title": "intro medcl anth",
+			"sections_avg": 78.86,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "227",
+			"sections_title": "intro medcl anth",
+			"sections_avg": 73.56,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "intro mineralogy",
+			"sections_avg": 70.89,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "103",
+			"sections_title": "intro musc thry",
+			"sections_avg": 78.51,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro museology",
+			"sections_avg": 76.62,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "intro neurolingu",
+			"sections_avg": 78.06,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intro nonfiction",
+			"sections_avg": 70.07,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intro nonfiction",
+			"sections_avg": 71.07,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "intro old engl",
+			"sections_avg": 74.2,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "intro pharmaclgy",
+			"sections_avg": 77.46,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 73.12,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 78.04,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 70.8,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 70.09,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "240",
+			"sections_title": "intro photo",
+			"sections_avg": 77.44,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "240",
+			"sections_title": "intro photo",
+			"sections_avg": 77.95,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 78.9,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 82.02,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 78.85,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 76.66,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 81.26,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 83.86,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 86.09,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 86.57,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 80.51,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.98,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 78.53,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 81.44,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.39,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.67,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 73.35,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro physics",
+			"sections_avg": 70.55,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro physics",
+			"sections_avg": 70.73,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro physics",
+			"sections_avg": 71.37,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 74.5,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 81.79,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 80.63,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 78.69,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro prob&stats",
+			"sections_avg": 73.53,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro prob&stats",
+			"sections_avg": 74.27,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro prob&stats",
+			"sections_avg": 72.71,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "541",
+			"sections_title": "intro psychthrpy",
+			"sections_avg": 90.75,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "intro punjabi",
+			"sections_avg": 83.95,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "intro punjabi",
+			"sections_avg": 81.5,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intro quant mech",
+			"sections_avg": 74.19,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intro quant mech",
+			"sections_avg": 73.68,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "481",
+			"sections_title": "intro rsrch educ",
+			"sections_avg": 87.45,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "399",
+			"sections_title": "intro rsrch meth",
+			"sections_avg": 76.14,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "intro sanskrit",
+			"sections_avg": 89.29,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "324",
+			"sections_title": "intro seed plnts",
+			"sections_avg": 76.25,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "intro semantics",
+			"sections_avg": 75.08,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "intro solid wast",
+			"sections_avg": 79.31,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "228",
+			"sections_title": "intro struct eng",
+			"sections_avg": 78.2,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "intro tech prod",
+			"sections_avg": 92.15,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "130",
+			"sections_title": "intro to acting",
+			"sections_avg": 80.18,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "130",
+			"sections_title": "intro to acting",
+			"sections_avg": 77.73,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "305",
+			"sections_title": "intro to biophys",
+			"sections_avg": 70.71,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro to conserv",
+			"sections_avg": 81.42,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "336",
+			"sections_title": "intro to e-busi",
+			"sections_avg": 75.81,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "336",
+			"sections_title": "intro to e-busi",
+			"sections_avg": 79.61,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 74.23,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 76.83,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 72.28,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 77.97,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 72.29,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 71.98,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 76.32,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "298",
+			"sections_title": "intro to finance",
+			"sections_avg": 76.92,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "intro to math",
+			"sections_avg": 85.22,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "intro to math",
+			"sections_avg": 85.53,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "intro to math",
+			"sections_avg": 73.33,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "291",
+			"sections_title": "intro to mining",
+			"sections_avg": 80.13,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "intro to pcol",
+			"sections_avg": 84.08,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 74.56,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 71.13,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 72.97,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 71.15,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 72.47,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 75.49,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 74.56,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 73.58,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "120",
+			"sections_title": "intro to theatre",
+			"sections_avg": 77.24,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "intro wine sci 2",
+			"sections_avg": 75.6,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "330",
+			"sections_title": "intro wine scie",
+			"sections_avg": 71.45,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "330",
+			"sections_title": "intro wine scie",
+			"sections_avg": 75.29,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "330",
+			"sections_title": "intro wine scie",
+			"sections_avg": 71.39,
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro: classical",
+			"sections_avg": 80.86,
+			"sections_year": 2014
+		}
+	]
+}

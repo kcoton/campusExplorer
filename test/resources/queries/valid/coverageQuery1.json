@@ -1,0 +1,243 @@
+{
+    "title": "coverage query 1",
+    "input": {
+        "WHERE": {
+            "OR": [
+                {
+                    "AND": [
+                        {
+                            "IS": {
+                                "sections_dept": "eece"
+                            }
+                        },
+                        {
+                            "GT": {
+                                "sections_avg": 80
+                            }
+                        },
+                        {
+                            "GT": {
+                                "sections_audit": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "AND": [
+                        {
+                            "IS": {
+                                "sections_dept": "frst"
+                            }
+                        },
+                        {
+                            "LT": {
+                                "sections_avg": 70
+                            }
+                        },
+                        {
+                            "GT": {
+                                "sections_audit": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept", "sections_avg", "sections_audit"]
+        }
+    },
+    "errorExpected": false,
+    "expected": [
+        {
+            "sections_dept": "eece",
+            "sections_avg": 85.5,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 85.5,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.25,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.25,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 86.18,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 86.18,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 85.44,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 85.44,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 87.17,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 87.17,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 87.4,
+            "sections_audit": 4
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 87.4,
+            "sections_audit": 4
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 90.46,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 90.46,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 91.13,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 91.13,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.63,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.63,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.36,
+            "sections_audit": 5
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.36,
+            "sections_audit": 5
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 90.33,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 90.33,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.17,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.17,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.33,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 83.33,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.2,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 82.2,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 81.78,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 81.78,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 88.4,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 88.4,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 92.5,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 92.5,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 84.41,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "eece",
+            "sections_avg": 84.41,
+            "sections_audit": 2
+        },
+        {
+            "sections_dept": "frst",
+            "sections_avg": 68.72,
+            "sections_audit": 5
+        },
+        {
+            "sections_dept": "frst",
+            "sections_avg": 61,
+            "sections_audit": 2
+        }
+    ]
+}

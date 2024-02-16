@@ -1,0 +1,478 @@
+{
+	"title": "coverage query 8",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_title": "*pro*"
+					}
+				},
+				{
+					"IS": {
+						"sections_dept": "c*"
+					}
+				},
+				{
+					"AND": [
+						{
+							"GT": {
+								"sections_avg": 80
+							}
+						},
+						{
+							"LT": {
+								"sections_avg": 85
+							}
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_dept",
+				"sections_avg"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 82.6
+		},
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 81
+		},
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 81
+		},
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 84.38
+		},
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 82.3
+		},
+		{
+			"sections_title": "project & report",
+			"sections_dept": "ceen",
+			"sections_avg": 83.22
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 80.03
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 80.03
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 82.53
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 82.53
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 80.78
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 80.78
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 84.09
+		},
+		{
+			"sections_title": "proc design proj",
+			"sections_dept": "chbe",
+			"sections_avg": 84.09
+		},
+		{
+			"sections_title": "proc synthesis",
+			"sections_dept": "chbe",
+			"sections_avg": 80.84
+		},
+		{
+			"sections_title": "proc synthesis",
+			"sections_dept": "chbe",
+			"sections_avg": 80.84
+		},
+		{
+			"sections_title": "proc synthesis",
+			"sections_dept": "chbe",
+			"sections_avg": 80.81
+		},
+		{
+			"sections_title": "proc synthesis",
+			"sections_dept": "chbe",
+			"sections_avg": 80.81
+		},
+		{
+			"sections_title": "proc ctrl eng",
+			"sections_dept": "chbe",
+			"sections_avg": 80.11
+		},
+		{
+			"sections_title": "proc ctrl eng",
+			"sections_dept": "chbe",
+			"sections_avg": 80.11
+		},
+		{
+			"sections_title": "proc ctrl eng",
+			"sections_dept": "chbe",
+			"sections_avg": 81.83
+		},
+		{
+			"sections_title": "proc ctrl eng",
+			"sections_dept": "chbe",
+			"sections_avg": 81.65
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 84.08
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 84.08
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 80.03
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 80.03
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 80.42
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 80.42
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 81.64
+		},
+		{
+			"sections_title": "green eng proces",
+			"sections_dept": "chbe",
+			"sections_avg": 81.64
+		},
+		{
+			"sections_title": "syn&chem nat pro",
+			"sections_dept": "chem",
+			"sections_avg": 81.56
+		},
+		{
+			"sections_title": "syn&chem nat pro",
+			"sections_dept": "chem",
+			"sections_avg": 81.56
+		},
+		{
+			"sections_title": "ad software proj",
+			"sections_dept": "cics",
+			"sections_avg": 80.91
+		},
+		{
+			"sections_title": "ad software proj",
+			"sections_dept": "cics",
+			"sections_avg": 80.91
+		},
+		{
+			"sections_title": "ad software proj",
+			"sections_dept": "cics",
+			"sections_avg": 82.63
+		},
+		{
+			"sections_title": "ad software proj",
+			"sections_dept": "cics",
+			"sections_avg": 82.63
+		},
+		{
+			"sections_title": "pro cvl eng mat",
+			"sections_dept": "civl",
+			"sections_avg": 83.17
+		},
+		{
+			"sections_title": "pro cvl eng mat",
+			"sections_dept": "civl",
+			"sections_avg": 83.17
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 81.79
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 81.79
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 83.98
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 83.98
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 80.7
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 80.7
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 84.51
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 84.51
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 84
+		},
+		{
+			"sections_title": "proj mngmt eng",
+			"sections_dept": "civl",
+			"sections_avg": 84
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 82.86
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 80.02
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 80.77
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 80.37
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 80.47
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 81.95
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 80.78
+		},
+		{
+			"sections_title": "busi process&ops",
+			"sections_dept": "comm",
+			"sections_avg": 81.39
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 80.81
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 80.81
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 81.8
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 81.8
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 81.58
+		},
+		{
+			"sections_title": "appld proj mgmt",
+			"sections_dept": "comm",
+			"sections_avg": 81.58
+		},
+		{
+			"sections_title": "new product dev",
+			"sections_dept": "comm",
+			"sections_avg": 80.35
+		},
+		{
+			"sections_title": "new product dev",
+			"sections_dept": "comm",
+			"sections_avg": 80.26
+		},
+		{
+			"sections_title": "comptn, progrmng",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.44
+		},
+		{
+			"sections_title": "comptn, progrmng",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.91
+		},
+		{
+			"sections_title": "comptn, progrmng",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.43
+		},
+		{
+			"sections_title": "comptn, progrmng",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.43
+		},
+		{
+			"sections_title": "comptn, progrmng",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.32
+		},
+		{
+			"sections_title": "programmng langs",
+			"sections_dept": "cpsc",
+			"sections_avg": 80.15
+		},
+		{
+			"sections_title": "programmng langs",
+			"sections_dept": "cpsc",
+			"sections_avg": 80.15
+		},
+		{
+			"sections_title": "programmng langs",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.39
+		},
+		{
+			"sections_title": "programmng langs",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.39
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 81.68
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 81.68
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.13
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.13
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.15
+		},
+		{
+			"sections_title": "softwr eng proj",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.15
+		},
+		{
+			"sections_title": "prog lang princ",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.25
+		},
+		{
+			"sections_title": "prog lang princ",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.25
+		},
+		{
+			"sections_title": "prog lang princ",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.75
+		},
+		{
+			"sections_title": "prog lang princ",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.75
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.78
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"sections_dept": "cpsc",
+			"sections_avg": 83.78
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.83
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"sections_dept": "cpsc",
+			"sections_avg": 84.83
+		}
+	]
+}

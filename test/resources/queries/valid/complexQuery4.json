@@ -1,0 +1,125 @@
+{
+	"title": "complex query 4",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_dept": "cpsc"
+					}
+				},
+				{
+					"GT": {
+						"sections_avg": 80
+					}
+				},
+				{
+					"IS": {
+						"sections_instructor": "*sik*"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_id",
+				"sections_title",
+				"sections_avg",
+				"sections_instructor"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_id": "121",
+			"sections_title": "model comptn",
+			"sections_avg": 80.64,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "model comptn",
+			"sections_avg": 82.2,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "model comptn",
+			"sections_avg": 82.63,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "intro comp sys",
+			"sections_avg": 81.76,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "comptng life sci",
+			"sections_avg": 86.34,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "comptng life sci",
+			"sections_avg": 82.99,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "comptng life sci",
+			"sections_avg": 88,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "comptng life sci",
+			"sections_avg": 82.05,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intr rel databse",
+			"sections_avg": 81.8,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intr rel databse",
+			"sections_avg": 85.5,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "adv rel databse",
+			"sections_avg": 81.82,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "adv rel databse",
+			"sections_avg": 80.77,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "449",
+			"sections_title": "honours thesis",
+			"sections_avg": 93.38,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "449",
+			"sections_title": "honours thesis",
+			"sections_avg": 90.25,
+			"sections_instructor": "tsiknis, georgios"
+		},
+		{
+			"sections_id": "449",
+			"sections_title": "honours thesis",
+			"sections_avg": 92.5,
+			"sections_instructor": "tsiknis, georgios"
+		}
+	]
+}

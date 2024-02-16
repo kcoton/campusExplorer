@@ -1,0 +1,18 @@
+{
+	"title": "valid_query_whitespace",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": " "
+			}
+		},
+		"OPTIONS": {
+			"ORDER": "sections_dept",
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}

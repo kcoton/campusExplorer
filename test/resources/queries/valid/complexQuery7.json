@@ -1,0 +1,6394 @@
+{
+	"title": "complex query 7",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"sections_avg": 70
+					}
+				},
+				{
+					"LT": {
+						"sections_avg": 90
+					}
+				},
+				{
+					"OR": [
+						{
+							"IS": {
+								"sections_instructor": "s*"
+							}
+						},
+						{
+							"IS": {
+								"sections_instructor": "*a"
+							}
+						}
+					]
+				},
+				{
+					"OR": [
+						{
+							"EQ": {
+								"sections_year": 2014
+							}
+						},
+						{
+							"EQ": {
+								"sections_year": 2008
+							}
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_id",
+				"sections_title",
+				"sections_avg",
+				"sections_instructor",
+				"sections_year"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_id": "327",
+			"sections_title": "teach adult",
+			"sections_avg": 78.41,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "teach adult",
+			"sections_avg": 79.47,
+			"sections_instructor": "smulders, dave",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "teach adult",
+			"sections_avg": 81.45,
+			"sections_instructor": "smulders, dave",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "teach adult",
+			"sections_avg": 76.59,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "teach adult",
+			"sections_avg": 78.21,
+			"sections_instructor": "smulders, dave",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "329",
+			"sections_title": "dev wkshp/sem",
+			"sections_avg": 78.24,
+			"sections_instructor": "smulders, dave",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "329",
+			"sections_title": "dev wkshp/sem",
+			"sections_avg": 77.77,
+			"sections_instructor": "smulders, dave",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "329",
+			"sections_title": "dev wkshp/sem",
+			"sections_avg": 79,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "adul educ",
+			"sections_avg": 76.22,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "adul educ",
+			"sections_avg": 78.77,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "adul educ",
+			"sections_avg": 76.17,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "adul educ",
+			"sections_avg": 70.53,
+			"sections_instructor": "palacios, carolina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "213",
+			"sections_title": "sex gndr culture",
+			"sections_avg": 74.61,
+			"sections_instructor": "bloch, alexia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "227",
+			"sections_title": "intro medcl anth",
+			"sections_avg": 78.86,
+			"sections_instructor": "small, robert",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro museology",
+			"sections_avg": 76.62,
+			"sections_instructor": "marsh, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "etnogrpy eurasia",
+			"sections_avg": 76.65,
+			"sections_instructor": "bloch, alexia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intr anth gender",
+			"sections_avg": 72.82,
+			"sections_instructor": "bloch, alexia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "541",
+			"sections_title": "adv sem msm anth",
+			"sections_avg": 86.67,
+			"sections_instructor": "shelton, anthony",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "agroecology i",
+			"sections_avg": 78.96,
+			"sections_instructor": "smukler, sean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "265",
+			"sections_title": "sustain agr&food",
+			"sections_avg": 86.57,
+			"sections_instructor": "lewis, delisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "animals&society",
+			"sections_avg": 87.21,
+			"sections_instructor": "fraser, david;von keyserlingk, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "316",
+			"sections_title": "eq biol",
+			"sections_avg": 79.79,
+			"sections_instructor": "schuppli, catherine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "398",
+			"sections_title": "res apl anml bio",
+			"sections_avg": 84.24,
+			"sections_instructor": "makowska, inez joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "401",
+			"sections_title": "soil process",
+			"sections_avg": 74.84,
+			"sections_instructor": "brown, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "402",
+			"sections_title": "sus soil mgmt",
+			"sections_avg": 83.08,
+			"sections_instructor": "brown, sandra;krzic, maja",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "444",
+			"sections_title": "agroforestry",
+			"sections_avg": 77.27,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "460",
+			"sections_title": "adv agroecology",
+			"sections_avg": 74.77,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "495",
+			"sections_title": "wildlife mngment",
+			"sections_avg": 76.5,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 74.25,
+			"sections_instructor": "qi, hongxing estella",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 79.66,
+			"sections_instructor": "rogalski, pamela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 73.64,
+			"sections_instructor": "schoen, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 77,
+			"sections_instructor": "schoen, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 73.96,
+			"sections_instructor": "sanghara, hartaj",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 70.78,
+			"sections_instructor": "qi, hongxing estella",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 80,
+			"sections_instructor": "qi, hongxing estella",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 75.42,
+			"sections_instructor": "sanghara, hartaj",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "technical commun",
+			"sections_avg": 74.31,
+			"sections_instructor": "schoen, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "261",
+			"sections_title": "technlgy&soc i",
+			"sections_avg": 79.98,
+			"sections_instructor": "paterson, carla",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "arch design ii",
+			"sections_avg": 84.8,
+			"sections_instructor": "meyboom, annalisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "512",
+			"sections_title": "structures i",
+			"sections_avg": 85.62,
+			"sections_instructor": "meyboom, annalisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "arch design iii",
+			"sections_avg": 85.25,
+			"sections_instructor": "meyboom, annalisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "arch design iii",
+			"sections_avg": 84,
+			"sections_instructor": "satterfield, blair",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "arch design iii",
+			"sections_avg": 85,
+			"sections_instructor": "soules, matthew",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "532",
+			"sections_title": "arch struct ii",
+			"sections_avg": 83.97,
+			"sections_instructor": "meyboom, annalisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "arch design v",
+			"sections_avg": 87,
+			"sections_instructor": "satterfield, blair",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "arch design v",
+			"sections_avg": 82.4,
+			"sections_instructor": "soules, matthew",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "541",
+			"sections_title": "proc&prac arch",
+			"sections_avg": 80.79,
+			"sections_instructor": "girling, cynthia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "568",
+			"sections_title": "res mthds c&i",
+			"sections_avg": 81.5,
+			"sections_instructor": "soules, matthew",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "sel&acq arch doc",
+			"sections_avg": 83.71,
+			"sections_instructor": "duranti, luciana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "aud&non-txt arch",
+			"sections_avg": 83.5,
+			"sections_instructor": "bushey, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "555",
+			"sections_title": "presrv dig recds",
+			"sections_avg": 89,
+			"sections_instructor": "duranti, luciana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "587",
+			"sections_title": "preservation",
+			"sections_avg": 77.75,
+			"sections_instructor": "sutherland, sabina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "225",
+			"sections_title": "pre 1600 eur",
+			"sections_avg": 71.42,
+			"sections_instructor": "dujakovic, maja",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "art hx methods",
+			"sections_avg": 73.56,
+			"sections_instructor": "smith, tai lin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "modernism",
+			"sections_avg": 72.38,
+			"sections_instructor": "poon, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "480",
+			"sections_title": "vis&dig media th",
+			"sections_avg": 82.33,
+			"sections_instructor": "smith, tai lin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro buddhism",
+			"sections_avg": 74.88,
+			"sections_instructor": "main, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "308",
+			"sections_title": "myth rit&epic",
+			"sections_avg": 71.34,
+			"sections_instructor": "sathaye, adheesh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "318",
+			"sections_title": "premodern india",
+			"sections_avg": 75.63,
+			"sections_instructor": "harlow, francesca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "338",
+			"sections_title": "mdrn ind con-raj",
+			"sections_avg": 75.59,
+			"sections_instructor": "harlow, francesca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "352",
+			"sections_title": "tpcs trd chin vr",
+			"sections_avg": 70.77,
+			"sections_instructor": "swatek, catherine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "354",
+			"sections_title": "intr japn cinema",
+			"sections_avg": 71.35,
+			"sections_instructor": "burk, stefania",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "354",
+			"sections_title": "intr japn cinema",
+			"sections_avg": 70.73,
+			"sections_instructor": "burk, stefania",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "fndts chin thght",
+			"sections_avg": 74.24,
+			"sections_instructor": "sullivan, brenton",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "372",
+			"sections_title": "devl trd chin th",
+			"sections_avg": 81.42,
+			"sections_instructor": "chen, jinhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "382",
+			"sections_title": "buddhism china",
+			"sections_avg": 78.5,
+			"sections_instructor": "chen, jinhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "385",
+			"sections_title": "chan/zen budhism",
+			"sections_avg": 77.17,
+			"sections_instructor": "chen, jinhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "398",
+			"sections_title": "nar lit prmd ind",
+			"sections_avg": 75.55,
+			"sections_instructor": "sathaye, adheesh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "galaxies",
+			"sections_avg": 76,
+			"sections_instructor": "scott, douglas",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "405",
+			"sections_title": "astronomical lab",
+			"sections_avg": 82.4,
+			"sections_instructor": "stairs, ingrid",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "406",
+			"sections_title": "high energy astr",
+			"sections_avg": 75.3,
+			"sections_instructor": "stairs, ingrid",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "meteor of storms",
+			"sections_avg": 82.46,
+			"sections_instructor": "stull, roland",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "406",
+			"sections_title": "oprtl meteorolgy",
+			"sections_avg": 89,
+			"sections_instructor": "siuta, david",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "intro neurolingu",
+			"sections_avg": 78.06,
+			"sections_instructor": "simmons, noreen;small, jeff alan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "516",
+			"sections_title": "discourse anyl",
+			"sections_avg": 85.52,
+			"sections_instructor": "purves, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "522",
+			"sections_title": "comm dvel&disord",
+			"sections_avg": 85.33,
+			"sections_instructor": "bernhardt, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "528",
+			"sections_title": "aural rehb i",
+			"sections_avg": 88.45,
+			"sections_instructor": "small, susan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "551",
+			"sections_title": "hearng and noise",
+			"sections_avg": 89.29,
+			"sections_instructor": "brown, sasha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "553",
+			"sections_title": "diag audio ii",
+			"sections_avg": 85.79,
+			"sections_instructor": "shahnaz, navid",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "570",
+			"sections_title": "phono intervent",
+			"sections_avg": 89.75,
+			"sections_instructor": "bernhardt, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "571",
+			"sections_title": "dev language dis",
+			"sections_avg": 86.25,
+			"sections_instructor": "colozzo, paola",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "572",
+			"sections_title": "cog proc & ald",
+			"sections_avg": 88.56,
+			"sections_instructor": "small, jeff alan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "575",
+			"sections_title": "lang dev&dis sch",
+			"sections_avg": 89.29,
+			"sections_instructor": "marinova-todd, stefka",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "586",
+			"sections_title": "acq lang dis ii",
+			"sections_avg": 86.36,
+			"sections_instructor": "purves, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "forecasting mgmt",
+			"sections_avg": 84.07,
+			"sections_instructor": "saure valenzuela, antoine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "grw&exit venture",
+			"sections_avg": 83.71,
+			"sections_instructor": "simonite, james",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "510",
+			"sections_title": "intrapreneurship",
+			"sections_avg": 82.42,
+			"sections_instructor": "simonite, james",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "507",
+			"sections_title": "2 party negotns",
+			"sections_avg": 82.08,
+			"sections_instructor": "skarlicki, dan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "507",
+			"sections_title": "2 party negotns",
+			"sections_avg": 83.29,
+			"sections_instructor": "skarlicki, dan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "507",
+			"sections_title": "2 party negotns",
+			"sections_avg": 81.88,
+			"sections_instructor": "skarlicki, dan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "org behav",
+			"sections_avg": 83.7,
+			"sections_instructor": "skarlicki, dan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "503",
+			"sections_title": "new product dev",
+			"sections_avg": 80.38,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "503",
+			"sections_title": "new product dev",
+			"sections_avg": 80.4,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "504",
+			"sections_title": "int mktg comm",
+			"sections_avg": 81.79,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "514",
+			"sections_title": "brand management",
+			"sections_avg": 79.31,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "541",
+			"sections_title": "prod serv manage",
+			"sections_avg": 80.24,
+			"sections_instructor": "silk, timothy;werker, gregory",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "541",
+			"sections_title": "prod serv manage",
+			"sections_avg": 79.92,
+			"sections_instructor": "silk, timothy;werker, gregory",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "marketing",
+			"sections_avg": 79.88,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "marketing",
+			"sections_avg": 79.44,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "marketing",
+			"sections_avg": 77.77,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "marketing",
+			"sections_avg": 82.1,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "marketing",
+			"sections_avg": 79.63,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "504",
+			"sections_title": "visual simultn",
+			"sections_avg": 81.61,
+			"sections_instructor": "skandari, mohammadreza",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "506",
+			"sections_title": "optimizatn model",
+			"sections_avg": 80.83,
+			"sections_instructor": "saure valenzuela, antoine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "508",
+			"sections_title": "appl discret opt",
+			"sections_avg": 81,
+			"sections_instructor": "saure valenzuela, antoine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "523",
+			"sections_title": "managerl decisns",
+			"sections_avg": 80.19,
+			"sections_instructor": "shechter, steven",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "523",
+			"sections_title": "managerl decisns",
+			"sections_avg": 80.32,
+			"sections_instructor": "shechter, steven",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "523",
+			"sections_title": "managerl decisns",
+			"sections_avg": 83.35,
+			"sections_instructor": "shechter, steven",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "stat hi dim biol",
+			"sections_avg": 88.07,
+			"sections_instructor": "cohen freue, gabriela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intr modern bio",
+			"sections_avg": 71.57,
+			"sections_instructor": "singh, santokh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "biology of cell",
+			"sections_avg": 73.54,
+			"sections_instructor": "smith, karen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "biology of cell",
+			"sections_avg": 72.54,
+			"sections_instructor": "chowrira, gangamma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "biology of cell",
+			"sections_avg": 73.22,
+			"sections_instructor": "graves, marcia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "biology of cell",
+			"sections_avg": 74.26,
+			"sections_instructor": "smith, karen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "gentcs ecol&evol",
+			"sections_avg": 72.1,
+			"sections_instructor": "kalas, pamela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "gentcs ecol&evol",
+			"sections_avg": 75.36,
+			"sections_instructor": "parfrey, laura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "gentcs ecol&evol",
+			"sections_avg": 77.19,
+			"sections_instructor": "mcdonnell, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intro biochem",
+			"sections_avg": 78.6,
+			"sections_instructor": "chowrira, gangamma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "204",
+			"sections_title": "vert struct&func",
+			"sections_avg": 72.53,
+			"sections_instructor": "o'neill, angela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "204",
+			"sections_title": "vert struct&func",
+			"sections_avg": 76.95,
+			"sections_instructor": "o'neill, angela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "205",
+			"sections_title": "comp invertbrat",
+			"sections_avg": 73.38,
+			"sections_instructor": "leander, brian;o'neill, angela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "230",
+			"sections_title": "fund ecology",
+			"sections_avg": 70.26,
+			"sections_instructor": "srivastava, diane",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "234",
+			"sections_title": "fund genetics",
+			"sections_avg": 77.91,
+			"sections_instructor": "klenz, jennifer;mcdonnell, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "fund physiology",
+			"sections_avg": 81.76,
+			"sections_instructor": "schulte, patricia;tortell, philippe",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "260",
+			"sections_title": "fund physiology",
+			"sections_avg": 78.14,
+			"sections_instructor": "schulte, patricia;tortell, philippe",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "animal behaviour",
+			"sections_avg": 80.84,
+			"sections_instructor": "aviles, leticia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "352",
+			"sections_title": "plnt phyl 2:devt",
+			"sections_avg": 71.76,
+			"sections_instructor": "singh, santokh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "evolutionary eco",
+			"sections_avg": 74.72,
+			"sections_instructor": "schluter, dolph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "420",
+			"sections_title": "ocean cons&sustn",
+			"sections_avg": 80.88,
+			"sections_instructor": "vincent, amanda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "425",
+			"sections_title": "biomechanics",
+			"sections_avg": 83.42,
+			"sections_instructor": "shadwick, robert edward",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "456",
+			"sections_title": "compar endocrin",
+			"sections_avg": 78.87,
+			"sections_instructor": "rodela, tamara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "458",
+			"sections_title": "devlpmt neurbiol",
+			"sections_avg": 79.06,
+			"sections_instructor": "steeves, john",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "463",
+			"sections_title": "gene regl devl",
+			"sections_avg": 79.29,
+			"sections_instructor": "kalas, pamela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "q mth ecol&evol",
+			"sections_avg": 81.14,
+			"sections_instructor": "schluter, dolph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "530",
+			"sections_title": "biol of the cell",
+			"sections_avg": 86.1,
+			"sections_instructor": "auld, vanessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "biomd, phys&anat",
+			"sections_avg": 75.76,
+			"sections_instructor": "krebs, claudia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "510",
+			"sections_title": "anat & physiolgy",
+			"sections_avg": 78.56,
+			"sections_instructor": "krebs, claudia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "293",
+			"sections_title": "intr fncl acct",
+			"sections_avg": 71.71,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "353",
+			"sections_title": "intm fnc acct i",
+			"sections_avg": 72.26,
+			"sections_instructor": "wyntjes, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "intr busnss law",
+			"sections_avg": 74.74,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "453",
+			"sections_title": "adv accounting",
+			"sections_avg": 74.49,
+			"sections_instructor": "wyntjes, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "biom rsrch skill",
+			"sections_avg": 85.89,
+			"sections_instructor": "haas, kurt;hammond, geoffrey lewis;kindler, pawel;osborne, salma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "422",
+			"sections_title": "cardio&resp phyl",
+			"sections_avg": 88,
+			"sections_instructor": "moore, edwin d;osborne, salma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "case museum",
+			"sections_avg": 87.8,
+			"sections_instructor": "shelton, anthony",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "grt wrks lit",
+			"sections_avg": 80.24,
+			"sections_instructor": "iurascu, ilinca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "402",
+			"sections_title": "chem pulp tech",
+			"sections_avg": 79.5,
+			"sections_instructor": "sella kapu, nuwan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "455",
+			"sections_title": "kinet react desg",
+			"sections_avg": 81.31,
+			"sections_instructor": "yadav, vikramaditya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "456",
+			"sections_title": "",
+			"sections_avg": 73.49,
+			"sections_instructor": "smith, kevin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "459",
+			"sections_title": "chml economics",
+			"sections_avg": 81.56,
+			"sections_instructor": "etmannski, tamara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "474",
+			"sections_title": "proc ctrl eng",
+			"sections_avg": 79.15,
+			"sections_instructor": "kwok, k ezra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "structural chem",
+			"sections_avg": 71.28,
+			"sections_instructor": "berlinguette, curtis;crane, angela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "123",
+			"sections_title": "thm kin org chem",
+			"sections_avg": 70.04,
+			"sections_instructor": "schafer, laurel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "123",
+			"sections_title": "thm kin org chem",
+			"sections_avg": 74.85,
+			"sections_instructor": "sammis, glenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "123",
+			"sections_title": "thm kin org chem",
+			"sections_avg": 71.53,
+			"sections_instructor": "bates, gordon;lekhi, priya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "233",
+			"sections_title": "org chem biol sc",
+			"sections_avg": 75.56,
+			"sections_instructor": "stewart, jaclyn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 74.49,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 75.5,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 74.02,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 78.1,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 74.48,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 71.45,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 72.59,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 71.61,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 73.35,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 72.39,
+			"sections_instructor": "zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 73.9,
+			"sections_instructor": "wickenden, jason;zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "org chem lab",
+			"sections_avg": 75.46,
+			"sections_instructor": "wickenden, jason;zendrowski, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "atmsphr envirmnt",
+			"sections_avg": 71.27,
+			"sections_instructor": "momose, takamasa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "313",
+			"sections_title": "adv org life sc",
+			"sections_avg": 75.96,
+			"sections_instructor": "sherman, john",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "315",
+			"sections_title": "chem integ lab i",
+			"sections_avg": 78.27,
+			"sections_instructor": "stoodley, robin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "315",
+			"sections_title": "chem integ lab i",
+			"sections_avg": 73.1,
+			"sections_instructor": "stoodley, robin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "405",
+			"sections_title": "biophysical chem",
+			"sections_avg": 87.17,
+			"sections_instructor": "straus, suzana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "416",
+			"sections_title": "phy&theor orgnic",
+			"sections_avg": 84.08,
+			"sections_instructor": "sammis, glenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "organometallic",
+			"sections_avg": 79.25,
+			"sections_instructor": "schafer, laurel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "524",
+			"sections_title": "orgnometlc cmpds",
+			"sections_avg": 89,
+			"sections_instructor": "schafer, laurel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "563",
+			"sections_title": "physical organic",
+			"sections_avg": 88.17,
+			"sections_instructor": "sammis, glenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "471",
+			"sections_title": "clas poet tang",
+			"sections_avg": 77.88,
+			"sections_instructor": "schmidt, jerry dean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "473",
+			"sections_title": "late clas poet",
+			"sections_avg": 77.73,
+			"sections_instructor": "schmidt, jerry dean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "311",
+			"sections_title": "soil mechanic ii",
+			"sections_avg": 79.47,
+			"sections_instructor": "howie, john;wijewickreme, dharmapriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "transport eng i",
+			"sections_avg": 72.67,
+			"sections_instructor": "sayed, tarek",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "402",
+			"sections_title": "law & contracts",
+			"sections_avg": 75.76,
+			"sections_instructor": "shapiro, bryan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "foundat'n eng i",
+			"sections_avg": 71.59,
+			"sections_instructor": "howie, john;nazhat, yahya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "eng hydrology",
+			"sections_avg": 76.88,
+			"sections_instructor": "martin, violeta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "426",
+			"sections_title": "vrtu dsgn&constr",
+			"sections_avg": 84.88,
+			"sections_instructor": "staub-french, sheryl",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "433",
+			"sections_title": "adv conc design",
+			"sections_avg": 85.22,
+			"sections_instructor": "joghataie, abdolreza",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "440",
+			"sections_title": "transprt'n eng 2",
+			"sections_avg": 78.31,
+			"sections_instructor": "sayed, tarek",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "446",
+			"sections_title": "desig & analys 2",
+			"sections_avg": 84.9,
+			"sections_instructor": "lence, barbara jean;lo, kwang victor;nazhat, yahya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "447",
+			"sections_title": "env eng design",
+			"sections_avg": 84.17,
+			"sections_instructor": "lence, barbara jean;lo, kwang victor;nazhat, yahya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "493",
+			"sections_title": "construction met",
+			"sections_avg": 88.15,
+			"sections_instructor": "vanier, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "521",
+			"sections_title": "const meth & per",
+			"sections_avg": 85.79,
+			"sections_instructor": "vanier, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "524",
+			"sections_title": "legal cnstr mngt",
+			"sections_avg": 83.47,
+			"sections_instructor": "samuels, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "526",
+			"sections_title": "visul dsgn & con",
+			"sections_avg": 83.63,
+			"sections_instructor": "staub-french, sheryl",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "537",
+			"sections_title": "comput'l mech i",
+			"sections_avg": 88.48,
+			"sections_instructor": "forghani, alireza",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "556",
+			"sections_title": "mdling & optimiz",
+			"sections_avg": 83.5,
+			"sections_instructor": "shawwash, ziad k",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "570",
+			"sections_title": "adv soil mech",
+			"sections_avg": 81.71,
+			"sections_instructor": "howie, john;taiebat, mahdi;wijewickreme, dharmapriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "574",
+			"sections_title": "exper soil mech",
+			"sections_avg": 81.27,
+			"sections_instructor": "howie, john;wijewickreme, dharmapriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "581",
+			"sections_title": "soil dynmc desgn",
+			"sections_avg": 85.3,
+			"sections_instructor": "wijewickreme, dharmapriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "582",
+			"sections_title": "trnsp engr impct",
+			"sections_avg": 81,
+			"sections_instructor": "sayed, tarek",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "389",
+			"sections_title": "clascl ch 1 (nh)",
+			"sections_avg": 79.5,
+			"sections_instructor": "schmidt, jerry dean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "399",
+			"sections_title": "clascl ch 2 (nh)",
+			"sections_avg": 73.86,
+			"sections_instructor": "schmidt, jerry dean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "basic intvw skls",
+			"sections_avg": 87.64,
+			"sections_instructor": "dyer, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "basic intvw skls",
+			"sections_avg": 86.79,
+			"sections_instructor": "dyer, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "basic intvw skls",
+			"sections_avg": 86.77,
+			"sections_instructor": "wiens, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "364",
+			"sections_title": "fmly ed & consul",
+			"sections_avg": 88.8,
+			"sections_instructor": "horwitz, erika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "364",
+			"sections_title": "fmly ed & consul",
+			"sections_avg": 89.25,
+			"sections_instructor": "horwitz, erika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "364",
+			"sections_title": "fmly ed & consul",
+			"sections_avg": 86.47,
+			"sections_instructor": "horwitz, erika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "int thry counsel",
+			"sections_avg": 76.46,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "int thry counsel",
+			"sections_avg": 86.79,
+			"sections_instructor": "buchanan, marla",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "int thry counsel",
+			"sections_avg": 75.63,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "int thry counsel",
+			"sections_avg": 75.37,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "427",
+			"sections_title": "guid pln dcsn mk",
+			"sections_avg": 76.82,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "427",
+			"sections_title": "guid pln dcsn mk",
+			"sections_avg": 85.85,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "427",
+			"sections_title": "guid pln dcsn mk",
+			"sections_avg": 70.66,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "427",
+			"sections_title": "guid pln dcsn mk",
+			"sections_avg": 77.85,
+			"sections_instructor": "munteanu, mircea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "535",
+			"sections_title": "adlt psychpathlg",
+			"sections_avg": 89.4,
+			"sections_instructor": "schultz, izabela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "564",
+			"sections_title": "group counsling",
+			"sections_avg": 89.17,
+			"sections_instructor": "tba",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 76.57,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 75.87,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 75.75,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 78.61,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 75.04,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "career fundmtls",
+			"sections_avg": 70.9,
+			"sections_instructor": "watson, michelle tanya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "291",
+			"sections_title": "appl stat in bus",
+			"sections_avg": 71.53,
+			"sections_instructor": "markhvida, katsiaryna igorevna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "292",
+			"sections_title": "mngmt&orgnz bhvr",
+			"sections_avg": 74.33,
+			"sections_instructor": "kelleher, angela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "292",
+			"sections_title": "mngmt&orgnz bhvr",
+			"sections_avg": 74.34,
+			"sections_instructor": "schabram, kira",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "292",
+			"sections_title": "mngmt&orgnz bhvr",
+			"sections_avg": 74.85,
+			"sections_instructor": "schabram, kira",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "293",
+			"sections_title": "financial acctng",
+			"sections_avg": 71.3,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "293",
+			"sections_title": "financial acctng",
+			"sections_avg": 77.42,
+			"sections_instructor": "mallia, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "293",
+			"sections_title": "financial acctng",
+			"sections_avg": 71.16,
+			"sections_instructor": "mallia, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "295",
+			"sections_title": "managerial econ",
+			"sections_avg": 76.4,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "295",
+			"sections_title": "managerial econ",
+			"sections_avg": 75.42,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 76.21,
+			"sections_instructor": "swaffield, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 75.93,
+			"sections_instructor": "swaffield, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "296",
+			"sections_title": "intro marketing",
+			"sections_avg": 73.59,
+			"sections_instructor": "burke, phaedra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "329",
+			"sections_title": "organiztl bhvr",
+			"sections_avg": 73.68,
+			"sections_instructor": "robinson, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "329",
+			"sections_title": "organiztl bhvr",
+			"sections_avg": 74.79,
+			"sections_instructor": "robinson, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "353",
+			"sections_title": "fin acctg-int i",
+			"sections_avg": 74.14,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "354",
+			"sections_title": "cost accting",
+			"sections_avg": 74.58,
+			"sections_instructor": "chamberlain, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "354",
+			"sections_title": "cost accting",
+			"sections_avg": 74.05,
+			"sections_instructor": "chamberlain, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "buyer behavr",
+			"sections_avg": 79.3,
+			"sections_instructor": "shim, yoonji",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "buyer behavr",
+			"sections_avg": 76.74,
+			"sections_instructor": "south, cluny",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "363",
+			"sections_title": "marktng analysis",
+			"sections_avg": 75.52,
+			"sections_instructor": "ladha, zahra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "363",
+			"sections_title": "marktng analysis",
+			"sections_avg": 75.69,
+			"sections_instructor": "ladha, zahra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "market research",
+			"sections_avg": 74.09,
+			"sections_instructor": "wu, chunhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "market research",
+			"sections_avg": 77.59,
+			"sections_instructor": "wu, chunhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "market research",
+			"sections_avg": 77.02,
+			"sections_instructor": "wu, chunhua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "market research",
+			"sections_avg": 76.38,
+			"sections_instructor": "ghotbi, sina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "market research",
+			"sections_avg": 78,
+			"sections_instructor": "ghotbi, sina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "370",
+			"sections_title": "corp finance",
+			"sections_avg": 78.84,
+			"sections_instructor": "simintzi, eleni",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "370",
+			"sections_title": "corp finance",
+			"sections_avg": 74.47,
+			"sections_instructor": "simintzi, eleni",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "370",
+			"sections_title": "corp finance",
+			"sections_avg": 71.02,
+			"sections_instructor": "simintzi, eleni",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 80.21,
+			"sections_instructor": "skoulakis, georgios",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 79.82,
+			"sections_instructor": "pikulina, elena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 82.21,
+			"sections_instructor": "pikulina, elena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 79.5,
+			"sections_instructor": "pikulina, elena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 79.02,
+			"sections_instructor": "skoulakis, georgios",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "invest theory",
+			"sections_avg": 79.41,
+			"sections_instructor": "skoulakis, georgios",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "388",
+			"sections_title": "dsgn stat prct",
+			"sections_avg": 82.07,
+			"sections_instructor": "quayle, moura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "388",
+			"sections_title": "dsgn stat prct",
+			"sections_avg": 86.1,
+			"sections_instructor": "pennefather, patrick;quayle, moura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "389",
+			"sections_title": "creativity busns",
+			"sections_avg": 81.53,
+			"sections_instructor": "southcott, james",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.4,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.65,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 79.42,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.7,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 78.33,
+			"sections_instructor": "jones, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.35,
+			"sections_instructor": "jones, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.85,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.5,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 75.15,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 75.84,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 74.95,
+			"sections_instructor": "jones, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 75.75,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 75.29,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.7,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 75.45,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.44,
+			"sections_instructor": "duzy, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 76.4,
+			"sections_instructor": "jones, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.67,
+			"sections_instructor": "jones, brenda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 78.61,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.3,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 78.06,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "business writing",
+			"sections_avg": 77.1,
+			"sections_instructor": "sutherland, brian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 70.43,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 70.88,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 76.4,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 77.18,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 75.11,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 74.55,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 72.69,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "commercial law",
+			"sections_avg": 77.62,
+			"sections_instructor": "cox, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "394",
+			"sections_title": "govt & business",
+			"sections_avg": 75.9,
+			"sections_instructor": "jaureguiberry, florencia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "394",
+			"sections_title": "govt & business",
+			"sections_avg": 74.14,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "394",
+			"sections_title": "govt & business",
+			"sections_avg": 74.6,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 75.76,
+			"sections_instructor": "ladha, zahra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 74.15,
+			"sections_instructor": "ladha, zahra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 76.54,
+			"sections_instructor": "ladha, zahra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 75.84,
+			"sections_instructor": "soliman ibrahim, susan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 76.13,
+			"sections_instructor": "silver sweeney, marlisse",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "busn communicati",
+			"sections_avg": 75.3,
+			"sections_instructor": "silver sweeney, marlisse",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "negotiation",
+			"sections_avg": 82.35,
+			"sections_instructor": "granot, frieda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "negotiation",
+			"sections_avg": 83.69,
+			"sections_instructor": "granot, frieda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "436",
+			"sections_title": "inf sys anly&des",
+			"sections_avg": 84.11,
+			"sections_instructor": "shi, duo",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "450",
+			"sections_title": "fin acctg-int ii",
+			"sections_avg": 76.54,
+			"sections_instructor": "wyntjes, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "454",
+			"sections_title": "acc mgt ctrl&inc",
+			"sections_avg": 79.92,
+			"sections_instructor": "chamberlain, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "454",
+			"sections_title": "acc mgt ctrl&inc",
+			"sections_avg": 76.93,
+			"sections_instructor": "chamberlain, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "455",
+			"sections_title": "prncpls of audit",
+			"sections_avg": 73.43,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "455",
+			"sections_title": "prncpls of audit",
+			"sections_avg": 73.69,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "455",
+			"sections_title": "prncpls of audit",
+			"sections_avg": 77.14,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "457",
+			"sections_title": "fndtls fin acct",
+			"sections_avg": 70.88,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "457",
+			"sections_title": "fndtls fin acct",
+			"sections_avg": 70.62,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "457",
+			"sections_title": "fndtls fin acct",
+			"sections_avg": 70.68,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "458",
+			"sections_title": "fndtls mngl acct",
+			"sections_avg": 80.6,
+			"sections_instructor": "mallia, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "458",
+			"sections_title": "fndtls mngl acct",
+			"sections_avg": 78.16,
+			"sections_instructor": "sinclair, scott",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "462",
+			"sections_title": "integ mrktg comm",
+			"sections_avg": 78.55,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "462",
+			"sections_title": "integ mrktg comm",
+			"sections_avg": 77.42,
+			"sections_instructor": "stone, ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "465",
+			"sections_title": "marketing mgmt",
+			"sections_avg": 76.2,
+			"sections_instructor": "burke, phaedra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "465",
+			"sections_title": "marketing mgmt",
+			"sections_avg": 74.98,
+			"sections_instructor": "burke, phaedra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "465",
+			"sections_title": "marketing mgmt",
+			"sections_avg": 73.17,
+			"sections_instructor": "burke, phaedra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "467",
+			"sections_title": "brand management",
+			"sections_avg": 78.71,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "467",
+			"sections_title": "brand management",
+			"sections_avg": 79.16,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "469",
+			"sections_title": "intl mrkt",
+			"sections_avg": 78.26,
+			"sections_instructor": "swaffield, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "469",
+			"sections_title": "intl mrkt",
+			"sections_avg": 77.74,
+			"sections_instructor": "swaffield, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "482",
+			"sections_title": "new product dev",
+			"sections_avg": 80.26,
+			"sections_instructor": "silk, timothy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "498",
+			"sections_title": "int'l bus mngt",
+			"sections_avg": 71.76,
+			"sections_instructor": "alviarez, vanessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "498",
+			"sections_title": "int'l bus mngt",
+			"sections_avg": 75.59,
+			"sections_instructor": "alviarez, vanessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "498",
+			"sections_title": "int'l bus mngt",
+			"sections_avg": 76.23,
+			"sections_instructor": "alviarez, vanessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "visual clim chng",
+			"sections_avg": 77.63,
+			"sections_instructor": "sheppard, stephen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "370",
+			"sections_title": "aborignl forestr",
+			"sections_avg": 78.34,
+			"sections_instructor": "lyall, andrea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "495",
+			"sections_title": "problem wildlife",
+			"sections_avg": 74.27,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "model comptn",
+			"sections_avg": 74.15,
+			"sections_instructor": "cooper, kendra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "sftwr constructn",
+			"sections_avg": 73.27,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "sftwr constructn",
+			"sections_avg": 76.32,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "sftwr constructn",
+			"sections_avg": 86.15,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "basic alg&data",
+			"sections_avg": 76.6,
+			"sections_instructor": "cooper, kendra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "intr sftwr eng",
+			"sections_avg": 80.35,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "intr sftwr eng",
+			"sections_avg": 79.12,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "320",
+			"sections_title": "intr alg dsgn&an",
+			"sections_avg": 72.78,
+			"sections_instructor": "schroeder, jonatan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "322",
+			"sections_title": "artificial intel",
+			"sections_avg": 74.62,
+			"sections_instructor": "conati, cristina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "322",
+			"sections_title": "artificial intel",
+			"sections_avg": 71.77,
+			"sections_instructor": "conati, cristina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "344",
+			"sections_title": "hum-com interact",
+			"sections_avg": 81.18,
+			"sections_instructor": "dawson, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "adv software eng",
+			"sections_avg": 79.39,
+			"sections_instructor": "baniassad, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "544",
+			"sections_title": "hmn-cmpt intract",
+			"sections_avg": 85.27,
+			"sections_instructor": "dawson, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "547",
+			"sections_title": "info visualizatn",
+			"sections_avg": 88.47,
+			"sections_instructor": "munzner, tamara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intr writ poetry",
+			"sections_avg": 73.33,
+			"sections_instructor": "warrener, sheryda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "d hg th & pr iii",
+			"sections_avg": 81,
+			"sections_instructor": "lin, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "401",
+			"sections_title": "oral epidemiolgy",
+			"sections_avg": 77.83,
+			"sections_instructor": "shariati, batoul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "401",
+			"sections_title": "oral epidemiolgy",
+			"sections_avg": 77.73,
+			"sections_instructor": "shariati, batoul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "dt hg th & pr iv",
+			"sections_avg": 85,
+			"sections_instructor": "lin, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "438",
+			"sections_title": "obsv&doc erly ch",
+			"sections_avg": 85.93,
+			"sections_instructor": "pighini, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "438",
+			"sections_title": "obsv&doc erly ch",
+			"sections_avg": 89.45,
+			"sections_instructor": "pighini, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "439",
+			"sections_title": "asmnt spec needs",
+			"sections_avg": 89.85,
+			"sections_instructor": "el khatib, lara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "440",
+			"sections_title": "supp comm sp nds",
+			"sections_avg": 80.83,
+			"sections_instructor": "stewart, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "441",
+			"sections_title": "interv child",
+			"sections_avg": 81.85,
+			"sections_instructor": "stewart, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "prncpls micrecon",
+			"sections_avg": 71.22,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "prncpls micrecon",
+			"sections_avg": 70.66,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "prncpls micrecon",
+			"sections_avg": 73.73,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "princpl macrecon",
+			"sections_avg": 74.06,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "princpl macrecon",
+			"sections_avg": 74.26,
+			"sections_instructor": "siu, henry",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "int stra think",
+			"sections_avg": 73.02,
+			"sections_instructor": "kozak rogo, juliana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "int stra think",
+			"sections_avg": 71.15,
+			"sections_instructor": "kozak rogo, juliana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "226",
+			"sections_title": "econ data",
+			"sections_avg": 76.55,
+			"sections_instructor": "adshade, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "intrm micro anly",
+			"sections_avg": 71.53,
+			"sections_instructor": "kozak rogo, juliana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "intrm micro anly",
+			"sections_avg": 74.22,
+			"sections_instructor": "gottlieb, joshua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "intrm micro anly",
+			"sections_avg": 73.69,
+			"sections_instructor": "kozak rogo, juliana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "intrm micro anly",
+			"sections_avg": 72.79,
+			"sections_instructor": "gottlieb, joshua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "microeconomics",
+			"sections_avg": 74.78,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "311",
+			"sections_title": "macroeconomics",
+			"sections_avg": 71.25,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "325",
+			"sections_title": "empirical econ",
+			"sections_avg": 75.6,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "325",
+			"sections_title": "empirical econ",
+			"sections_avg": 76.03,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "325",
+			"sections_title": "empirical econ",
+			"sections_avg": 80.22,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "326",
+			"sections_title": "mtds empirc resr",
+			"sections_avg": 77.4,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "326",
+			"sections_title": "mtds empirc resr",
+			"sections_avg": 82.72,
+			"sections_instructor": "schrimpf, paul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "351",
+			"sections_title": "women in economy",
+			"sections_avg": 71.63,
+			"sections_instructor": "adshade, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "351",
+			"sections_title": "women in economy",
+			"sections_avg": 73.38,
+			"sections_instructor": "adshade, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 76.57,
+			"sections_instructor": "malhotra, nisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 74.94,
+			"sections_instructor": "swiecki, tomasz",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "intro int trade",
+			"sections_avg": 74.85,
+			"sections_instructor": "swiecki, tomasz",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 73.85,
+			"sections_instructor": "szkup, michal",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "356",
+			"sections_title": "intro int fin",
+			"sections_avg": 76.69,
+			"sections_instructor": "hnatkovska, viktoriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "int econ resrch",
+			"sections_avg": 72.95,
+			"sections_instructor": "adshade, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "425",
+			"sections_title": "econometrics",
+			"sections_avg": 75.18,
+			"sections_instructor": "song, kyungchul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "456",
+			"sections_title": "inter macro/finc",
+			"sections_avg": 78.85,
+			"sections_instructor": "hnatkovska, viktoriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "457",
+			"sections_title": "internatl relatn",
+			"sections_avg": 83.32,
+			"sections_instructor": "malhotra, nisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "465",
+			"sections_title": "market structure",
+			"sections_avg": 76.78,
+			"sections_instructor": "kozak rogo, juliana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "471",
+			"sections_title": "nonrenew resrces",
+			"sections_avg": 75.54,
+			"sections_instructor": "shrestha, ratna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 71.47,
+			"sections_instructor": "adshade, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 79.75,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 81.63,
+			"sections_instructor": "szkup, michal",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 81.44,
+			"sections_instructor": "malhotra, nisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 82.7,
+			"sections_instructor": "malhotra, nisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 82.65,
+			"sections_instructor": "song, kyungchul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "applied econ",
+			"sections_avg": 80.85,
+			"sections_instructor": "whistler, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "macro economics",
+			"sections_avg": 83.45,
+			"sections_instructor": "hnatkovska, viktoriya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "526",
+			"sections_title": "math for econmic",
+			"sections_avg": 82.04,
+			"sections_instructor": "schrimpf, paul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "556",
+			"sections_title": "internatl financ",
+			"sections_avg": 81.13,
+			"sections_instructor": "lahiri, amartya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "557",
+			"sections_title": "emp tpc intl ecn",
+			"sections_avg": 80.25,
+			"sections_instructor": "swiecki, tomasz",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "562",
+			"sections_title": "res des&polcy ev",
+			"sections_avg": 81.04,
+			"sections_instructor": "gottlieb, joshua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "626",
+			"sections_title": "econ thry i",
+			"sections_avg": 83.94,
+			"sections_instructor": "song, kyungchul",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "508",
+			"sections_title": "rev res curr&ped",
+			"sections_avg": 89.45,
+			"sections_instructor": "smith, mary gale",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "510",
+			"sections_title": "vid eth ed res",
+			"sections_avg": 88.5,
+			"sections_instructor": "loutzenheiser, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "559",
+			"sections_title": "res tch & lrn sc",
+			"sections_avg": 89.46,
+			"sections_instructor": "milner-bolotin, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "562",
+			"sections_title": "curric iss&thry",
+			"sections_avg": 87.67,
+			"sections_instructor": "loutzenheiser, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "503",
+			"sections_title": "fnds ad lrng ed",
+			"sections_avg": 87.67,
+			"sections_instructor": "butterwick, shauna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "518",
+			"sections_title": "thy rea adu lea",
+			"sections_avg": 86.83,
+			"sections_instructor": "shan, hongxia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "518",
+			"sections_title": "thy rea adu lea",
+			"sections_avg": 89.15,
+			"sections_instructor": "shan, hongxia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "adlt edu pract",
+			"sections_avg": 87.58,
+			"sections_instructor": "butterwick, shauna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "571",
+			"sections_title": "qst, theor, mthd",
+			"sections_avg": 88.08,
+			"sections_instructor": "ruitenberg, claudia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "581",
+			"sections_title": "ldr adm aim educ",
+			"sections_avg": 87.56,
+			"sections_instructor": "stack, michelle",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "res mthd in educ",
+			"sections_avg": 88.44,
+			"sections_instructor": "cole, peter;o'riley, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "res mthd in educ",
+			"sections_avg": 85.83,
+			"sections_instructor": "shi, ling",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "res mthd in educ",
+			"sections_avg": 87.11,
+			"sections_instructor": "pighini, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "592",
+			"sections_title": "arch learn systs",
+			"sections_avg": 86.62,
+			"sections_instructor": "sarkaria, sarbjit",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "read, write lit",
+			"sections_avg": 82.96,
+			"sections_instructor": "somers, emily",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "read, write lit",
+			"sections_avg": 70.9,
+			"sections_instructor": "raglon, rebecca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "read, write lit",
+			"sections_avg": 76.62,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 74.37,
+			"sections_instructor": "birks, roberta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 72.95,
+			"sections_instructor": "badir, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "intro literature",
+			"sections_avg": 71.39,
+			"sections_instructor": "kreisel, deanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intro nonfiction",
+			"sections_avg": 70.07,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 72.5,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 71.32,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 74,
+			"sections_instructor": "biermann, wilhelmina georgina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 73.57,
+			"sections_instructor": "biermann, wilhelmina georgina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 75.06,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 70.22,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 75.12,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 76.61,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 71.96,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 74.04,
+			"sections_instructor": "birks, roberta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 72.06,
+			"sections_instructor": "lee, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 74.12,
+			"sections_instructor": "stewart, fenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 73.45,
+			"sections_instructor": "stewart, fenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "univrsty writing",
+			"sections_avg": 75.38,
+			"sections_instructor": "stewart, fenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "intro engl honrs",
+			"sections_avg": 86.26,
+			"sections_instructor": "sirluck, katherine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "engl lit to 18c",
+			"sections_avg": 74.16,
+			"sections_instructor": "stewart, fenn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "engl lit to 18c",
+			"sections_avg": 79.2,
+			"sections_instructor": "sirluck, katherine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "brit lit 18c-21c",
+			"sections_avg": 75.35,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "223",
+			"sections_title": "lit in u.s.a.",
+			"sections_avg": 76.48,
+			"sections_instructor": "severs, jeffrey",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "224",
+			"sections_title": "world lit in eng",
+			"sections_avg": 73.9,
+			"sections_instructor": "thieme, katja",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "224",
+			"sections_title": "world lit in eng",
+			"sections_avg": 76.75,
+			"sections_instructor": "al-kassim, dina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "tech writing",
+			"sections_avg": 82.03,
+			"sections_instructor": "paterson, erika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "tech writing",
+			"sections_avg": 81.88,
+			"sections_instructor": "paterson, erika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "309",
+			"sections_title": "sci/med rhetoric",
+			"sections_avg": 78.62,
+			"sections_instructor": "segal, judy",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "321",
+			"sections_title": "grammar & usage",
+			"sections_avg": 80.75,
+			"sections_instructor": "de villiers, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "321",
+			"sections_title": "grammar & usage",
+			"sections_avg": 80.17,
+			"sections_instructor": "biermann, wilhelmina georgina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "328",
+			"sections_title": "metaphor&thought",
+			"sections_avg": 78.32,
+			"sections_instructor": "dancygier, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "331",
+			"sections_title": "engl structure 2",
+			"sections_avg": 74.4,
+			"sections_instructor": "dancygier, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "331",
+			"sections_title": "engl structure 2",
+			"sections_avg": 78.24,
+			"sections_instructor": "de villiers, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "362",
+			"sections_title": "19c genre",
+			"sections_avg": 73.59,
+			"sections_instructor": "bose, sarika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "489",
+			"sections_title": "maj seminar lang",
+			"sections_avg": 79.78,
+			"sections_instructor": "de villiers, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "major seminr lit",
+			"sections_avg": 84.17,
+			"sections_instructor": "sirluck, katherine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "major seminr lit",
+			"sections_avg": 76.47,
+			"sections_instructor": "kreisel, deanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "major seminr lit",
+			"sections_avg": 80.33,
+			"sections_instructor": "severs, jeffrey",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "int res envr sci",
+			"sections_avg": 83.93,
+			"sections_instructor": "christensen, villy;ivanochko, tara;radic, valentina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "400",
+			"sections_title": "cmnty pr env sci",
+			"sections_avg": 82.88,
+			"sections_instructor": "harris, sara;ivanochko, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "fluid earth",
+			"sections_avg": 76.99,
+			"sections_instructor": "harris, sara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "222",
+			"sections_title": "geo time & strat",
+			"sections_avg": 72.71,
+			"sections_instructor": "smith, paul laurence",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "flds and fluxes",
+			"sections_avg": 71.94,
+			"sections_instructor": "philpott, lydia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "270",
+			"sections_title": "marine ecosystem",
+			"sections_avg": 82.18,
+			"sections_instructor": "maldonado-pareja, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "326",
+			"sections_title": "erth&life th tme",
+			"sections_avg": 76.42,
+			"sections_instructor": "sutherland, stuart",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "glbl climat chng",
+			"sections_avg": 78.14,
+			"sections_instructor": "austin, philip;harris, sara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "glbl climat chng",
+			"sections_avg": 72.78,
+			"sections_instructor": "austin, philip;ivanochko, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "373",
+			"sections_title": "climate&ecosystm",
+			"sections_avg": 71.52,
+			"sections_instructor": "halverson, mark;lipsen, michael;maldonado-pareja, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "442",
+			"sections_title": "clim meas & anly",
+			"sections_avg": 83.11,
+			"sections_instructor": "ivanochko, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "442",
+			"sections_title": "clim meas & anly",
+			"sections_avg": 84.96,
+			"sections_instructor": "ivanochko, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "475",
+			"sections_title": "mrne microbiolgy",
+			"sections_avg": 73.3,
+			"sections_instructor": "suttle, curtis",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "510",
+			"sections_title": "dta anl at,er&oc",
+			"sections_avg": 83.33,
+			"sections_instructor": "radic, valentina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "535",
+			"sections_title": "tran porus media",
+			"sections_avg": 77.36,
+			"sections_instructor": "smith, james leslie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "ed st dvl ds inc",
+			"sections_avg": 87.76,
+			"sections_instructor": "wilk, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "482",
+			"sections_title": "intr stat rs edu",
+			"sections_avg": 86.9,
+			"sections_instructor": "rusticus, shayna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "hn dev, lrn, cul",
+			"sections_avg": 89.78,
+			"sections_instructor": "darwich, lina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "512",
+			"sections_title": "crit spec ed",
+			"sections_avg": 89.35,
+			"sections_instructor": "cannon, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "cur dev e df&hrd",
+			"sections_avg": 83.3,
+			"sections_instructor": "cannon, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_avg": 88.33,
+			"sections_instructor": "hubley, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_avg": 84.56,
+			"sections_instructor": "hubley, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_avg": 81.08,
+			"sections_instructor": "hubley, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "591",
+			"sections_title": "thry&prc prg evl",
+			"sections_avg": 89.31,
+			"sections_instructor": "mathison, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "595",
+			"sections_title": "qlt rsrch mthd",
+			"sections_avg": 86.86,
+			"sections_instructor": "mathison, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "595",
+			"sections_title": "qlt rsrch mthd",
+			"sections_avg": 84.2,
+			"sections_instructor": "mathison, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "res meth educ",
+			"sections_avg": 86.05,
+			"sections_instructor": "bartosh, oksana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "512",
+			"sections_title": "appl lear theor",
+			"sections_avg": 88.65,
+			"sections_instructor": "shapka, jennifer",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "plan man learn",
+			"sections_avg": 89.93,
+			"sections_instructor": "bourlova, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "530",
+			"sections_title": "constr strat",
+			"sections_avg": 86.1,
+			"sections_instructor": "khan, samia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "530",
+			"sections_title": "constr strat",
+			"sections_avg": 88.06,
+			"sections_instructor": "tba",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "text tech",
+			"sections_avg": 89.26,
+			"sections_instructor": "dobson, teresa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "333",
+			"sections_title": "sh fic rmnce lit",
+			"sections_avg": 79.89,
+			"sections_instructor": "segnini, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "233",
+			"sections_title": "video prod i",
+			"sections_avg": 88.89,
+			"sections_instructor": "spangler, bruce",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "330",
+			"sections_title": "int directing",
+			"sections_avg": 88.05,
+			"sections_instructor": "scholte, tom",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "339",
+			"sections_title": "post-prod tec i",
+			"sections_avg": 85.79,
+			"sections_instructor": "spivak, refael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "cons, govr, eval",
+			"sections_avg": 87.67,
+			"sections_instructor": "cheung, wai lung;christensen, villy;close, david;mcallister, murdoch;pauly, daniel;pitcher, tony;sumaila, ussif rashid;trites, andrew;vincent, amanda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "hollywood cinema",
+			"sections_avg": 73,
+			"sections_instructor": "coulthard, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 73.72,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 75.53,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 70.87,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 70.15,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 70.23,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 74.43,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 72.31,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 72.05,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "fmly human dvlpm",
+			"sections_avg": 72.39,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "parent-child rel",
+			"sections_avg": 74.92,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "parent-child rel",
+			"sections_avg": 78.58,
+			"sections_instructor": "weatherby, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "relation develop",
+			"sections_avg": 76.28,
+			"sections_instructor": "bartolic, silvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "relation develop",
+			"sections_avg": 76.69,
+			"sections_instructor": "bartolic, silvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "442",
+			"sections_title": "families & work",
+			"sections_avg": 80.57,
+			"sections_instructor": "fuller, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "522",
+			"sections_title": "adv food chemist",
+			"sections_avg": 75.75,
+			"sections_instructor": "scaman, christine",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "beginner fren i",
+			"sections_avg": 74.66,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "beginner fren ii",
+			"sections_avg": 75.3,
+			"sections_instructor": "shilliday, molleen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "beginner fren ii",
+			"sections_avg": 72.84,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intermed fren 1",
+			"sections_avg": 72.24,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intermed fren 1",
+			"sections_avg": 72.57,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intermed fren 1",
+			"sections_avg": 72.37,
+			"sections_instructor": "uroni, cristina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "111",
+			"sections_title": "intermed fren 1",
+			"sections_avg": 70.93,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "intermed fren 2",
+			"sections_avg": 72.91,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "intermed fren 2",
+			"sections_avg": 76.68,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "112",
+			"sections_title": "intermed fren 2",
+			"sections_avg": 73.04,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "122",
+			"sections_title": "fren lang&lit i",
+			"sections_avg": 77.53,
+			"sections_instructor": "scott, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "122",
+			"sections_title": "fren lang&lit i",
+			"sections_avg": 78.46,
+			"sections_instructor": "scott, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "123",
+			"sections_title": "fren lang&lit ii",
+			"sections_avg": 78.17,
+			"sections_instructor": "scott, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "fr  lit &txt anl",
+			"sections_avg": 76.78,
+			"sections_instructor": "sarkonak, ralph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "mod lit & txt an",
+			"sections_avg": 77.33,
+			"sections_instructor": "godfrey, sima",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "mod lit & txt an",
+			"sections_avg": 72.07,
+			"sections_instructor": "onyeoziri-miller, gloria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "224",
+			"sections_title": "intrd app fren i",
+			"sections_avg": 82.23,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "225",
+			"sections_title": "intrd app frn ii",
+			"sections_avg": 80.58,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "advanced comp",
+			"sections_avg": 84.08,
+			"sections_instructor": "simpson, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "355",
+			"sections_title": "advanced comp",
+			"sections_avg": 76.08,
+			"sections_instructor": "scott, anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "forest ecology",
+			"sections_avg": 75.32,
+			"sections_instructor": "simard, suzanne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "232",
+			"sections_title": "computer ap frst",
+			"sections_avg": 78.11,
+			"sections_instructor": "eskelson, bianca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "399",
+			"sections_title": "intro rsrch meth",
+			"sections_avg": 76.14,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "444",
+			"sections_title": "agroforestry",
+			"sections_avg": 72.47,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "546",
+			"sections_title": "research methods",
+			"sections_avg": 86.88,
+			"sections_instructor": "sullivan, thomas priestlay",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "395",
+			"sections_title": "chg lndsc l amer",
+			"sections_avg": 75.46,
+			"sections_instructor": "sundberg, juanita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "412",
+			"sections_title": "water mgmt",
+			"sections_avg": 86.67,
+			"sections_instructor": "bakker, karen jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "495",
+			"sections_title": "socl movmnt amer",
+			"sections_avg": 85,
+			"sections_instructor": "sundberg, juanita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "525",
+			"sections_title": "cult nat cp ecol",
+			"sections_avg": 85.73,
+			"sections_instructor": "sundberg, juanita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 84.62,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 80.19,
+			"sections_instructor": "spreter von kreudenstein, chri",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 79.65,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 81.78,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 81.08,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 77.71,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 83.35,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 84.08,
+			"sections_instructor": "ganzenmueller, petra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 83.57,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 82.5,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin germ i",
+			"sections_avg": 82.9,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "begin germ 2",
+			"sections_avg": 73.54,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "begin germ 2",
+			"sections_avg": 73.73,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "begin germ 2",
+			"sections_avg": 74.31,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "begin germ 2",
+			"sections_avg": 77.78,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "inter germ i",
+			"sections_avg": 77.62,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "inter germ i",
+			"sections_avg": 74.41,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "inter germ i",
+			"sections_avg": 79.3,
+			"sections_instructor": "ganzenmueller, petra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "inter germ ii",
+			"sections_avg": 78.59,
+			"sections_instructor": "struch, gela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "inter germ ii",
+			"sections_avg": 77.79,
+			"sections_instructor": "ganzenmueller, petra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "inter germ ii",
+			"sections_avg": 83.48,
+			"sections_instructor": "ganzenmueller, petra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "inter germ ii",
+			"sections_avg": 74.3,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "inter germ iii",
+			"sections_avg": 77.8,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "grm lit 1900-45",
+			"sections_avg": 82.43,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "grm lit pst 1945",
+			"sections_avg": 78.97,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "grm lit pst 1945",
+			"sections_avg": 84.49,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "303",
+			"sections_title": "germ lit <1900",
+			"sections_avg": 78.03,
+			"sections_instructor": "hempen, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "inter germ iv",
+			"sections_avg": 79.17,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "busi germ",
+			"sections_avg": 80,
+			"sections_instructor": "kumar, uma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "adv german ii",
+			"sections_avg": 76.56,
+			"sections_instructor": "spreter von kreudenstein, chri",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "2yr anc greek i",
+			"sections_avg": 84.43,
+			"sections_instructor": "funke, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "2yr anc greek ii",
+			"sections_avg": 80.75,
+			"sections_instructor": "funke, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "gdr,race,sex&pwr",
+			"sections_avg": 78.73,
+			"sections_instructor": "angeles, leonora",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "decol&fmnst pers",
+			"sections_avg": 81.69,
+			"sections_instructor": "chaudhry, ayesha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "gender relations",
+			"sections_avg": 76.16,
+			"sections_instructor": "shelley, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "gender relations",
+			"sections_avg": 76.52,
+			"sections_instructor": "shelley, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "gender relations",
+			"sections_avg": 76.3,
+			"sections_instructor": "shelley, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "gender relations",
+			"sections_avg": 73.98,
+			"sections_instructor": "shelley, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "gndr&indg can",
+			"sections_avg": 76.97,
+			"sections_instructor": "rymhs, deena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "305",
+			"sections_title": "iss cmn int org",
+			"sections_avg": 75.08,
+			"sections_instructor": "bunjun, benita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "306",
+			"sections_title": "glob & soc justc",
+			"sections_avg": 79.34,
+			"sections_instructor": "thobani, sunera",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "307",
+			"sections_title": "grs&pop cultr",
+			"sections_avg": 84.13,
+			"sections_instructor": "stewart, janice",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "311",
+			"sections_title": "blk wmn americas",
+			"sections_avg": 73.21,
+			"sections_instructor": "douglas, delia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "320",
+			"sections_title": "fem anti-rc ped",
+			"sections_avg": 85.94,
+			"sections_instructor": "stewart, janice",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "328",
+			"sections_title": "fem subjectivity",
+			"sections_avg": 81.25,
+			"sections_instructor": "chatzivasileiou, evangelia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "401",
+			"sections_title": "bdy, gen, soc",
+			"sections_avg": 80.17,
+			"sections_instructor": "snowden, kim",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "422",
+			"sections_title": "adv res sem wmst",
+			"sections_avg": 78.12,
+			"sections_instructor": "chaudhry, ayesha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "intersectnl issu",
+			"sections_avg": 86.33,
+			"sections_instructor": "harris, leila",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "decol & femn mth",
+			"sections_avg": 87,
+			"sections_instructor": "angeles, leonora",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "stat hi dim biol",
+			"sections_avg": 84.9,
+			"sections_instructor": "cohen freue, gabriela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intmd bib hebr 1",
+			"sections_avg": 82.86,
+			"sections_instructor": "milstein, sara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "intmd bib hebr 2",
+			"sections_avg": 83.57,
+			"sections_instructor": "milstein, sara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "235",
+			"sections_title": "hist of canada",
+			"sections_avg": 72.03,
+			"sections_instructor": "ishiguro, laura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "256",
+			"sections_title": "hist of africa",
+			"sections_avg": 70.06,
+			"sections_instructor": "stewart, ian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "273",
+			"sections_title": "hist of india",
+			"sections_avg": 74.43,
+			"sections_instructor": "mayer, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "305",
+			"sections_title": "british columbia",
+			"sections_avg": 71.17,
+			"sections_instructor": "ishiguro, laura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "313",
+			"sections_title": "africa imp indep",
+			"sections_avg": 71.95,
+			"sections_instructor": "stewart, ian",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "315",
+			"sections_title": "brit 1750 - 1850",
+			"sections_avg": 75.16,
+			"sections_instructor": "mayer, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "326",
+			"sections_title": "can since 1945",
+			"sections_avg": 83.15,
+			"sections_instructor": "silver, lara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "colonial america",
+			"sections_avg": 74.87,
+			"sections_instructor": "van riemsdijk, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "328",
+			"sections_title": "rebels in americ",
+			"sections_avg": 71.55,
+			"sections_instructor": "van riemsdijk, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "364",
+			"sections_title": "eur late mid-age",
+			"sections_avg": 75.8,
+			"sections_instructor": "sindelar, arlene marie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "378",
+			"sections_title": "early china",
+			"sections_avg": 71.66,
+			"sections_instructor": "shin, leo",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "379",
+			"sections_title": "late imprl china",
+			"sections_avg": 71.62,
+			"sections_instructor": "shin, leo",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "408",
+			"sections_title": "us f pol to 1945",
+			"sections_avg": 75.37,
+			"sections_instructor": "wang, jessica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "1960s glbl persp",
+			"sections_avg": 78.73,
+			"sections_instructor": "myers, tamara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "432",
+			"sections_title": "int rel grt pwrs",
+			"sections_avg": 77.07,
+			"sections_instructor": "silver, lara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "350",
+			"sections_title": "darwin medicine",
+			"sections_avg": 77.41,
+			"sections_instructor": "aviles, leticia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "1st yr italian i",
+			"sections_avg": 73.25,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "1st yr italian i",
+			"sections_avg": 75.73,
+			"sections_instructor": "segnini, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "1st yr italian i",
+			"sections_avg": 78.21,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 75.64,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 75.77,
+			"sections_instructor": "dagnino, arianna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 76.4,
+			"sections_instructor": "uroni, cristina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 80.29,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 73.16,
+			"sections_instructor": "canuto, luisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "1st yr ital ii",
+			"sections_avg": 81.82,
+			"sections_instructor": "canuto, luisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "2nd-year ital i",
+			"sections_avg": 79.71,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "2nd-year ital i",
+			"sections_avg": 79.09,
+			"sections_instructor": "canuto, luisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "2nd-year ital ii",
+			"sections_avg": 74.9,
+			"sections_instructor": "liscio gordon, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "3rd year ital i",
+			"sections_avg": 82.5,
+			"sections_instructor": "benimeo, maria;lai, alberta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "ty italian ii",
+			"sections_avg": 83,
+			"sections_instructor": "benimeo, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "dante's div com",
+			"sections_avg": 82.29,
+			"sections_instructor": "boccassini, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "231",
+			"sections_title": "intr ital cult i",
+			"sections_avg": 74,
+			"sections_instructor": "boccassini, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "333",
+			"sections_title": "novella in lit",
+			"sections_avg": 77.33,
+			"sections_instructor": "segnini, elisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "413",
+			"sections_title": "div comedy trans",
+			"sections_avg": 77,
+			"sections_instructor": "boccassini, daniela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin japn i",
+			"sections_avg": 75.27,
+			"sections_instructor": "kim, ihhwa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "begin japn i",
+			"sections_avg": 77.7,
+			"sections_instructor": "milutin, otillia clara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "begin japn i",
+			"sections_avg": 75.43,
+			"sections_instructor": "kim, ihhwa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "basic korean",
+			"sections_avg": 71.72,
+			"sections_instructor": "shin, eurie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "read:korn tpcs 1",
+			"sections_avg": 75.27,
+			"sections_instructor": "son, jeong hye",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "525",
+			"sections_title": "dsgn-res mthds",
+			"sections_avg": 81.22,
+			"sections_instructor": "soules, matthew",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "551",
+			"sections_title": "prof prct larc",
+			"sections_avg": 80.53,
+			"sections_instructor": "girling, cynthia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "595",
+			"sections_title": "grad project i",
+			"sections_avg": 83.27,
+			"sections_instructor": "girling, cynthia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "pop cult ltn am",
+			"sections_avg": 77.26,
+			"sections_instructor": "fraser, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "512",
+			"sections_title": "indexing",
+			"sections_avg": 84.89,
+			"sections_instructor": "stephenson, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "516",
+			"sections_title": "info asset mgmt",
+			"sections_avg": 86.53,
+			"sections_instructor": "bradley, alexandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "child literature",
+			"sections_avg": 82.2,
+			"sections_instructor": "saltman, judith",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "521",
+			"sections_title": "contmp child lit",
+			"sections_avg": 81.56,
+			"sections_instructor": "saltman, judith",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "523",
+			"sections_title": "cdn chld lit",
+			"sections_avg": 83.82,
+			"sections_instructor": "saltman, judith",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "527",
+			"sections_title": "serv for chld",
+			"sections_avg": 82.38,
+			"sections_instructor": "saltman, judith",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "557",
+			"sections_title": "info retrvl sys",
+			"sections_avg": 86.71,
+			"sections_instructor": "stephenson, mary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "587",
+			"sections_title": "preservation",
+			"sections_avg": 79.57,
+			"sections_instructor": "sutherland, sabina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intr lang&ling",
+			"sections_avg": 83.07,
+			"sections_instructor": "wiltschko, martina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "209",
+			"sections_title": "tpc sp,lang,hrng",
+			"sections_avg": 71.84,
+			"sections_instructor": "stemberger, joseph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "222",
+			"sections_title": "lang acquisition",
+			"sections_avg": 81.95,
+			"sections_instructor": "hudson kam, carla",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "instr phonetics",
+			"sections_avg": 74.79,
+			"sections_instructor": "schellenberg, murray",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "327",
+			"sections_title": "intro semantics",
+			"sections_avg": 75.08,
+			"sections_instructor": "matthewson, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "333",
+			"sections_title": "rsrch mthds ling",
+			"sections_avg": 85.39,
+			"sections_instructor": "stemberger, joseph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "451",
+			"sections_title": "acq phonology",
+			"sections_avg": 79.15,
+			"sections_instructor": "stemberger, joseph",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "452",
+			"sections_title": "acq syntax",
+			"sections_avg": 81.96,
+			"sections_instructor": "hudson kam, carla",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "518",
+			"sections_title": "adv rsch seminar",
+			"sections_avg": 89,
+			"sections_instructor": "wiltschko, martina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "images in texts",
+			"sections_avg": 76.92,
+			"sections_instructor": "sohn, bong gi",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "441",
+			"sections_title": "intr tch ch lit",
+			"sections_avg": 87.04,
+			"sections_instructor": "shoemaker, kathryn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "441",
+			"sections_title": "intr tch ch lit",
+			"sections_avg": 84.69,
+			"sections_instructor": "shoemaker, kathryn",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "602",
+			"sections_title": "crt anly iss&mth",
+			"sections_avg": 89.2,
+			"sections_instructor": "duff, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "int calc ap ph s",
+			"sections_avg": 70.96,
+			"sections_instructor": "barry, anna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "105",
+			"sections_title": "int calc ap c&ss",
+			"sections_avg": 71.63,
+			"sections_instructor": "nguyen, athena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "calculus 3",
+			"sections_avg": 74.48,
+			"sections_instructor": "fraser, ailana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "217",
+			"sections_title": "mltvar&vctr calc",
+			"sections_avg": 73.66,
+			"sections_instructor": "komjathy, julia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "math proof",
+			"sections_avg": 73.98,
+			"sections_instructor": "khosravi, mahta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "math proof",
+			"sections_avg": 75.79,
+			"sections_instructor": "laba, izabella",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "226",
+			"sections_title": "adv calculus i",
+			"sections_avg": 80.47,
+			"sections_instructor": "laba, izabella",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "253",
+			"sections_title": "multivrbl calc",
+			"sections_avg": 72.83,
+			"sections_instructor": "slade, gordon",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "253",
+			"sections_title": "multivrbl calc",
+			"sections_avg": 73.26,
+			"sections_instructor": "sibilla, nicolo",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "253",
+			"sections_title": "multivrbl calc",
+			"sections_avg": 73.26,
+			"sections_instructor": "fraser, ailana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "255",
+			"sections_title": "ord diff equtns",
+			"sections_avg": 70.82,
+			"sections_instructor": "shih, chih wen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "300",
+			"sections_title": "intr complex var",
+			"sections_avg": 70.03,
+			"sections_instructor": "pramanik, malabika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "intr probability",
+			"sections_avg": 70.29,
+			"sections_instructor": "levit, anna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "303",
+			"sections_title": "intr stoch proc",
+			"sections_avg": 70.49,
+			"sections_instructor": "slade, gordon",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "312",
+			"sections_title": "intr number thry",
+			"sections_avg": 70.08,
+			"sections_instructor": "peskin, laura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "317",
+			"sections_title": "calculus iv",
+			"sections_avg": 75.09,
+			"sections_instructor": "ganapathy, radhika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "322",
+			"sections_title": "intr grp theory",
+			"sections_avg": 72.38,
+			"sections_instructor": "silberman, lior",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "intro lin prog",
+			"sections_avg": 70.75,
+			"sections_instructor": "solymosi, jozsef",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "440",
+			"sections_title": "complex analysis",
+			"sections_avg": 75.36,
+			"sections_instructor": "pramanik, malabika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "503",
+			"sections_title": "discrete math",
+			"sections_avg": 87.85,
+			"sections_instructor": "solymosi, jozsef",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "508",
+			"sections_title": "complex analy",
+			"sections_avg": 88,
+			"sections_instructor": "pramanik, malabika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "226",
+			"sections_title": "tech communicatn",
+			"sections_avg": 83.36,
+			"sections_instructor": "qi, hongxing estella;teslenko, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "360",
+			"sections_title": "mech materials",
+			"sections_avg": 75.98,
+			"sections_instructor": "schajer, gary",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "386",
+			"sections_title": "indus fluid mech",
+			"sections_avg": 81.89,
+			"sections_instructor": "grecov, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "392",
+			"sections_title": "manu pro process",
+			"sections_avg": 85.51,
+			"sections_instructor": "sassani, farrokh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "420",
+			"sections_title": "sens & actuators",
+			"sections_avg": 77.82,
+			"sections_instructor": "stoeber, boris",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "431",
+			"sections_title": "eng economics",
+			"sections_avg": 82.92,
+			"sections_instructor": "etmannski, tamara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "433",
+			"sections_title": "biofluids",
+			"sections_avg": 83.75,
+			"sections_instructor": "grecov, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "463",
+			"sections_title": "mech vibrations",
+			"sections_avg": 80.83,
+			"sections_instructor": "anasavarapu, srikantha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "495",
+			"sections_title": "industrial eng",
+			"sections_avg": 79.63,
+			"sections_instructor": "sassani, farrokh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "fluid mechanics",
+			"sections_avg": 82.59,
+			"sections_instructor": "grecov, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "506",
+			"sections_title": "linear vibrtns",
+			"sections_avg": 80.56,
+			"sections_instructor": "anasavarapu, srikantha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "533",
+			"sections_title": "biofluids",
+			"sections_avg": 84.33,
+			"sections_instructor": "grecov, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "598",
+			"sections_title": "research seminar",
+			"sections_avg": 86.67,
+			"sections_instructor": "teslenko, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "cncpts clin gene",
+			"sections_avg": 89.5,
+			"sections_instructor": "scott, jennifer a",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "int env micrbiol",
+			"sections_avg": 70.08,
+			"sections_instructor": "sibley, jennifer",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "203",
+			"sections_title": "basic microb lab",
+			"sections_avg": 77.18,
+			"sections_instructor": "smith, karen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "322",
+			"sections_title": "moleclr micb lab",
+			"sections_avg": 80.7,
+			"sections_instructor": "sibley, jennifer",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "353",
+			"sections_title": "food microbi lab",
+			"sections_avg": 78.58,
+			"sections_instructor": "smith, karen",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "microbio&biotech",
+			"sections_avg": 73.8,
+			"sections_instructor": "smit, john kenneth",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "adv immunogeneti",
+			"sections_avg": 88,
+			"sections_instructor": "gold, michael;perona wright, georgia;sly, laura",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "crit apprais lit",
+			"sections_avg": 85.61,
+			"sections_instructor": "thordarson, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "205",
+			"sections_title": "primry care thry",
+			"sections_avg": 89.75,
+			"sections_instructor": "broten, courtney;mcrae, lorna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "305",
+			"sections_title": "thry var prim cr",
+			"sections_avg": 84.93,
+			"sections_instructor": "simmons, valerie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "sr rsrch project",
+			"sections_avg": 89.46,
+			"sections_instructor": "thordarson, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "sr rsrch project",
+			"sections_avg": 84.25,
+			"sections_instructor": "thordarson, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "224",
+			"sections_title": "minerolgy mn eng",
+			"sections_avg": 71.95,
+			"sections_instructor": "holuszko, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "rock fragmentatn",
+			"sections_avg": 76.75,
+			"sections_instructor": "scoble, malcolm",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "393",
+			"sections_title": "seminar",
+			"sections_avg": 88.6,
+			"sections_instructor": "schoen, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "488",
+			"sections_title": "hvy oil snd mine",
+			"sections_avg": 77.24,
+			"sections_instructor": "schoen, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "392",
+			"sections_title": "eng tech commun",
+			"sections_avg": 80.88,
+			"sections_instructor": "liu, wenying;teslenko, tatiana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "164",
+			"sections_title": "jazz ensemble",
+			"sections_avg": 89.46,
+			"sections_instructor": "stride, frederick",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "167",
+			"sections_title": "piano chamber",
+			"sections_avg": 85.46,
+			"sections_instructor": "hoy, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "hist music iii",
+			"sections_avg": 71.67,
+			"sections_instructor": "micznik, vera georgia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "309",
+			"sections_title": "instrumentation",
+			"sections_avg": 80.95,
+			"sections_instructor": "stride, frederick",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "349",
+			"sections_title": "keyboard hrmy&tr",
+			"sections_avg": 80.71,
+			"sections_instructor": "hoy, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "524",
+			"sections_title": "shpbld proj mgmt",
+			"sections_avg": 89.31,
+			"sections_instructor": "stana, vitorio",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "303",
+			"sections_title": "hist anc egypt",
+			"sections_avg": 72.72,
+			"sections_instructor": "schneider, thomas",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "adlt mntl illnss",
+			"sections_avg": 77.2,
+			"sections_instructor": "groening, marlee;wallace, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "335",
+			"sections_title": "adlt mntl illnss",
+			"sections_avg": 79,
+			"sections_instructor": "groening, marlee;wallace, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "336",
+			"sections_title": "commnty & popltn",
+			"sections_avg": 82.4,
+			"sections_instructor": "dhari, ranjit kaur;ricci, joanne;swanson, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "336",
+			"sections_title": "commnty & popltn",
+			"sections_avg": 82.6,
+			"sections_instructor": "dhari, ranjit kaur;ricci, joanne;swanson, monica",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "423",
+			"sections_title": "chldren&families",
+			"sections_avg": 85,
+			"sections_instructor": "pham, chandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "505",
+			"sections_title": "stat lit nursing",
+			"sections_avg": 88.07,
+			"sections_instructor": "wong, sabrina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "505",
+			"sections_title": "stat lit nursing",
+			"sections_avg": 85.13,
+			"sections_instructor": "wong, sabrina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "admn ldrshp nurs",
+			"sections_avg": 87.36,
+			"sections_instructor": "bungay, victoria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "408",
+			"sections_title": "lab admin",
+			"sections_avg": 85.83,
+			"sections_instructor": "bradley, amanda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "467",
+			"sections_title": "micr infectn ctl",
+			"sections_avg": 82.21,
+			"sections_instructor": "al rawahi, ghada;roberts, frederick;stefanovic, aleksandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "477",
+			"sections_title": "epid infect cont",
+			"sections_avg": 79.5,
+			"sections_instructor": "henry, bonnie;naus, monika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "635",
+			"sections_title": "seminar",
+			"sections_avg": 88.13,
+			"sections_instructor": "cote, helene;kalloger, steve ernest;wellington, cheryl lea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "intro pharmaclgy",
+			"sections_avg": 77.46,
+			"sections_instructor": "fedida, david;horne, andrew;karim, sultan;pang, catherine c;walker, michael j a",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "325",
+			"sections_title": "rnl bs drug ther",
+			"sections_avg": 86.36,
+			"sections_instructor": "shabbits, jennifer anne",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "402",
+			"sections_title": "systmtc pcol lab",
+			"sections_avg": 88,
+			"sections_instructor": "horne, andrew;karim, sultan;kurata, harley;pang, catherine c;walker, michael j a",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "drug assay&phrmc",
+			"sections_avg": 85.29,
+			"sections_instructor": "barr, alasdair;bernatchez, pascal;horne, andrew;kurata, harley;walker, michael j a",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "513",
+			"sections_title": "pcol anaesthesia",
+			"sections_avg": 89,
+			"sections_instructor": "macleod, bernard a",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "351",
+			"sections_title": "therapeutics i",
+			"sections_avg": 75.25,
+			"sections_instructor": "soon, judith",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "371",
+			"sections_title": "pathophys i",
+			"sections_avg": 78.89,
+			"sections_instructor": "klassen, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "442",
+			"sections_title": "pharmacology iv",
+			"sections_avg": 83.29,
+			"sections_instructor": "soja, peter",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "460",
+			"sections_title": "nat hlth prodcts",
+			"sections_avg": 82.05,
+			"sections_instructor": "eccott, lynda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "471",
+			"sections_title": "pathopysio ii",
+			"sections_avg": 84.47,
+			"sections_instructor": "klassen, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "499",
+			"sections_title": "cs phar sci iv",
+			"sections_avg": 85.23,
+			"sections_instructor": "leung, larry;nicholl, tessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "499",
+			"sections_title": "cs phar sci iv",
+			"sections_avg": 86.3,
+			"sections_instructor": "leung, larry;nicholl, tessa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "adv pharmacother",
+			"sections_avg": 83,
+			"sections_instructor": "gerber, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 73.12,
+			"sections_instructor": "stephens, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 70.8,
+			"sections_instructor": "semczyszyn, nola",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "intro philosophy",
+			"sections_avg": 70.09,
+			"sections_instructor": "semczyszyn, nola",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "intr philsphy ii",
+			"sections_avg": 72.21,
+			"sections_instructor": "semczyszyn, nola",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "minds & machines",
+			"sections_avg": 77.03,
+			"sections_instructor": "esmaili, emma",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "316",
+			"sections_title": "phil after 1800",
+			"sections_avg": 76.24,
+			"sections_instructor": "schouls, peter",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "464",
+			"sections_title": "phil of biol",
+			"sections_avg": 78,
+			"sections_instructor": "stephens, christopher",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "511",
+			"sections_title": "path for pt 1",
+			"sections_avg": 86.52,
+			"sections_instructor": "scott, alexander",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "521",
+			"sections_title": "path for pt 2",
+			"sections_avg": 82.93,
+			"sections_instructor": "camp, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "544",
+			"sections_title": "clin prac iva",
+			"sections_avg": 88.09,
+			"sections_instructor": "klassen, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "548",
+			"sections_title": "case intgr iii",
+			"sections_avg": 87.99,
+			"sections_instructor": "klassen, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "elec light & rad",
+			"sections_avg": 76.52,
+			"sections_instructor": "stang, jared",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "elec light & rad",
+			"sections_avg": 80.18,
+			"sections_instructor": "rieger, georg;sossi, vesna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 78.9,
+			"sections_instructor": "karczmarek, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 81.26,
+			"sections_instructor": "tovar, mayra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 86.09,
+			"sections_instructor": "karczmarek, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 86.57,
+			"sections_instructor": "karczmarek, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.98,
+			"sections_instructor": "tovar, mayra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.39,
+			"sections_instructor": "stotyn, sean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "159",
+			"sections_title": "intro phys lab",
+			"sections_avg": 79.67,
+			"sections_instructor": "tovar, mayra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "reltvty & quanta",
+			"sections_avg": 71.55,
+			"sections_instructor": "karczmarek, joanna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "304",
+			"sections_title": "intro quant mech",
+			"sections_avg": 73.68,
+			"sections_instructor": "damascelli, andrea",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "306",
+			"sections_title": "mechanics",
+			"sections_avg": 76.21,
+			"sections_instructor": "sigurdson, kris",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "350",
+			"sections_title": "appl clscl mech",
+			"sections_avg": 72.12,
+			"sections_instructor": "schleich, kristin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "statistical mech",
+			"sections_avg": 74.63,
+			"sections_instructor": "berciu, mona",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "403",
+			"sections_title": "statistical mech",
+			"sections_avg": 76.72,
+			"sections_instructor": "tovar, mayra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "407",
+			"sections_title": "intr to gen rela",
+			"sections_avg": 82.53,
+			"sections_instructor": "schleich, kristin",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "410",
+			"sections_title": "comp phys",
+			"sections_avg": 79.88,
+			"sections_instructor": "sigurdson, kris",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "449",
+			"sections_title": "honours thesis",
+			"sections_avg": 84.33,
+			"sections_instructor": "sossi, vesna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "cond matter i",
+			"sections_avg": 81.33,
+			"sections_instructor": "sawatzky, george albert",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "508",
+			"sections_title": "quant fld theory",
+			"sections_avg": 88.33,
+			"sections_instructor": "stamp, philip c",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "526",
+			"sections_title": "quantum elctrdyn",
+			"sections_avg": 87.96,
+			"sections_instructor": "semenoff, gordon walter",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "535",
+			"sections_title": "rdiothrpy phy ii",
+			"sections_avg": 87.86,
+			"sections_instructor": "spadinger, ingrid",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "425",
+			"sections_title": "urbn plan cncpts",
+			"sections_avg": 78.51,
+			"sections_instructor": "ugarte-urzua, magdalena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "425",
+			"sections_title": "urbn plan cncpts",
+			"sections_avg": 78.8,
+			"sections_instructor": "ugarte-urzua, magdalena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "intro to politic",
+			"sections_avg": 71.15,
+			"sections_instructor": "arneil, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "investigat polit",
+			"sections_avg": 76.63,
+			"sections_instructor": "schwartz, elizabeth",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "390",
+			"sections_title": "honours seminar",
+			"sections_avg": 83.08,
+			"sections_instructor": "sundstrom, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "424",
+			"sections_title": "lit&film translt",
+			"sections_avg": 81,
+			"sections_instructor": "karwowska, bozena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "advanced port",
+			"sections_avg": 82.4,
+			"sections_instructor": "santos, alessandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "dev soc cli psy",
+			"sections_avg": 70.17,
+			"sections_instructor": "klonsky, elisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "217",
+			"sections_title": "rsrch mthds",
+			"sections_avg": 71.89,
+			"sections_instructor": "todd, rebecca",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "217",
+			"sections_title": "rsrch mthds",
+			"sections_avg": 71.12,
+			"sections_instructor": "croft, alyssa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "brn dys&recovery",
+			"sections_avg": 72.28,
+			"sections_instructor": "souza, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "brn dys&recovery",
+			"sections_avg": 71.55,
+			"sections_instructor": "souza, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "brn dys&recovery",
+			"sections_avg": 71.47,
+			"sections_instructor": "souza, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "health psycholgy",
+			"sections_avg": 71.63,
+			"sections_instructor": "de longis, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "health psycholgy",
+			"sections_avg": 71.84,
+			"sections_instructor": "de longis, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "health psycholgy",
+			"sections_avg": 71.34,
+			"sections_instructor": "de longis, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "health psycholgy",
+			"sections_avg": 70.8,
+			"sections_instructor": "de longis, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "314",
+			"sections_title": "health psycholgy",
+			"sections_avg": 71.74,
+			"sections_instructor": "de longis, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "cog neuroscience",
+			"sections_avg": 72.14,
+			"sections_instructor": "souza, michael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "530",
+			"sections_title": "assm intrv techn",
+			"sections_avg": 87.25,
+			"sections_instructor": "klonsky, elisha",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "560",
+			"sections_title": "clinical res des",
+			"sections_avg": 89.57,
+			"sections_instructor": "woody, sheila",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "209",
+			"sections_title": "intr hebrw bible",
+			"sections_avg": 76.92,
+			"sections_instructor": "milstein, sara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "420",
+			"sections_title": "neuroantmy/phys",
+			"sections_avg": 85.63,
+			"sections_instructor": "gaertner, tara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "evidnc for pract",
+			"sections_avg": 84.71,
+			"sections_instructor": "mortenson, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "507",
+			"sections_title": "dev rehab prog",
+			"sections_avg": 82.9,
+			"sections_instructor": "erlendson, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "sem resrce & env",
+			"sections_avg": 87.33,
+			"sections_instructor": "oberg, gunilla",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "518",
+			"sections_title": "water int dev",
+			"sections_avg": 78.63,
+			"sections_instructor": "schreier, hanspeter",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "515",
+			"sections_title": "prac skills i",
+			"sections_avg": 87.45,
+			"sections_instructor": "drynan, donna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "519",
+			"sections_title": "pro prct i",
+			"sections_avg": 86.6,
+			"sections_instructor": "drynan, donna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "527",
+			"sections_title": "evidence prac i",
+			"sections_avg": 84.6,
+			"sections_instructor": "holsti, liisa;suto, melinda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "549",
+			"sections_title": "pro practice ii",
+			"sections_avg": 85.8,
+			"sections_instructor": "drynan, donna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "basic russian i",
+			"sections_avg": 77.69,
+			"sections_instructor": "chitnev, veta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "basic russian i",
+			"sections_avg": 87.4,
+			"sections_instructor": "habajova, irina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "basic russian ii",
+			"sections_avg": 80.9,
+			"sections_instructor": "chitnev, veta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "basic russian ii",
+			"sections_avg": 83.5,
+			"sections_instructor": "prykhodko, dariya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "basic russian ii",
+			"sections_avg": 87.78,
+			"sections_instructor": "habajova, irina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "2nd year russian",
+			"sections_avg": 80.83,
+			"sections_instructor": "chitnev, veta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "207",
+			"sections_title": "20th c russ writ",
+			"sections_avg": 84.83,
+			"sections_instructor": "prykhodko, dariya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "316",
+			"sections_title": "russ throug film",
+			"sections_avg": 86.78,
+			"sections_instructor": "chitnev, veta",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "400",
+			"sections_title": "fourth-year russ",
+			"sections_avg": 84.36,
+			"sections_instructor": "prykhodko, dariya",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "336",
+			"sections_title": "crime fiction",
+			"sections_avg": 81.53,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "113",
+			"sections_title": "scie seminar",
+			"sections_avg": 78.04,
+			"sections_instructor": "steyn, douw gerbrand",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "113",
+			"sections_title": "scie seminar",
+			"sections_avg": 81.5,
+			"sections_instructor": "sherman, john;steyn, douw gerbrand",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "113",
+			"sections_title": "scie seminar",
+			"sections_avg": 75.44,
+			"sections_instructor": "sherman, john;steyn, douw gerbrand",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "soci of family",
+			"sections_avg": 72.48,
+			"sections_instructor": "bartolic, silvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "soci of family",
+			"sections_avg": 71.39,
+			"sections_instructor": "bartolic, silvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "380",
+			"sections_title": "soci meth survey",
+			"sections_avg": 73.09,
+			"sections_instructor": "bartolic, silvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "382",
+			"sections_title": "soci meth rsrch",
+			"sections_avg": 78.5,
+			"sections_instructor": "skourtes, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "382",
+			"sections_title": "soci meth rsrch",
+			"sections_avg": 78.37,
+			"sections_instructor": "sullivan, rachael",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "adv soil process",
+			"sections_avg": 82.14,
+			"sections_instructor": "brown, sandra",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "518",
+			"sections_title": "wtr intrntl dvlp",
+			"sections_avg": 83.5,
+			"sections_instructor": "schreier, hanspeter",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "agr wtrshd mgmt",
+			"sections_avg": 83.14,
+			"sections_instructor": "smukler, sean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "interviewing skl",
+			"sections_avg": 83.95,
+			"sections_instructor": "medjuck, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "416",
+			"sections_title": "adv int sem in sw th",
+			"sections_avg": 82.29,
+			"sections_instructor": "sullivan, t richard",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "soc wrk & justce",
+			"sections_avg": 83.84,
+			"sections_instructor": "dhebar, meera",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "101",
+			"sections_title": "beginner span i",
+			"sections_avg": 77.22,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "102",
+			"sections_title": "beginner span ii",
+			"sections_avg": 71.31,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intermed span i",
+			"sections_avg": 77.09,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intermed span i",
+			"sections_avg": 75.07,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "201",
+			"sections_title": "intermed span i",
+			"sections_avg": 72.15,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "intermed span ii",
+			"sections_avg": 70.53,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "202",
+			"sections_title": "intermed span ii",
+			"sections_avg": 71.33,
+			"sections_instructor": "spacciante, stephanie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "206",
+			"sections_title": "convers span i",
+			"sections_avg": 75.72,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "206",
+			"sections_title": "convers span i",
+			"sections_avg": 78.04,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "207",
+			"sections_title": "convers span ii",
+			"sections_avg": 78.69,
+			"sections_instructor": "bascou vallarino, sylvia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "207",
+			"sections_title": "convers span ii",
+			"sections_avg": 79.05,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "int lit analysis",
+			"sections_avg": 73.9,
+			"sections_instructor": "fernandez utrera, maria soleda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "221",
+			"sections_title": "int lit analysis",
+			"sections_avg": 76.93,
+			"sections_instructor": "de grandis, filomena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "advanced span i",
+			"sections_avg": 75.21,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "advanced span ii",
+			"sections_avg": 76.53,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "advanced span ii",
+			"sections_avg": 76.53,
+			"sections_instructor": "carbonetti, maria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "358",
+			"sections_title": "pen lit frm 1700",
+			"sections_avg": 78.27,
+			"sections_instructor": "fernandez utrera, maria soleda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "365",
+			"sections_title": "s-am lit aft1820",
+			"sections_avg": 78.59,
+			"sections_instructor": "de grandis, filomena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "504",
+			"sections_title": "std hisp cinema",
+			"sections_avg": 87.83,
+			"sections_instructor": "fernandez utrera, maria soleda",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "521",
+			"sections_title": "org behaviour",
+			"sections_avg": 84.68,
+			"sections_instructor": "skarlicki, dan",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "552",
+			"sections_title": "des & measure 2",
+			"sections_avg": 83.71,
+			"sections_instructor": "singer, joel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "557",
+			"sections_title": "qual health care",
+			"sections_avg": 85.84,
+			"sections_instructor": "krause, christina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "562",
+			"sections_title": "hlth care law",
+			"sections_avg": 76.38,
+			"sections_instructor": "sachedina, zulie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "562",
+			"sections_title": "hlth care law",
+			"sections_avg": 76.11,
+			"sections_instructor": "sachedina, zulie",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "563",
+			"sections_title": "ethcs hlth care",
+			"sections_avg": 81.46,
+			"sections_instructor": "ho, anita",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "epid methods 1",
+			"sections_avg": 82.1,
+			"sections_instructor": "schechter, martin;singer, joel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "512",
+			"sections_title": "dsgn clin trial",
+			"sections_avg": 87.9,
+			"sections_instructor": "singer, joel",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "515",
+			"sections_title": "survlnc&monitrng",
+			"sections_avg": 89.8,
+			"sections_instructor": "kishchenko, svetlana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "516",
+			"sections_title": "syst rev hlth rs",
+			"sections_avg": 87.72,
+			"sections_instructor": "doyle-waters, mary;mintzes, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "520",
+			"sections_title": "cntrl com dis",
+			"sections_avg": 88,
+			"sections_instructor": "kishchenko, svetlana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "525",
+			"sections_title": "iss public hlth",
+			"sections_avg": 87.36,
+			"sections_instructor": "naus, monika",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "525",
+			"sections_title": "iss public hlth",
+			"sections_avg": 86.24,
+			"sections_instructor": "lee, victoria",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "527",
+			"sections_title": "soc detrmin hlth",
+			"sections_avg": 89.63,
+			"sections_instructor": "shoveller, jean",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "550",
+			"sections_title": "sbst use addictn",
+			"sections_avg": 89.56,
+			"sections_instructor": "oviedo-joekes, eugenia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "elem stat applic",
+			"sections_avg": 75.83,
+			"sections_instructor": "yu, hoi yin eugenia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "elem stat applic",
+			"sections_avg": 71.97,
+			"sections_instructor": "yu, hoi yin eugenia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "elem stat applic",
+			"sections_avg": 71.42,
+			"sections_instructor": "yu, hoi yin eugenia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro prob&stats",
+			"sections_avg": 74.27,
+			"sections_instructor": "lee, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "intro prob&stats",
+			"sections_avg": 72.71,
+			"sections_instructor": "lee, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "251",
+			"sections_title": "elem statistics",
+			"sections_avg": 71.02,
+			"sections_instructor": "lee, melissa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "302",
+			"sections_title": "intr probability",
+			"sections_avg": 73.99,
+			"sections_instructor": "yu, hoi yin eugenia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "344",
+			"sections_title": "sample surveys",
+			"sections_avg": 74.33,
+			"sections_instructor": "chen, jiahua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "450",
+			"sections_title": "case studies",
+			"sections_avg": 84.44,
+			"sections_instructor": "cohen freue, gabriela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "stat meth hd bio",
+			"sections_avg": 89.72,
+			"sections_instructor": "cohen freue, gabriela",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "561",
+			"sections_title": "",
+			"sections_avg": 81.75,
+			"sections_instructor": "chen, jiahua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "elem swedish 1",
+			"sections_avg": 83.39,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "100",
+			"sections_title": "elem swedish 1",
+			"sections_avg": 84.35,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "110",
+			"sections_title": "elem swedish 2",
+			"sections_avg": 82.37,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "200",
+			"sections_title": "int swedish 1",
+			"sections_avg": 81.31,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "int swedish 2",
+			"sections_avg": 81.17,
+			"sections_instructor": "karlstrom, lena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "211",
+			"sections_title": "drama ideas ii",
+			"sections_avg": 76.44,
+			"sections_instructor": "everett, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "drama perform",
+			"sections_avg": 75.48,
+			"sections_instructor": "couture, selena",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "354",
+			"sections_title": "stage management",
+			"sections_avg": 79.86,
+			"sections_instructor": "asbeek brusse, marijka",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "474",
+			"sections_title": "adv spch&move ii",
+			"sections_avg": 85.46,
+			"sections_instructor": "beley, lisa",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "180",
+			"sections_title": "fdn&media studio",
+			"sections_avg": 77.88,
+			"sections_instructor": "claxton, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "210",
+			"sections_title": "digital arts",
+			"sections_avg": 80.11,
+			"sections_instructor": "claxton, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "220",
+			"sections_title": "drawing",
+			"sections_avg": 80.31,
+			"sections_instructor": "zeigler, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "230",
+			"sections_title": "painting",
+			"sections_avg": 76.85,
+			"sections_instructor": "roy, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "240",
+			"sections_title": "intro photo",
+			"sections_avg": 77.44,
+			"sections_instructor": "hite, joshua",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 74.5,
+			"sections_instructor": "zeigler, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 81.79,
+			"sections_instructor": "roy, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "250",
+			"sections_title": "intro prnt media",
+			"sections_avg": 80.63,
+			"sections_instructor": "zeigler, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "311",
+			"sections_title": "digital arts ii",
+			"sections_avg": 78.53,
+			"sections_instructor": "claxton, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "320",
+			"sections_title": "intrmd drawng i",
+			"sections_avg": 81,
+			"sections_instructor": "roy, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "351",
+			"sections_title": "intermd print ii",
+			"sections_avg": 77.1,
+			"sections_instructor": "zeigler, barbara",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "380",
+			"sections_title": "studio theory i",
+			"sections_avg": 75.14,
+			"sections_instructor": "claxton, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "381",
+			"sections_title": "studio theory ii",
+			"sections_avg": 76.03,
+			"sections_instructor": "claxton, dana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "480",
+			"sections_title": "adv seminar i",
+			"sections_avg": 78.6,
+			"sections_instructor": "roy, marina",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "241",
+			"sections_title": "prog wd prod app",
+			"sections_avg": 71.5,
+			"sections_instructor": "smith, gregory",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "249",
+			"sections_title": "contemp tpcs",
+			"sections_avg": 79.2,
+			"sections_instructor": "saddler, john",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "330",
+			"sections_title": "industrial eng",
+			"sections_avg": 76.68,
+			"sections_instructor": "sowlati, taraneh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "440",
+			"sections_title": "engineering econ",
+			"sections_avg": 81.02,
+			"sections_instructor": "sowlati, taraneh",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "487",
+			"sections_title": "wood composites",
+			"sections_avg": 72.92,
+			"sections_instructor": "smith, gregory",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 73.42,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 70.35,
+			"sections_instructor": "kelly, patricia",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 76.59,
+			"sections_instructor": "wegner, diana",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 73.07,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 70.64,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 72.65,
+			"sections_instructor": "saunders, mary ann",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 70.11,
+			"sections_instructor": "ferreira, laila",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 72.26,
+			"sections_instructor": "casey, anna",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 71.78,
+			"sections_instructor": "thieme, katja",
+			"sections_year": 2014
+		},
+		{
+			"sections_id": "150",
+			"sections_title": "rsrch&writ human",
+			"sections_avg": 73.56,
+			"sections_instructor": "thieme, katja",
+			"sections_year": 2014
+		}
+	]
+}

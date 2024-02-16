@@ -1,0 +1,25 @@
+{
+	"title": "valid_OR_OR",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"OR": [
+						{
+							"GT": {
+								"sections_audit": 30
+							}
+						}
+					]
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_year"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}

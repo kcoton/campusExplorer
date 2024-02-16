@@ -1,0 +1,189 @@
+{
+	"title": "coverage query 2",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_dept": "cpsc"
+					}
+				},
+				{
+					"EQ": {
+						"sections_year": 2015
+					}
+				},
+				{
+					"GT": {
+						"sections_avg": 80
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_id",
+				"sections_title",
+				"sections_avg"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_id": "110",
+			"sections_title": "comptn, progrmng",
+			"sections_avg": 84.91
+		},
+		{
+			"sections_id": "121",
+			"sections_title": "model comptn",
+			"sections_avg": 82.63
+		},
+		{
+			"sections_id": "301",
+			"sections_title": "comptng life sci",
+			"sections_avg": 82.99
+		},
+		{
+			"sections_id": "310",
+			"sections_title": "intr sftwr eng",
+			"sections_avg": 81.18
+		},
+		{
+			"sections_id": "311",
+			"sections_title": "programmng langs",
+			"sections_avg": 84.39
+		},
+		{
+			"sections_id": "319",
+			"sections_title": "softwr eng proj",
+			"sections_avg": 87.93
+		},
+		{
+			"sections_id": "340",
+			"sections_title": "machine lrn mine",
+			"sections_avg": 80.29
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "adv rel databse",
+			"sections_avg": 81.82
+		},
+		{
+			"sections_id": "404",
+			"sections_title": "adv rel databse",
+			"sections_avg": 80.77
+		},
+		{
+			"sections_id": "411",
+			"sections_title": "compiler constrc",
+			"sections_avg": 86
+		},
+		{
+			"sections_id": "416",
+			"sections_title": "distrbt'd systms",
+			"sections_avg": 81.18
+		},
+		{
+			"sections_id": "418",
+			"sections_title": "parallel comput",
+			"sections_avg": 86.04
+		},
+		{
+			"sections_id": "445",
+			"sections_title": "alg in bioin",
+			"sections_avg": 83.59
+		},
+		{
+			"sections_id": "449",
+			"sections_title": "honours thesis",
+			"sections_avg": 90.25
+		},
+		{
+			"sections_id": "490",
+			"sections_title": "student seminar",
+			"sections_avg": 84.5
+		},
+		{
+			"sections_id": "500",
+			"sections_title": "fund alg dsgn&an",
+			"sections_avg": 84.85
+		},
+		{
+			"sections_id": "501",
+			"sections_title": "thry of automata",
+			"sections_avg": 83.8
+		},
+		{
+			"sections_id": "502",
+			"sections_title": "artif intell 1",
+			"sections_avg": 83.43
+		},
+		{
+			"sections_id": "503",
+			"sections_title": "computl ling 1",
+			"sections_avg": 89.47
+		},
+		{
+			"sections_id": "507",
+			"sections_title": "software eng",
+			"sections_avg": 89
+		},
+		{
+			"sections_id": "509",
+			"sections_title": "prog lang princ",
+			"sections_avg": 87.2
+		},
+		{
+			"sections_id": "515",
+			"sections_title": "comput robotics",
+			"sections_avg": 83.36
+		},
+		{
+			"sections_id": "521",
+			"sections_title": "para algs & arch",
+			"sections_avg": 84.13
+		},
+		{
+			"sections_id": "522",
+			"sections_title": "artif intell 2",
+			"sections_avg": 83.39
+		},
+		{
+			"sections_id": "527",
+			"sections_title": "comp comm protcl",
+			"sections_avg": 91.22
+		},
+		{
+			"sections_id": "540",
+			"sections_title": "machine learn i",
+			"sections_avg": 90.53
+		},
+		{
+			"sections_id": "543",
+			"sections_title": "phy user intfc",
+			"sections_avg": 82.07
+		},
+		{
+			"sections_id": "544",
+			"sections_title": "hmn-cmpt intract",
+			"sections_avg": 81.64
+		},
+		{
+			"sections_id": "547",
+			"sections_title": "info visualizatn",
+			"sections_avg": 88.68
+		},
+		{
+			"sections_id": "589",
+			"sections_title": "m.sc major essay",
+			"sections_avg": 85
+		},
+		{
+			"sections_id": "589",
+			"sections_title": "m.sc major essay",
+			"sections_avg": 85.75
+		}
+	]
+}
