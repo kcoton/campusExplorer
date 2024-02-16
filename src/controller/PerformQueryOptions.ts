@@ -44,7 +44,6 @@ export async function handleOptions(data: Section[], options: Options): Promise<
 	return result;
 }
 
-
 // Takes column key and returns true if it is valid
 export function isValidKey(key: string): boolean {
 	if (columnKeys.includes(key)) {
@@ -72,11 +71,11 @@ export function isValidOptions(options: Options): boolean {
 	}
 
 	if (options.ORDER) {
-		if (typeof options.ORDER !== "string") {
+		if (typeof options.ORDER !== "string" || options.ORDER.length === 0) {
 			return false;
 		}
 		const orderKey = getKeyId(options.ORDER);
-		if (!columnKeys.includes(orderKey)) {
+		if (!orderKey || orderKey.length === 0 || !columnKeys.includes(orderKey)) {
 			return false;
 		}
 	}

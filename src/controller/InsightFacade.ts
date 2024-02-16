@@ -127,7 +127,7 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		if (!isValidQuery(query as Query)) {
+		if (!isValidQuery(query)) {
 			throw new InsightError("performQuery: Not a valid query");
 		}
 

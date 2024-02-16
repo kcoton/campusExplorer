@@ -8,18 +8,6 @@ export interface Query {
 	OPTIONS: Options;
 }
 
-// Reads course data from json file
-export async function getData(path: string): Promise<any> {
-	const data = await JSON.parse(fs.readFileSync(path, "utf-8"));
-	return data;
-}
-
-// Reads query from json file
-export async function getQuery(path: string): Promise<Query> {
-	const query = await JSON.parse(fs.readFileSync(path, "utf-8"));
-	return query;
-}
-
 // Validates query format is valid to EBNF
 export function isValidQuery(uncheckedQuery: unknown): boolean {
 	if (typeof uncheckedQuery !== "object") {
@@ -32,7 +20,7 @@ export function isValidQuery(uncheckedQuery: unknown): boolean {
 		return false;
 	}
 
-	if (typeof query.WHERE !== "object" || typeof query.OPTIONS !== "object") {
+	if (typeof query.WHERE !== "object" || typeof query.OPTIONS !== "object" || Array.isArray(query.WHERE)) {
 		return false;
 	}
 
@@ -48,7 +36,6 @@ export function getKeyId(key: string): string {
 	const id = key.split("_")[1];
 	return id;
 }
-
 
 // /** local testing -- ignore */
 // export async function main() {
