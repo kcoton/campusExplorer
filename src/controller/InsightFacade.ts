@@ -15,7 +15,7 @@ import {isValidId, checkExistingId} from "../utils";
 import {Query, getKeyId, isValidQuery} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
 import {handleOptions} from "./PerformQueryOptions";
-import { addSection } from "./SectionDataFunction";
+import {addSection} from "./SectionDataFunction";
 
 /**
  * This is the main programmatic entry point for the project.
