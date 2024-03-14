@@ -12,4 +12,12 @@ export interface Room {
 	href: string; // link to full details onl
 }
 
+export interface Building {
+	fullname: string,
+	shortname: string,
+	address: string,
+	lat: number,
+	lon: number,
+	href: string // link to the file to get the rooms for the building
+}
 
