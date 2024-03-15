@@ -1,0 +1,445 @@
+{
+	"title": "valid_countName",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_href": "*s*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_seats",
+				"countName"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"countName"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"rooms_seats"
+			],
+			"APPLY": [
+				{
+					"countName": {
+						"COUNT": "rooms_shortname"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"rooms_seats": 40,
+			"countName": 8
+		},
+		{
+			"rooms_seats": 16,
+			"countName": 7
+		},
+		{
+			"rooms_seats": 20,
+			"countName": 7
+		},
+		{
+			"rooms_seats": 24,
+			"countName": 7
+		},
+		{
+			"rooms_seats": 30,
+			"countName": 7
+		},
+		{
+			"rooms_seats": 60,
+			"countName": 7
+		},
+		{
+			"rooms_seats": 12,
+			"countName": 5
+		},
+		{
+			"rooms_seats": 50,
+			"countName": 5
+		},
+		{
+			"rooms_seats": 48,
+			"countName": 4
+		},
+		{
+			"rooms_seats": 72,
+			"countName": 4
+		},
+		{
+			"rooms_seats": 80,
+			"countName": 4
+		},
+		{
+			"rooms_seats": 14,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 21,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 25,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 26,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 32,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 42,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 44,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 54,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 94,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 100,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 150,
+			"countName": 3
+		},
+		{
+			"rooms_seats": 8,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 10,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 18,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 22,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 27,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 28,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 31,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 34,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 35,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 36,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 37,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 39,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 47,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 65,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 68,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 70,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 90,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 99,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 120,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 160,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 181,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 200,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 350,
+			"countName": 2
+		},
+		{
+			"rooms_seats": 6,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 7,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 29,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 33,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 38,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 41,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 43,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 45,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 51,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 53,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 55,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 56,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 58,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 62,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 63,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 66,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 74,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 75,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 76,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 78,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 84,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 88,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 102,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 106,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 108,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 112,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 114,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 123,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 125,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 131,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 136,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 144,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 154,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 155,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 167,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 183,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 187,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 188,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 190,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 205,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 224,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 225,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 228,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 236,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 240,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 250,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 257,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 260,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 265,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 275,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 280,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 299,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 325,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 375,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 426,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 442,
+			"countName": 1
+		},
+		{
+			"rooms_seats": 503,
+			"countName": 1
+		}
+	]
+}
