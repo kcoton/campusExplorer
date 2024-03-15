@@ -1,0 +1,36 @@
+{
+	"title": "invalid_column_key_with_underscore",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"sections_avg": 30
+					}
+				},
+				{
+					"LT": {
+						"sections_avg": 60
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_invalid",
+				"sections_title",
+				"sections_avg",
+				"sections_instructor"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"sections_avg",
+					"sections_uuid"
+				]
+			}
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

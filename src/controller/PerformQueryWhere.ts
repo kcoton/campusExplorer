@@ -1,7 +1,8 @@
+import {Room} from "../type/Room";
 import {Section} from "../type/Section";
 import {InsightError} from "./IInsightFacade";
-import {Query, getKeyId} from "./PerformQueryHelper";
-import {isValidKey, columnKeys} from "./PerformQueryOptions";
+import {Query, getKeyId, isRoom, isSection} from "./PerformQueryHelper";
+import {isValidKey, roomKeys, sKeys, sectionKeys} from "./PerformQueryOptions";
 
 export const comparators = ["AND", "OR", "GT", "LT", "EQ", "IS", "NOT"];
 
@@ -20,37 +21,37 @@ export interface Condition {
 }
 
 // Takes section and returns true if evaluated to be query condition
-function handleCondition(section: Section, condition: Condition): boolean {
+function handleCondition(item: Section | Room, condition: Condition): boolean {
 	if (!isValidCondition(condition)) {
 		throw new InsightError("performQuery: invalid condition or comparator");
 	}
 
 	if (condition.AND) {
-		const res = condition.AND.every((cond) => handleCondition(section, cond));
+		const res = condition.AND.every((cond) => handleCondition(item, cond));
 		return res;
 	} else if (condition.OR) {
-		return condition.OR.some((cond) => handleCondition(section, cond));
+		return condition.OR.some((cond) => handleCondition(item, cond));
 	} else if (condition.GT) {
 		const field = Object.keys(condition.GT)[0];
 		const id = getKeyId(field);
-		const res = section[id as keyof typeof section] > condition.GT[field];
+		const res = (item[id as keyof typeof item] as number) > (condition.GT[field] as number);
 		return res;
 	} else if (condition.LT) {
 		const field = Object.keys(condition.LT)[0];
 		const id = getKeyId(field);
-		const res = section[id as keyof typeof section] < condition.LT[field];
+		const res = (item[id as keyof typeof item] as number) < (condition.LT[field] as number);
 		return res;
 	} else if (condition.EQ) {
 		const field = Object.keys(condition.EQ)[0];
 		const id = getKeyId(field);
-		const res = section[id as keyof typeof section] === condition.EQ[field];
+		const res = item[id as keyof typeof item] === condition.EQ[field];
 		return res;
 	} else if (condition.IS) {
 		const field = Object.keys(condition.IS)[0];
 		const id = getKeyId(field);
-		return matchWithWildcard(section[id as keyof typeof section], condition.IS[field] as string);
+		return matchWithWildcard(item[id as keyof typeof item], condition.IS[field] as string);
 	} else if (condition.NOT) {
-		return !handleCondition(section, condition.NOT);
+		return !handleCondition(item, condition.NOT);
 	}
 
 	throw new InsightError("performQuery: not a valid comparator");
@@ -73,12 +74,22 @@ function matchWithWildcard(value: string | number, pattern: string): boolean {
 }
 
 // Takes data of Section[] and query, returns results using filtered where condition
-export async function handleWhere(data: Section[], query: Query): Promise<Section[]> {
+export async function handleWhere(data: Section[] | Room[], query: Query): Promise<Section[] | Room[]> {
 	if (Object.keys(query.WHERE).length === 0) {
 		return data;
 	}
-	const filteredData: Section[] = data.filter((section) => handleCondition(section, query.WHERE));
-	return filteredData;
+
+	if (data.length > 0 && isSection(data)) {
+		const sectionData = data as Section[];
+		const filteredData: Section[] = sectionData.filter((item) => handleCondition(item, query.WHERE));
+		return filteredData;
+	} else if (data.length > 0 && isRoom(data)) {
+		const roomData = data as Room[];
+		const filteredData: Room[] = roomData.filter((item) => handleCondition(item, query.WHERE));
+		return filteredData;
+	}
+
+	throw new InsightError("performQuery: invalid section or room type in handleWhere");
 }
 
 // Validates conditions are formatted correctly to EBNF
@@ -155,7 +166,8 @@ function validateComparator(comp: Comparator, shouldBeString: boolean = false): 
 	const key = Object.keys(comp)[0];
 	const value = comp[key];
     // Check if the key is one of the valid keys
-	if (!columnKeys.includes(getKeyId(key))) {
+	// TODO: this needs to work for both section and room keys -- validation for key needs to be reworked
+	if (!sectionKeys.includes(getKeyId(key)) && !roomKeys.includes(getKeyId(key))){
 		return false;
 	}
     // Check if the value type matches the expected type (string for IS, number for GT, LT, EQ)
