@@ -165,6 +165,7 @@ function validateComparator(comp: Comparator, shouldBeString: boolean = false): 
 	}
 	const key = Object.keys(comp)[0];
 	const value = comp[key];
+
     // Check if the key is one of the valid keys
 	// TODO: this needs to work for both section and room keys -- validation for key needs to be reworked
 	if (!sectionKeys.includes(getKeyId(key)) && !roomKeys.includes(getKeyId(key))){

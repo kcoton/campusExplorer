@@ -18,7 +18,7 @@ export const applyKeys = ["MAX", "MIN", "AVG", "COUNT", "SUM"];
 // Takes data of Section[] or Room[] and query, returns transformed data after group + apply
 export async function handleTransformations(data: Section[] | Room[], query: Query): Promise<Section[] | Room[]> {
 	// TRANSFORMATIONS is optional, if not specified, return data as is
-	if (!query.TRANSFORMATIONS) {
+	if (query.TRANSFORMATIONS === undefined || query.TRANSFORMATIONS === null) {
 		return data;
 	}
 
@@ -87,6 +87,15 @@ export function handleApply(groupResult: any, apply: any[]): Section[] | Room[] 
 
 export function handleApplyToken(applyToken: string, groupData: Section[] | Room[], applyField: string) {
 	const applyFieldKey = getKeyId(applyField);
+	// Check if applyFieldKey is numeric for MAX, MIN, AVG, and SUM
+	if (["MAX", "MIN", "AVG", "SUM"].includes(applyToken)) {
+		const value = groupData[0][applyFieldKey as keyof (Section | Room)];
+		if (isNaN(Number(value))) {
+			throw new InsightError("performQueryTransformations: applyFieldKey must \
+				be numeric for MAX, MIN, AVG, and SUM");
+		}
+	}
+
 	switch (applyToken) {
 		case "MAX":
 			return handleMax(groupData, applyFieldKey);
@@ -105,24 +114,24 @@ export function handleApplyToken(applyToken: string, groupData: Section[] | Room
 
 // Returns max value
 export function handleMax(groupData: Section[] | Room[], applyFieldKey: string) {
-	let max = -Infinity;
+	let max = -Number.MAX_VALUE;
 	for (const item of groupData) {
-		if (item[applyFieldKey as keyof (Section | Room)] > max) {
-			max = item[applyFieldKey as keyof (Section | Room)];
+		if (max < item[applyFieldKey as keyof (Section | Room)]) {
+			max = Number(item[applyFieldKey as keyof (Section | Room)]);
 		}
 	}
-	return max;
+	return max === -Number.MAX_VALUE ? 0 : max;
 }
 
 // Returns min value
 export function handleMin(groupData: Section[] | Room[], applyFieldKey: string) {
-	let min = Infinity;
+	let min = Number.MAX_VALUE;
 	for (const item of groupData) {
-		if (item[applyFieldKey as keyof (Section | Room)] < min) {
-			min = item[applyFieldKey as keyof (Section | Room)];
+		if (min > item[applyFieldKey as keyof (Section | Room)]) {
+			min = Number(item[applyFieldKey as keyof (Section | Room)]);
 		}
 	}
-	return min;
+	return min === Number.MAX_VALUE ? 0 : min;
 }
 
 // Returns average rounded to 2 decimal places
