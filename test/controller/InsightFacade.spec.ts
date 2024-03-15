@@ -299,6 +299,13 @@ describe("InsightFacade", function () {
 			expect(result[1].numRows).to.equal(364);
 		});
 
+		it ("list: 2 buildings 1 no room", async () => {
+			let oneNoRoomContent = await getContentFromArchives("2building1NoRoom.zip");
+			await insightFacade.addDataset("rooms1", oneNoRoomContent, roomsType);
+			const result = await insightFacade.listDatasets();
+			expect(result[0].numRows).to.equal(5);
+		});
+
 		it ("caching: list works for new instance", async () => {
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);

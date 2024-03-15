@@ -106,7 +106,11 @@ function addRoomList(table: ChildNode, roomList: Room[], building: Building) {
 						if (room.number !== null && room.name !== null && room.seats !== null) {
 							if ( room.type !== null && room.furniture !== null && room.href !== null) {
 								roomList.push(room);
+							} else {
+								console.log(room);
 							}
+						} else {
+							console.log(room);
 						}
 					}
 				}
@@ -120,13 +124,13 @@ function parseRoomFromTr(tr: ChildNode, room: Room) {
 		for (const td of tr.childNodes) {
 			if (td.nodeName === "td") {
 				if ("attrs" in td && Array.isArray(td.attrs)) {
-					if (td.attrs[0].value.includes("room-capacity")){
+					if (td.attrs[0].value.includes(" views-field-field-room-capacity")){
 						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 						if (text && "value" in text && typeof text.value === "string" ) {
 							room.seats = parseInt(text.value.trim(), 10);
 						}
 					}
-					if (td.attrs[0].value.includes("room-number")){
+					if (td.attrs[0].value.includes(" views-field-field-room-number")){
 						const a = Array.from(td.childNodes).find((elt) => elt.nodeName === "a");
 					// let href = getAttrs(a).find((e) => e.name === "href")?.value;
 					// building.href = href ? href : "";
@@ -142,13 +146,13 @@ function parseRoomFromTr(tr: ChildNode, room: Room) {
 							}
 						}
 					}
-					if (td.attrs[0].value.includes("room-furniture")){
+					if (td.attrs[0].value.includes(" views-field-field-room-furniture")){
 						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 						if (text && "value" in text && typeof text.value === "string" ) {
 							room.furniture = text.value.trim();
 						}
 					}
-					if (td.attrs[0].value.includes("room-type")){
+					if (td.attrs[0].value.includes(" views-field-field-room-type")){
 						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 						if (text && "value" in text && typeof text.value === "string" ) {
 							room.type = text.value.trim();
@@ -216,7 +220,7 @@ async function parseBuildingFromTr(tr: ChildNode, building: Building) {
 	await Promise.all(Array.from(tr.childNodes).map(async (td: ChildNode) => {
 		if (td.nodeName === "td") {
 			if ("attrs" in td && Array.isArray(td.attrs)) {
-				if (td.attrs[0].value.includes("building-code")){
+				if (td.attrs[0].value.includes("views-field-field-building-code")){
 					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 					if (text && "value" in text && typeof text.value === "string" ) {
 						building.shortname = text.value.trim();
@@ -236,7 +240,7 @@ async function parseBuildingFromTr(tr: ChildNode, building: Building) {
 						}
 					}
 				}
-				if (td.attrs[0].value.includes("building-address")){
+				if (td.attrs[0].value.includes("views-field-field-building-address")){
 					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 					if (text && "value" in text && typeof text.value === "string" ) {
 						building.address = text.value.trim();
