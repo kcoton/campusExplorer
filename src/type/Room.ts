@@ -11,5 +11,3 @@ export interface Room {
 	furniture: string; // room furniture
 	href: string; // link to full details onl
 }
-
-

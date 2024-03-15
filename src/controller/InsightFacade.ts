@@ -12,10 +12,12 @@ import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
 import {isValidId, checkExistingId} from "../utils";
-import {Query, getKeyId, isValidQuery} from "./PerformQueryHelper";
+import {Query, getKeyId, isValidColumns, isValidQueryFormat} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
-import {handleOptions} from "./PerformQueryOptions";
+import {filterColumns, handleOptions} from "./PerformQueryOptions";
 import {addSection} from "./SectionDataFunction";
+import {handleTransformations} from "./PerformQueryTransformations";
+import {Room} from "../type/Room";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -92,9 +94,11 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		if (!isValidQuery(query)) {
-			throw new InsightError("performQuery: Not a valid query");
+		// Checks if query object structure is valid
+		if (!isValidQueryFormat(query)) {
+			throw new InsightError("performQuery: query is not structured correctly");
 		}
+
 		const checkedQuery: Query = query as Query;
 		const columnDatasetIds = checkedQuery.OPTIONS.COLUMNS
 			.filter((column) => column.includes("_")) // Ensure the column references a dataset
@@ -108,20 +112,30 @@ export default class InsightFacade implements IInsightFacade {
 		const id = datasetIds[0];
 		const data = this.datasetCache[id];
 
-		/* TODO: refactor for Room | Section
+		// Checks if COLUMNS are valid for the dataset type (Room or Section)
+		if (!isValidColumns(checkedQuery.OPTIONS, data)) {
+			throw new InsightError("performQuery: invalid columns for dataset type");
+		}
 
 		// Handles where and options to return array result
 		const whereResult = await handleWhere(data, checkedQuery);
 		const optionsResult = await handleOptions(whereResult, checkedQuery.OPTIONS);
-		const queryResult = optionsResult.flat(); // .flat() will concatenate all the arrays into a single array
+		// TODO: handle transformations
+		// const transformationsResult = await handleTransformations(optionsResult, checkedQuery.TRANSFORMATIONS);
+		let transformationsResult = optionsResult; // TODO: remove this line when handleTransformations is implemented
+
+		// iterate through data, reduce to only columns specified
+		const columnResults: InsightResult[] = [];
+		transformationsResult.forEach((item: Section | Room) => {
+			const filteredData = filterColumns(checkedQuery.OPTIONS.COLUMNS, item);
+			columnResults.push(filteredData);
+		});
+		const queryResult = columnResults.flat(); // .flat() will concatenate all the arrays into a single array
 
 		if (queryResult.length > 5000) {
 			throw new ResultTooLargeError("performQuery: number of results greater > 5000");
 		}
 
 		return Promise.resolve(queryResult);
-		*/
-
-		return Promise.resolve([]);
 	}
 }
