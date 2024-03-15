@@ -1,0 +1,37 @@
+{
+	"title": "invalid_order_type",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_href": "*s*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon",
+				"max/seat"
+			],
+			"ORDER": 0
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon"
+			],
+			"APPLY": [
+				{
+					"max/seat": {
+						"MAX": "rooms_seats"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

@@ -32,13 +32,15 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 		}
 
 		await Promise.all(buildingsList.map(async (building) => {
-			await zip.file(building.href.substring(2))?.async("string").then((buildingHTMLContent) => {
-				const htmlParse = parse5.parse(buildingHTMLContent);
-				let roomTable = findRoomTable(htmlParse);
-				if (roomTable) {
-					addRoomList(roomTable, roomDataList, building);
-				}
-			});
+			if (building.href) {
+				await zip.file(building.href.substring(2))?.async("string").then((buildingHTMLContent) => {
+					const htmlParse = parse5.parse(buildingHTMLContent);
+					let roomTable = findRoomTable(htmlParse);
+					if (roomTable) {
+						addRoomList(roomTable, roomDataList, building);
+					}
+				});
+			}
 		}));
 
 		if (roomDataList.length === 0) {
@@ -90,18 +92,22 @@ function addRoomList(table: ChildNode, roomList: Room[], building: Building) {
 						let room: Room = {
 							fullname: building.fullname,
 							shortname: building.shortname,
-							number: "",
-							name: "",
+							number: null,
+							name: null,
 							address: building.address,
 							lat: building.lat,
 							lon: building.lon,
-							seats: 0,
-							type: "",
-							furniture: "",
-							href: ""
+							seats: null,
+							type: null,
+							furniture: null,
+							href: null
 						};
 						parseRoomFromTr(tr, room);
-						roomList.push(room);
+						if (room.number !== null && room.name !== null && room.seats !== null) {
+							if ( room.type !== null && room.furniture !== null && room.href !== null) {
+								roomList.push(room);
+							}
+						}
 					}
 				}
 			}
@@ -186,15 +192,19 @@ async function getBuildingsList(table: ChildNode, buildingsList: Building[]) {
 	await Promise.all(Array.from(tbody.childNodes).map(async (tr) => {
 		if (tr.nodeName === "tr") {
 			let building: Building = {
-				shortname: "",
-				fullname: "",
-				address: "",
-				lat: 0,
-				lon: 0,
-				href: ""
+				shortname: null,
+				fullname: null,
+				address: null,
+				lat: null,
+				lon: null,
+				href: null
 			};
 			await parseBuildingFromTr(tr, building);
-			buildingsList.push(building);
+			if (!(!building.fullname || !building.fullname || !building.address)) {
+				if (!(!building.lat || !building.lon || !building.href)) {
+					buildingsList.push(building);
+				}
+			}
 		}
 	}));
 }
@@ -266,14 +276,6 @@ function getGeolocation(url: string): Promise<GeoResponse> {
 			reject(err);
 		});
 	});
-}
-
-function getAttrs(element: any): Attribute[] {
-	if ("attrs" in element && Array.isArray(element.attrs)) {
-		return Array.from(element);
-	} else {
-		return [];
-	}
 }
 
 function findBuildingTable(htmlNode: ChildNode): ChildNode | null {
