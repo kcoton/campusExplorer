@@ -1,4 +1,10 @@
-import {IInsightFacade, InsightDatasetKind, InsightError, NotFoundError} from "../../src/controller/IInsightFacade";
+import {
+	IInsightFacade,
+	InsightDatasetKind,
+	InsightError,
+	NotFoundError,
+	InsightDataset
+} from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
 
 import {assert, expect, use} from "chai";
@@ -73,7 +79,7 @@ describe("InsightFacade", function () {
 			insightFacade = new InsightFacade();
 		});
 
-		it("addDataset: add success, one valid dataset", () => {
+		it("addDataset: add success, one valid dataset sections", () => {
 			const addId = "courses0";
 			const res = insightFacade.addDataset(addId, content0, sectionsType);
 			return expect(res).to.eventually.have.members([addId]);
@@ -82,6 +88,11 @@ describe("InsightFacade", function () {
 		it("addDataset: reject if id contains underscore", () => {
 			const res = insightFacade.addDataset("courses_0", content0, sectionsType);
 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("addDataset: reject if id contains underscore, rooms", () => {
+			const res1 = insightFacade.addDataset("campus_", contentCampus, sectionsType);
+			return expect(res1).to.eventually.be.rejectedWith(InsightError);
 		});
 
 		it("addDataset: should reject if id contains only white space", () => {
@@ -112,6 +123,14 @@ describe("InsightFacade", function () {
 			return expect(result).to.be.eventually.rejectedWith(InsightError);
 		});
 
+		it ("caching: new instance cannot add new id if it was added by old one, rooms", async () => {
+			await insightFacade.addDataset("campus", contentCampus, roomsType);
+
+			const newInstance = new InsightFacade();
+			const result = newInstance.addDataset("campus", contentCampus, roomsType);
+			return expect(result).to.be.eventually.rejectedWith(InsightError);
+		});
+
 		it ("addRoomDataset: valid dataset success", async () => {
 			const addId = "campus";
 			const res = await insightFacade.addDataset(addId, contentCampus, roomsType);
@@ -124,10 +143,16 @@ describe("InsightFacade", function () {
 			return expect(res).to.have.members(["courses0", "campus"]);
 		});
 
-		// it ("add invalidtableIndex reject", async () => {
-		// 	const res = await insightFacade.addDataset("invalidTable", invalidTableContent, roomsType);
-		// 	return expect(res).to.be.rejectedWith(InsightError);
-		// });
+		it ("cannot add when sections and rooms have same id", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			const res = insightFacade.addDataset("courses0", contentCampus, roomsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it ("add invalidtableIndex reject", async () => {
+			const res = insightFacade.addDataset("invalidTable", invalidTableContent, roomsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
 
 	});
 
@@ -204,12 +229,21 @@ describe("InsightFacade", function () {
 		beforeEach(async () => {
 			await clearDisk();
 			insightFacade = new InsightFacade();
-			await insightFacade.addDataset("courses0", content0, sectionsType);
+
 		});
+
+		function sortById(a: InsightDataset, b: InsightDataset) {
+			if (a.id < b.id) {
+				return -1;
+			} else if (a.id > b.id) {
+				return 1;
+			}
+			return 0;
+		}
 
 		// Tests for listDatasets
 		it("listDatasets: add 1, list 1, remove 0", async () => {
-			// await insightFacade.addDataset('courses0', content0, sections)
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
 			expect(result[0].id).to.equal("courses0");
@@ -218,14 +252,16 @@ describe("InsightFacade", function () {
 		});
 
 		it("listDatasets: add 2, remove none, and then remove 1", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 			const result = await insightFacade.listDatasets();
+			result.sort(sortById);
 			expect(result).to.have.length(2);
+			// console.log(result);
 			expect(result[0].id).to.equal("courses0");
 			expect(result[0].kind).to.deep.equal(sectionsType);
 			expect(result[1].id).to.equal("courses1");
 			expect(result[1].kind).to.deep.equal(sectionsType);
-			expect(result[1].numRows).to.deep.equal(2);
 
 			// remove 1, expect 1
 			await insightFacade.removeDataset("courses1");
@@ -241,7 +277,6 @@ describe("InsightFacade", function () {
 		});
 
 		it ("ls dataset add 1 for rooms", async () => {
-			await insightFacade.removeDataset("courses0");
 			await insightFacade.addDataset("campus", campusContent, roomsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
@@ -250,12 +285,29 @@ describe("InsightFacade", function () {
 			expect(result[0].numRows).to.equal(364);
 		});
 
+		it ("ls dataset add 1 for rooms 1 for sections", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			await insightFacade.addDataset("dcampus", campusContent, roomsType);
+
+			const result = await insightFacade.listDatasets();
+			result.sort(sortById);
+			expect(result).to.have.length(2);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[1].id).to.equal("dcampus");
+			expect(result[1].kind).to.deep.equal(roomsType);
+			expect(result[1].numRows).to.equal(364);
+		});
+
 		it ("caching: list works for new instance", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 
 			const newInstance = new InsightFacade();
 			const result = await newInstance.listDatasets();
 			expect(result).to.have.length(2);
+			result.sort(sortById);
+			// console.log(result);
 			expect(result[0].id).to.equal("courses0");
 			expect(result[0].kind).to.deep.equal(sectionsType);
 			expect(result[1].id).to.equal("courses1");
@@ -263,7 +315,23 @@ describe("InsightFacade", function () {
 			expect(result[1].numRows).to.deep.equal(2);
 		});
 
+		it ("caching: list works for new instance, rooms", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			await insightFacade.addDataset("dcampus", campusContent, roomsType);
+
+			const newInstance = new InsightFacade();
+			const result = await newInstance.listDatasets();
+			expect(result).to.have.length(2);
+			result.sort(sortById);
+			// console.log(result);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[1].id).to.equal("dcampus");
+			expect(result[1].kind).to.deep.equal(roomsType);
+		});
+
 		it ("caching: new instance can add more and list", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const newInstance = new InsightFacade();
 
 			await newInstance.addDataset("courses1", content1, sectionsType);
@@ -276,6 +344,25 @@ describe("InsightFacade", function () {
 			expect(res).to.have.length(1);
 			expect(res[0].id).to.equal("courses0");
 			expect(res[0].kind).to.deep.equal(sectionsType);
+		});
+
+		it ("caching: new instance can add more and list with rooms added first", async () => {
+			await insightFacade.addDataset("campus", campusContent, roomsType);
+			const newInstance = new InsightFacade();
+
+			await newInstance.addDataset("courses1", content1, sectionsType);
+			const result = await newInstance.listDatasets();
+			expect(result).to.have.length(2);
+			result.sort(sortById);
+			expect(result[0].id).to.equal("campus");
+			expect(result[1].id).to.equal("courses1");
+
+			// old instance remove, new instance list gets updated
+			await insightFacade.removeDataset("courses1");
+			const res = await newInstance.listDatasets();
+			expect(res).to.have.length(1);
+			expect(res[0].id).to.equal("campus");
+			expect(res[0].kind).to.deep.equal(roomsType);
 		});
 	});
 

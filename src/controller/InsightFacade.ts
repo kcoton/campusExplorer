@@ -42,9 +42,9 @@ export default class InsightFacade implements IInsightFacade {
 		}
 
 		if (kind === InsightDatasetKind.Sections) {
-			return addSection(id, content, this);
+			return await addSection(id, content, this);
 		} else {
-			return addRoom(id, content, this);
+			return await addRoom(id, content, this);
 		}
 	}
 

@@ -6,6 +6,7 @@ import path from "path";
 import InsightFacade from "./InsightFacade";
 import {Attribute} from "parse5/dist/common/token";
 import {IncomingMessage} from "http";
+import {ChildNode} from "parse5/dist/tree-adapters/default";
 
 const http = require("node:http");
 
@@ -81,25 +82,27 @@ function findRoomTable(node: ChildNode): ChildNode | null {
 
 // get all rooms from the table and append it to the roomList, using building as the building context
 function addRoomList(table: ChildNode, roomList: Room[], building: Building) {
-	for (const child of table.childNodes) {
-		if (child.nodeName === "tbody") {
-			for (const tr of child.childNodes) {
-				if (tr.nodeName === "tr") {
-					let room: Room = {
-						fullname: building.fullname,
-						shortname: building.shortname,
-						number: "",
-						name: "",
-						address: building.address,
-						lat: building.lat,
-						lon: building.lon,
-						seats: 0,
-						type: "",
-						furniture: "",
-						href: ""
-					};
-					parseRoomFromTr(tr, room);
-					roomList.push(room);
+	if ("childNodes" in table){
+		for (const child of table.childNodes) {
+			if (child.nodeName === "tbody") {
+				for (const tr of child.childNodes) {
+					if (tr.nodeName === "tr") {
+						let room: Room = {
+							fullname: building.fullname,
+							shortname: building.shortname,
+							number: "",
+							name: "",
+							address: building.address,
+							lat: building.lat,
+							lon: building.lon,
+							seats: 0,
+							type: "",
+							furniture: "",
+							href: ""
+						};
+						parseRoomFromTr(tr, room);
+						roomList.push(room);
+					}
 				}
 			}
 		}
@@ -107,41 +110,43 @@ function addRoomList(table: ChildNode, roomList: Room[], building: Building) {
 }
 
 function parseRoomFromTr(tr: ChildNode, room: Room) {
-	for (const td of tr.childNodes) {
-		if (td.nodeName === "td") {
-			if ("attrs" in td && Array.isArray(td.attrs)) {
-				if (td.attrs[0].value.includes("room-capacity")){
-					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
-					if (text && "value" in text && typeof text.value === "string" ) {
-						room.seats = parseInt(text.value.trim(), 10);
-					}
-				}
-				if (td.attrs[0].value.includes("room-number")){
-					const a = Array.from(td.childNodes).find((elt) => elt.nodeName === "a");
-					// let href = getAttrs(a).find((e) => e.name === "href")?.value;
-					// building.href = href ? href : "";
-					if (a && "attrs" in a && Array.isArray(a.attrs)) {
-						let href = a.attrs[0].value;
-						room.href = href ? href : "";
-					}
-
-					if (a) {
-						let text = Array.from(a.childNodes).find((elt) => elt.nodeName === "#text");
+	if ("childNodes" in tr){
+		for (const td of tr.childNodes) {
+			if (td.nodeName === "td") {
+				if ("attrs" in td && Array.isArray(td.attrs)) {
+					if (td.attrs[0].value.includes("room-capacity")){
+						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
 						if (text && "value" in text && typeof text.value === "string" ) {
-							room.number = text.value;
+							room.seats = parseInt(text.value.trim(), 10);
 						}
 					}
-				}
-				if (td.attrs[0].value.includes("room-furniture")){
-					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
-					if (text && "value" in text && typeof text.value === "string" ) {
-						room.furniture = text.value.trim();
+					if (td.attrs[0].value.includes("room-number")){
+						const a = Array.from(td.childNodes).find((elt) => elt.nodeName === "a");
+					// let href = getAttrs(a).find((e) => e.name === "href")?.value;
+					// building.href = href ? href : "";
+						if (a && "attrs" in a && Array.isArray(a.attrs)) {
+							let href = a.attrs[0].value;
+							room.href = href ? href : "";
+						}
+
+						if (a && "childNodes" in a) {
+							let text = Array.from(a.childNodes).find((elt) => elt.nodeName === "#text");
+							if (text && "value" in text && typeof text.value === "string" ) {
+								room.number = text.value;
+							}
+						}
 					}
-				}
-				if (td.attrs[0].value.includes("room-type")){
-					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
-					if (text && "value" in text && typeof text.value === "string" ) {
-						room.type = text.value.trim();
+					if (td.attrs[0].value.includes("room-furniture")){
+						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
+						if (text && "value" in text && typeof text.value === "string" ) {
+							room.furniture = text.value.trim();
+						}
+					}
+					if (td.attrs[0].value.includes("room-type")){
+						let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
+						if (text && "value" in text && typeof text.value === "string" ) {
+							room.type = text.value.trim();
+						}
 					}
 				}
 			}
@@ -171,8 +176,11 @@ function isRoomTable(node: ChildNode): boolean {
 
 // BUILDING HELPERS
 async function getBuildingsList(table: ChildNode, buildingsList: Building[]) {
+	if (!("childNodes" in table)){
+		return;
+	}
 	const tbody = Array.from(table.childNodes).find((elt) => elt.nodeName === "tbody");
-	if (!tbody) {
+	if (!tbody || !("childNodes" in tbody)) {
 		return;
 	}
 	await Promise.all(Array.from(tbody.childNodes).map(async (tr) => {
@@ -192,6 +200,9 @@ async function getBuildingsList(table: ChildNode, buildingsList: Building[]) {
 }
 
 async function parseBuildingFromTr(tr: ChildNode, building: Building) {
+	if (!("childNodes" in tr)) {
+		return;
+	}
 	await Promise.all(Array.from(tr.childNodes).map(async (td: ChildNode) => {
 		if (td.nodeName === "td") {
 			if ("attrs" in td && Array.isArray(td.attrs)) {
@@ -208,7 +219,7 @@ async function parseBuildingFromTr(tr: ChildNode, building: Building) {
 						building.href = href ? href : "";
 					}
 
-					if (a) {
+					if (a && "childNodes" in a) {
 						let text = Array.from(a.childNodes).find((elt) => elt.nodeName === "#text");
 						if (text && "value" in text && typeof text.value === "string" ) {
 							building.fullname = text.value;
