@@ -1,3 +1,5 @@
+import {Room} from "./Room";
+
 export interface Section {
 	uuid: string; // id
 	id: string; // course
@@ -12,5 +14,5 @@ export interface Section {
 }
 
 export interface Dataset {
-	[key: string]: Section[];
+	[key: string]: Section[] | Room[];
 }
