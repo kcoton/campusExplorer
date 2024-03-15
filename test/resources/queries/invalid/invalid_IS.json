@@ -1,0 +1,28 @@
+{
+	"title": "invalid_IS - not an object",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"NOT": {
+						"IS": {
+							"sections_dept": "engl"
+						}
+					}
+				},
+				{
+					"IS": []
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_pass"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

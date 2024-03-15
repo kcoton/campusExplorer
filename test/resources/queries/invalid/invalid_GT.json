@@ -1,0 +1,28 @@
+{
+	"title": "invalid_GT - not an object",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"NOT": {
+						"IS": {
+							"sections_dept": "engl"
+						}
+					}
+				},
+				{
+					"GT": []
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_pass"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

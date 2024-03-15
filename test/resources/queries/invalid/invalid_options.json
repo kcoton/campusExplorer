@@ -1,0 +1,13 @@
+{
+	"title": "invalid syntax options - not an object",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "cpsc"
+			}
+		},
+		"OPTIONS": ""
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
