@@ -1,0 +1,9 @@
+{
+	"title": "invalid syntax where and options - not an object",
+	"input": {
+		"WHERE": "",
+		"OPTIONS": ""
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

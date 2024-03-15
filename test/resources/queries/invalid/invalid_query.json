@@ -1,0 +1,6 @@
+{
+	"title": "invalid syntax query",
+	"input": [],
+	"errorExpected": true,
+	"expected": "InsightError"
+}

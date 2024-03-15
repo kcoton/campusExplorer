@@ -1,0 +1,46 @@
+{
+
+    "title": "IS",
+  
+    "input": {
+  
+       "WHERE": {
+  
+          "IS": {
+  
+             "courses0_title": "anml welf rsrch"
+  
+          }
+  
+       },
+  
+       "OPTIONS": {
+  
+          "COLUMNS": [
+  
+             "courses0_title",
+  
+             "courses0_avg"
+  
+          ],
+  
+          "ORDER": "courses0_avg"
+  
+       }
+  
+    },
+  
+    "errorExpected": false,
+  
+    "expected": [
+      {
+         "courses0_title": "anml welf rsrch",
+         "courses0_avg": 87.83
+      },
+      {
+         "courses0_title": "anml welf rsrch",
+         "courses0_avg": 87.83
+      }
+      ]
+  
+  }

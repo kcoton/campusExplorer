@@ -34,7 +34,7 @@ export function filterColumns(columns: string[], item: any): InsightResult {
 // Takes data of Section[] or Room[] and Option from query, returns results with filtered columns in order
 export async function handleOptions(data: Section[] | Room[], options: Options): Promise<Section[] | Room[]> {
 	// ORDER is optional, if not specified, return data as is
-	if (!options.ORDER) {
+	if (options.ORDER === undefined || options.ORDER === null) {
 		return data;
 	}
 
@@ -55,9 +55,6 @@ export async function handleOptions(data: Section[] | Room[], options: Options):
 			return 1;
 		});
 	} else if (typeof order === "object") {
-		if (!order.dir || !order.keys || order.keys.length === 0 || !isValidDirection(order.dir)) {
-			throw new InsightError("performQuery: ORDER is not a valid object");
-		}
 		// check if all keys are valid and exist in Section or Room AND are present in the columns
 		order.keys.forEach((key: string) => {
 			if (!isValidOrderKey(key, columns)) {
@@ -115,24 +112,4 @@ export function isValidRoomKey(key: string): boolean {
 // Takes direction and returns true if value is UP or DOWN
 export function isValidDirection(dir: string): boolean {
 	return direction.includes(dir) && dir.length > 0;
-}
-
-// Validates options are formatted correctly to EBNF
-export function isValidOptions(options: Options): boolean {
-	// COLUMNS is required and must be a non-empty array
-	if (!options.COLUMNS || !Array.isArray(options.COLUMNS) || options.COLUMNS.length === 0) {
-		return false;
-	}
-
-	if (options.ORDER) {
-		if (typeof options.ORDER !== "string" || options.ORDER.length === 0) {
-			return false;
-		}
-		const orderKey = getKeyId(options.ORDER);
-		if (!orderKey || orderKey.length === 0 || !sKeys.includes(orderKey)) {
-			return false;
-		}
-	}
-
-	return true;
 }
