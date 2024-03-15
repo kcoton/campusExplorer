@@ -123,16 +123,16 @@ export default class InsightFacade implements IInsightFacade {
 			throw new InsightError("performQuery: invalid columns for dataset type");
 		}
 
-		// Handles where and options to return array result
-		const whereResult = await handleWhere(data, checkedQuery);
-		const optionsResult = await handleOptions(whereResult, checkedQuery.OPTIONS);
-		// TODO: handle transformations
-		// const transformationsResult = await handleTransformations(optionsResult, checkedQuery.TRANSFORMATIONS);
-		let transformationsResult = optionsResult; // TODO: remove this line when handleTransformations is implemented
+		let handleResult: Section[] | Room[];
+
+		// Handles where, transformation (group + apply), option to return array result
+		handleResult = await handleWhere(data, checkedQuery);
+		handleResult = await handleTransformations(handleResult, checkedQuery);
+		handleResult = await handleOptions(handleResult, checkedQuery.OPTIONS);
 
 		// iterate through data, reduce to only columns specified
 		const columnResults: InsightResult[] = [];
-		transformationsResult.forEach((item: Section | Room) => {
+		handleResult.forEach((item: Section | Room) => {
 			const filteredData = filterColumns(checkedQuery.OPTIONS.COLUMNS, item);
 			columnResults.push(filteredData);
 		});
