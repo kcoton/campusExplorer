@@ -119,7 +119,7 @@ export default class InsightFacade implements IInsightFacade {
 		const data = this.datasetCache[id];
 
 		// Checks if COLUMNS are valid for the dataset type (Room or Section)
-		if (!isValidColumns(checkedQuery.OPTIONS, data)) {
+		if (!isValidColumns(checkedQuery.OPTIONS, checkedQuery.TRANSFORMATIONS, data)) {
 			throw new InsightError("performQuery: invalid columns for dataset type");
 		}
 

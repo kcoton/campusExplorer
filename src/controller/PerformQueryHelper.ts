@@ -1,8 +1,9 @@
 import * as fs from "fs-extra";
-import {Options, isValidDirection, isValidRoomKey, isValidSectionKey} from "./PerformQueryOptions";
+import {Options, isValidDirection, isValidKey, isValidRoomKey,
+	isValidSectionKey, roomKeys, sectionKeys} from "./PerformQueryOptions";
 import {Condition, handleWhere} from "./PerformQueryWhere";
 import {InsightDatasetKind, InsightError} from "./IInsightFacade";
-import {Transformation} from "./PerformQueryTransformations";
+import {Apply, Transformation} from "./PerformQueryTransformations";
 import {Section} from "../type/Section";
 import {Room} from "../type/Room";
 
@@ -74,15 +75,48 @@ export function isValidQueryFormat(uncheckedQuery: unknown): boolean {
 
 // Validates column keys based on Section and Room interface
 // Column keys should either be "id_key" or any non-underscore string
-export function isValidColumns(options: Options, data: Section[] | Room[]): boolean {
+export function isValidColumns(options: Options, transformations: Transformation | undefined,
+	data: Section[] | Room[]): boolean {
 	const columnKeys = options.COLUMNS;
+	const groupKeys = transformations?.GROUP;
+	const applyKeys = transformations?.APPLY.map((a) => Object.keys(a)[0]);
 	const datasetType = isSection(data) ? InsightDatasetKind.Sections : InsightDatasetKind.Rooms;
 
+	// if transformations are present, check if the column keys are in the GROUP or APPLY keys
+	// or check if the column keys are valid for the dataset type
 	const allColumnKeysValid = columnKeys.every((key) => {
+		// if no transformations, check if the key is valid for the dataset type ONLY and return false if not
+		if (transformations === undefined) {
+			return datasetType === InsightDatasetKind.Sections ?
+				isValidKey(key, sectionKeys) : isValidKey(key, roomKeys);
+		}
+
+		// Check if the key is valid for the dataset type
 		if ((datasetType === InsightDatasetKind.Sections && !isValidSectionKey(key)) ||
 			(datasetType === InsightDatasetKind.Rooms && !isValidRoomKey(key))) {
 			return false;
 		}
+
+		// If transformations are present, check if the key is in the GROUP or APPLY keys
+		if (groupKeys !== undefined && groupKeys.length > 0 && applyKeys !== undefined && applyKeys.length > 0) {
+			// If the key is not in group keys and not in apply keys, return false
+			if (!groupKeys.includes(key) && !applyKeys.includes(key)) {
+				return false;
+			}
+
+			if (datasetType === InsightDatasetKind.Sections) {
+				// If the key is in group keys, check if it is a valid section key
+				if (groupKeys.includes(key) && !isValidKey(key, sectionKeys)) {
+					return false;
+				}
+			} else if (datasetType === InsightDatasetKind.Rooms) {
+				// If the key is in group keys, check if it is a valid room key
+				if (groupKeys.includes(key) && !isValidKey(key, roomKeys)) {
+					return false;
+				}
+			}
+		}
+
 		return true;
 	});
 
