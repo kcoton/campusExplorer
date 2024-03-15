@@ -57,10 +57,13 @@ describe("InsightFacade", function () {
 		let content0: string;
 		let content1: string;
 		const sectionsType = InsightDatasetKind.Sections;
+		let contentCampus: string;
+		const roomsType = InsightDatasetKind.Rooms;
 
 		before(async () => {
 			content0 = await getContentFromArchives("courses0.zip");
 			content1 = await getContentFromArchives("courses1.zip");
+			contentCampus = await getContentFromArchives("campus.zip");
 		});
 
 		beforeEach(async () => {
@@ -106,6 +109,13 @@ describe("InsightFacade", function () {
 			const result = newInstance.addDataset("courses0", content0, sectionsType);
 			return expect(result).to.be.eventually.rejectedWith(InsightError);
 		});
+
+		it.only ("addRoomDataset: valid dataset success", async () => {
+			const addId = "campus";
+			const res = insightFacade.addDataset(addId, contentCampus, roomsType);
+			return expect(res).to.eventually.have.members([addId]);
+		});
+
 	});
 
 	// Adding tests for removeDataset from c0

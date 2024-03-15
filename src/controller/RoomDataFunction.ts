@@ -36,6 +36,10 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 			});
 		}));
 
+		if (roomDataList.length === 0) {
+			return Promise.reject(new InsightError("No valid room in the dataset!"));
+		}
+
 		// write all the rooms into a file for data
 		const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 		await fs.outputJson(filePath, JSON.stringify(roomDataList, null, 2));
