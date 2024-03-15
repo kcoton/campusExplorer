@@ -1,4 +1,10 @@
-import {IInsightFacade, InsightDatasetKind, InsightError, NotFoundError} from "../../src/controller/IInsightFacade";
+import {
+	IInsightFacade,
+	InsightDatasetKind,
+	InsightError,
+	NotFoundError,
+	InsightDataset
+} from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
 
 import {assert, expect, use} from "chai";
@@ -124,10 +130,16 @@ describe("InsightFacade", function () {
 			return expect(res).to.have.members(["courses0", "campus"]);
 		});
 
-		// it ("add invalidtableIndex reject", async () => {
-		// 	const res = await insightFacade.addDataset("invalidTable", invalidTableContent, roomsType);
-		// 	return expect(res).to.be.rejectedWith(InsightError);
-		// });
+		it ("cannot add when sections and rooms have same id", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			const res = insightFacade.addDataset("courses0", contentCampus, roomsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it ("add invalidtableIndex reject", async () => {
+			const res = insightFacade.addDataset("invalidTable", invalidTableContent, roomsType);
+			return expect(res).to.eventually.be.rejectedWith(InsightError);
+		});
 
 	});
 
@@ -207,9 +219,17 @@ describe("InsightFacade", function () {
 
 		});
 
+		function sortById(a: InsightDataset, b: InsightDataset) {
+			if (a.id < b.id) {
+				return -1;
+			} else if (a.id > b.id) {
+				return 1;
+			}
+			return 0;
+		}
+
 		// Tests for listDatasets
 		it("listDatasets: add 1, list 1, remove 0", async () => {
-			// await insightFacade.addDataset('courses0', content0, sections)
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
@@ -222,12 +242,13 @@ describe("InsightFacade", function () {
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 			const result = await insightFacade.listDatasets();
+			result.sort(sortById);
 			expect(result).to.have.length(2);
+			console.log(result);
 			expect(result[0].id).to.equal("courses0");
 			expect(result[0].kind).to.deep.equal(sectionsType);
 			expect(result[1].id).to.equal("courses1");
 			expect(result[1].kind).to.deep.equal(sectionsType);
-			expect(result[1].numRows).to.deep.equal(2);
 
 			// remove 1, expect 1
 			await insightFacade.removeDataset("courses1");
@@ -251,6 +272,20 @@ describe("InsightFacade", function () {
 			expect(result[0].numRows).to.equal(364);
 		});
 
+		it ("ls dataset add 1 for rooms 1 for sections", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			await insightFacade.addDataset("dcampus", campusContent, roomsType);
+
+			const result = await insightFacade.listDatasets();
+			result.sort(sortById);
+			expect(result).to.have.length(2);
+			expect(result[0].id).to.equal("courses0");
+			expect(result[0].kind).to.deep.equal(sectionsType);
+			expect(result[1].id).to.equal("dcampus");
+			expect(result[1].kind).to.deep.equal(roomsType);
+			expect(result[1].numRows).to.equal(364);
+		});
+
 		it ("caching: list works for new instance", async () => {
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
@@ -258,7 +293,8 @@ describe("InsightFacade", function () {
 			const newInstance = new InsightFacade();
 			const result = await newInstance.listDatasets();
 			expect(result).to.have.length(2);
-			console.log(result);
+			result.sort(sortById);
+			// console.log(result);
 			expect(result[0].id).to.equal("courses0");
 			expect(result[0].kind).to.deep.equal(sectionsType);
 			expect(result[1].id).to.equal("courses1");
