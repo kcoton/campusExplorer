@@ -11,3 +11,18 @@ export interface Room {
 	furniture: string; // room furniture
 	href: string; // link to full details onl
 }
+
+export interface Building {
+	fullname: string,
+	shortname: string,
+	address: string,
+	lat: number,
+	lon: number,
+	href: string // link to the file to get the rooms for the building
+}
+
+export interface GeoResponse {
+	lat?: number;
+	lon?: number;
+	error?: string;
+}
