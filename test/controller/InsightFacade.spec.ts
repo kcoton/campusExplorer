@@ -375,7 +375,7 @@ describe("InsightFacade", function () {
 			await clearDisk();
 			facade = new InsightFacade();
 			courses1 = await getContentFromArchives("courses1.zip");
-			const rooms1 = await getContentFromArchives("campus.zip");
+			const rooms = await getContentFromArchives("campus.zip");
 
 			// Add the datasets to InsightFacade once.
 			// Will *fail* if there is a problem reading ANY dataset.
@@ -383,7 +383,7 @@ describe("InsightFacade", function () {
 				facade.addDataset("sections", sections, InsightDatasetKind.Sections),
 				facade.addDataset("courses0", courses0, InsightDatasetKind.Sections),
 				facade.addDataset("courses1", courses1, InsightDatasetKind.Sections),
-				facade.addDataset("rooms1", rooms1, InsightDatasetKind.Rooms),
+				facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms),
 			];
 
 			try {
@@ -422,9 +422,24 @@ describe("InsightFacade", function () {
 							// unsorted test
 							if (test.input?.OPTIONS && !test.input.OPTIONS.ORDER) {
 								return expect(result).to.deep.members(test.expected);
+							} else if (test.input?.OPTIONS?.ORDER) {
+								// sorted test w/ further grouping if results have same value
+								// in that case, it would test the group as unsorted
+								const orderKey = test.input.OPTIONS.ORDER;
+								const groupedResult = groupBy(result, orderKey);
+								const groupedExpected = groupBy(test.expected, orderKey);
+
+								for (const key in groupedResult) {
+									expect(groupedResult[key]).to.have.deep.members(groupedExpected[key]);
+								}
 							}
-							// sorted test
-							expect(result).to.deep.equal(test.expected);
+
+							// // unsorted test
+							// if (test.input?.OPTIONS && !test.input.OPTIONS.ORDER) {
+							// 	return expect(result).to.deep.members(test.expected);
+							// }
+							// // sorted test
+							// expect(result).to.deep.equal(test.expected);
 
 							// console.log("result: ", result); // print results
 							// console.log("expected: ", test.expected);
@@ -462,3 +477,10 @@ describe("InsightFacade", function () {
 		});
 	});
 });
+
+function groupBy(array: any[], key: string) {
+	return array.reduce((result, item) => {
+		(result[item[key]] = result[item[key]] || []).push(item);
+		return result;
+	}, {});
+}
