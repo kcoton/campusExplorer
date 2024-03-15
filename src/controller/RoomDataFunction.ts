@@ -19,14 +19,12 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 
 		let buildingsList: Building[] = [];
 		let buildingTable;
-        // console.log(rooms);
 		await zip.file("index.htm")?.async("string").then((indexHTMLContent) => {
 			const htmlParse = parse5.parse(indexHTMLContent);
 			buildingTable = findBuildingTable(htmlParse);
 			if (!buildingTable) {
 				return Promise.reject(new InsightError("There is no valid building table in the index.html file!"));
 			}
-			// console.log(buildingsList);
 		});
 		if (buildingTable) {
 			await getBuildingsList(buildingTable, buildingsList);
@@ -46,7 +44,7 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 			return Promise.reject(new InsightError("No valid room in the dataset!"));
 		}
 
-		// write all the rooms into a file for data
+		// store in disk
 		const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 		await fs.outputJson(filePath, JSON.stringify(roomDataList, null, 2));
 
@@ -54,7 +52,7 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 		return Promise.resolve(Object.keys(insightFacade.datasetCache));
 	} catch (error) {
 		console.log(error);
-		return Promise.reject("Error while adding new dataset!");
+		return Promise.reject(new InsightError("Error while adding new dataset!"));
 	}
 }
 

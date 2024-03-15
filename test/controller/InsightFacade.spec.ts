@@ -59,11 +59,13 @@ describe("InsightFacade", function () {
 		const sectionsType = InsightDatasetKind.Sections;
 		let contentCampus: string;
 		const roomsType = InsightDatasetKind.Rooms;
+		let invalidTableContent: string;
 
 		before(async () => {
 			content0 = await getContentFromArchives("courses0.zip");
 			content1 = await getContentFromArchives("courses1.zip");
 			contentCampus = await getContentFromArchives("campus.zip");
+			invalidTableContent = await getContentFromArchives("roomsNoTableIndex.zip");
 		});
 
 		beforeEach(async () => {
@@ -110,10 +112,21 @@ describe("InsightFacade", function () {
 			return expect(result).to.be.eventually.rejectedWith(InsightError);
 		});
 
-		it.only ("addRoomDataset: valid dataset success", async () => {
+		it ("addRoomDataset: valid dataset success", async () => {
 			const addId = "campus";
 			const res = insightFacade.addDataset(addId, contentCampus, roomsType);
 			return expect(res).to.eventually.have.members([addId]);
+		});
+
+		it ("add both room and section: success", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
+			const res = insightFacade.addDataset("campus", contentCampus, roomsType);
+			return expect(res).to.eventually.have.members(["courses0", "campus"]);
+		});
+
+		it ("add invalidtableIndex reject", async () => {
+			const res = insightFacade.addDataset("invalidTable", invalidTableContent, roomsType);
+			return expect(res).to.be.eventually.rejectedWith(InsightError);
 		});
 
 	});
@@ -179,10 +192,13 @@ describe("InsightFacade", function () {
 		let content0: string;
 		let content1: string;
 		const sectionsType = InsightDatasetKind.Sections;
+		const roomsType = InsightDatasetKind.Rooms;
+		let campusContent: string;
 
 		before(async () => {
 			content0 = await getContentFromArchives("courses0.zip");
 			content1 = await getContentFromArchives("courses1.zip");
+			campusContent = await getContentFromArchives("campus.zip");
 		});
 
 		beforeEach(async () => {
@@ -222,6 +238,18 @@ describe("InsightFacade", function () {
 			await insightFacade.removeDataset("courses0");
 			const result3 = await insightFacade.listDatasets();
 			expect(result3).to.have.length(0);
+		});
+
+		it ("ls dataset add 1 for rooms", async () => {
+			await insightFacade.addDataset("campus", campusContent, roomsType);
+			const result = await insightFacade.listDatasets();
+			expect(result).to.have.length(2);
+			console.log(result);
+			expect(result[1].id).to.equal("courses0");
+			expect(result[1].kind).to.deep.equal(sectionsType);
+			expect(result[1].numRows).to.deep.equal(4);
+			expect(result[0].id).to.equal("campus");
+			// expect(result[0].kind).to.deep.equal(roomsType);
 		});
 
 		it ("caching: list works for new instance", async () => {
