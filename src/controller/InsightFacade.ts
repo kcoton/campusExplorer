@@ -108,6 +108,8 @@ export default class InsightFacade implements IInsightFacade {
 		const id = datasetIds[0];
 		const data = this.datasetCache[id];
 
+		/* TODO: refactor for Room | Section
+
 		// Handles where and options to return array result
 		const whereResult = await handleWhere(data, checkedQuery);
 		const optionsResult = await handleOptions(whereResult, checkedQuery.OPTIONS);
@@ -118,5 +120,8 @@ export default class InsightFacade implements IInsightFacade {
 		}
 
 		return Promise.resolve(queryResult);
+		*/
+
+		return Promise.resolve([]);
 	}
 }

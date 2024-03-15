@@ -1,10 +1,13 @@
 import JSZip from "jszip";
 import {InsightError} from "./IInsightFacade";
-import {Room, Building} from "../type/Room";
+import {Room, Building, GeoResponse} from "../type/Room";
 import fs from "fs-extra";
 import path from "path";
 import InsightFacade from "./InsightFacade";
 import {Attribute} from "parse5/dist/common/token";
+import {IncomingMessage} from "http";
+
+const http = require("node:http");
 
 export async function addRoom(id: string, content: string, insightFacade: InsightFacade): Promise<string[]> {
 	try {
@@ -15,16 +18,19 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 		let roomDataList: Room[] = [];
 
 		let buildingsList: Building[] = [];
+		let buildingTable;
         // console.log(rooms);
 		await zip.file("index.htm")?.async("string").then((indexHTMLContent) => {
 			const htmlParse = parse5.parse(indexHTMLContent);
-			let buildingTable = findBuildingTable(htmlParse);
+			buildingTable = findBuildingTable(htmlParse);
 			if (!buildingTable) {
-				return Promise.reject(new InsightError("There is no valid building table in the index.html file"));
+				return Promise.reject(new InsightError("There is no valid building table in the index.html file!"));
 			}
-			getBuildingsList(buildingTable, buildingsList);
 			// console.log(buildingsList);
 		});
+		if (buildingTable) {
+			await getBuildingsList(buildingTable, buildingsList);
+		}
 
 		await Promise.all(buildingsList.map(async (building) => {
 			await zip.file(building.href.substring(2))?.async("string").then((buildingHTMLContent) => {
@@ -44,9 +50,8 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 		const filePath = path.join(__dirname, "../../data/", `${id}.json`);
 		await fs.outputJson(filePath, JSON.stringify(roomDataList, null, 2));
 
-		// insightFacade.datasetCache[id] = roomDataList;
-		// return Promise.resolve(Object.keys(insightFacade.datasetCache));
-		return Promise.reject("needs to implement!");
+		insightFacade.datasetCache[id] = roomDataList;
+		return Promise.resolve(Object.keys(insightFacade.datasetCache));
 	} catch (error) {
 		console.log(error);
 		return Promise.reject("Error while adding new dataset!");
@@ -60,7 +65,7 @@ function findRoomTable(node: ChildNode): ChildNode | null {
 
 		// check table: valid table needs to have a td with class views-field-title
 		if (isRoomTable(node)) {
-			console.log("Found the room table!");
+			// console.log("Found the room table!");
 			return node;
 		}
 	}
@@ -167,60 +172,91 @@ function isRoomTable(node: ChildNode): boolean {
 }
 
 // BUILDING HELPERS
-function getBuildingsList(table: ChildNode, buildingsList: Building[]) {
-	// const tbody = Array.from(table.childNodes).find((elt) => elt.nodeName === "tbody");
-	// const trows = Array.from(tbody?.childNodes).filter((elt) => elt.nodeName === "tr");
-	for (const child of table.childNodes) {
-		if (child.nodeName === "tbody") {
-			for (const tr of child.childNodes) {
-				if (tr.nodeName === "tr") {
-					let building: Building = {
-						shortname: "",
-						fullname: "",
-						address: "",
-						lat: 0,
-						lon: 0,
-						href: ""
-					};
-					for (const td of tr.childNodes) {
-						if (td.nodeName === "td") {
-							if ("attrs" in td && Array.isArray(td.attrs)) {
-								if (td.attrs[0].value.includes("building-code")){
-									let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
-									if (text && "value" in text && typeof text.value === "string" ) {
-										building.shortname = text.value.trim();
-									}
-								}
-								if (td.attrs[0].value.includes("views-field-title")){
-									const a = Array.from(td.childNodes).find((elt) => elt.nodeName === "a");
-									// let href = getAttrs(a).find((e) => e.name === "href")?.value;
-									// building.href = href ? href : "";
-									if (a && "attrs" in a && Array.isArray(a.attrs)) {
-										let href = a.attrs[0].value;
-										building.href = href ? href : "";
-									}
+async function getBuildingsList(table: ChildNode, buildingsList: Building[]) {
+	const tbody = Array.from(table.childNodes).find((elt) => elt.nodeName === "tbody");
+	if (!tbody) {
+		return;
+	}
+	await Promise.all(Array.from(tbody.childNodes).map(async (tr) => {
+		if (tr.nodeName === "tr") {
+			let building: Building = {
+				shortname: "",
+				fullname: "",
+				address: "",
+				lat: 0,
+				lon: 0,
+				href: ""
+			};
+			await parseBuildingFromTr(tr, building);
+			buildingsList.push(building);
+		}
+	}));
+}
 
-									if (a) {
-										let text = Array.from(a.childNodes).find((elt) => elt.nodeName === "#text");
-										if (text && "value" in text && typeof text.value === "string" ) {
-											building.fullname = text.value;
-										}
-									}
-								}
-								if (td.attrs[0].value.includes("building-address")){
-									let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
-									if (text && "value" in text && typeof text.value === "string" ) {
-										building.address = text.value.trim();
-									}
-								}
-							}
+async function parseBuildingFromTr(tr: ChildNode, building: Building) {
+	await Promise.all(Array.from(tr.childNodes).map(async (td: ChildNode) => {
+		if (td.nodeName === "td") {
+			if ("attrs" in td && Array.isArray(td.attrs)) {
+				if (td.attrs[0].value.includes("building-code")){
+					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
+					if (text && "value" in text && typeof text.value === "string" ) {
+						building.shortname = text.value.trim();
+					}
+				}
+				if (td.attrs[0].value.includes("views-field-title")){
+					const a = Array.from(td.childNodes).find((elt) => elt.nodeName === "a");
+					if (a && "attrs" in a && Array.isArray(a.attrs)) {
+						let href = a.attrs[0].value;
+						building.href = href ? href : "";
+					}
+
+					if (a) {
+						let text = Array.from(a.childNodes).find((elt) => elt.nodeName === "#text");
+						if (text && "value" in text && typeof text.value === "string" ) {
+							building.fullname = text.value;
 						}
 					}
-					buildingsList.push(building);
+				}
+				if (td.attrs[0].value.includes("building-address")){
+					let text = Array.from(td.childNodes).find((elt) => elt.nodeName === "#text");
+					if (text && "value" in text && typeof text.value === "string" ) {
+						building.address = text.value.trim();
+						const encodedAddress = encodeURIComponent(building.address);
+						const url = `http://cs310.students.cs.ubc.ca:11316/api/v1/project_team096/${encodedAddress}`;
+						const geoData: GeoResponse = await getGeolocation(url);
+						if (geoData.error) {
+							console.log(geoData.error);
+						} else {
+							building.lat = geoData.lat ? geoData.lat : 0;
+							building.lon = geoData.lon ? geoData.lon : 0;
+						}
+					}
 				}
 			}
 		}
-	}
+	}));
+}
+
+function getGeolocation(url: string): Promise<GeoResponse> {
+	return new Promise<GeoResponse>((resolve, reject) => {
+		http.get(url, (res: IncomingMessage) => {
+			let data = "";
+			res.on("data", (chunk) => {
+				data += chunk;
+			});
+
+			res.on("end", () => {
+				try {
+					const geoData = JSON.parse(data);
+					resolve(geoData);
+				} catch (err) {
+					reject(err);
+				}
+			});
+		}).on("error", (err: any) => {
+			reject(err);
+		});
+	});
 }
 
 function getAttrs(element: any): Attribute[] {

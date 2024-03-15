@@ -21,3 +21,8 @@ export interface Building {
 	href: string // link to the file to get the rooms for the building
 }
 
+export interface GeoResponse {
+	lat?: number;
+	lon?: number;
+	error?: string;
+}
