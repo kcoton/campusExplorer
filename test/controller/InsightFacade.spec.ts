@@ -204,12 +204,13 @@ describe("InsightFacade", function () {
 		beforeEach(async () => {
 			await clearDisk();
 			insightFacade = new InsightFacade();
-			await insightFacade.addDataset("courses0", content0, sectionsType);
+
 		});
 
 		// Tests for listDatasets
 		it("listDatasets: add 1, list 1, remove 0", async () => {
 			// await insightFacade.addDataset('courses0', content0, sections)
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
 			expect(result[0].id).to.equal("courses0");
@@ -218,6 +219,7 @@ describe("InsightFacade", function () {
 		});
 
 		it("listDatasets: add 2, remove none, and then remove 1", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(2);
@@ -241,7 +243,6 @@ describe("InsightFacade", function () {
 		});
 
 		it ("ls dataset add 1 for rooms", async () => {
-			await insightFacade.removeDataset("courses0");
 			await insightFacade.addDataset("campus", campusContent, roomsType);
 			const result = await insightFacade.listDatasets();
 			expect(result).to.have.length(1);
@@ -251,11 +252,13 @@ describe("InsightFacade", function () {
 		});
 
 		it ("caching: list works for new instance", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			await insightFacade.addDataset("courses1", content1, sectionsType);
 
 			const newInstance = new InsightFacade();
 			const result = await newInstance.listDatasets();
 			expect(result).to.have.length(2);
+			console.log(result);
 			expect(result[0].id).to.equal("courses0");
 			expect(result[0].kind).to.deep.equal(sectionsType);
 			expect(result[1].id).to.equal("courses1");
@@ -264,6 +267,7 @@ describe("InsightFacade", function () {
 		});
 
 		it ("caching: new instance can add more and list", async () => {
+			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const newInstance = new InsightFacade();
 
 			await newInstance.addDataset("courses1", content1, sectionsType);
