@@ -16,6 +16,7 @@ import {Query, getKeyId, isValidColumns, isValidQueryFormat} from "./PerformQuer
 import {handleWhere} from "./PerformQueryWhere";
 import {filterColumns, handleOptions} from "./PerformQueryOptions";
 import {addSection} from "./SectionDataFunction";
+import {addRoom} from "./RoomDataFunction";
 import {handleTransformations} from "./PerformQueryTransformations";
 import {Room} from "../type/Room";
 
@@ -43,8 +44,7 @@ export default class InsightFacade implements IInsightFacade {
 		if (kind === InsightDatasetKind.Sections) {
 			return addSection(id, content, this);
 		} else {
-			// call addRoom
-			return Promise.reject("addRoom not implemented");
+			return addRoom(id, content, this);
 		}
 	}
 
@@ -81,11 +81,17 @@ export default class InsightFacade implements IInsightFacade {
 			const id = file.split(".")[0];
 			const filePath = path.join(__dirname, "../../data/", file);
 			const datasetContent = await fs.readJson(filePath);
-
+			const parsedContent = JSON.parse(datasetContent);
+			let kind: InsightDatasetKind;
+			if (parsedContent[0].fullname) {
+				kind = InsightDatasetKind.Rooms;
+			} else {
+				kind = InsightDatasetKind.Sections;
+			}
 			let insightData: InsightDataset = {
 				id: id,
-				kind: InsightDatasetKind.Sections,
-				numRows: JSON.parse(datasetContent).length
+				kind: kind,
+				numRows: parsedContent.length
 			};
 			dataset.push(insightData);
 		}));
