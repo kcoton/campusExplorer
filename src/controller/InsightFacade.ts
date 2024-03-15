@@ -16,6 +16,7 @@ import {Query, getKeyId, isValidQuery} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
 import {handleOptions} from "./PerformQueryOptions";
 import {addSection} from "./SectionDataFunction";
+import {addRoom} from "./RoomDataFunction";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -41,8 +42,7 @@ export default class InsightFacade implements IInsightFacade {
 		if (kind === InsightDatasetKind.Sections) {
 			return addSection(id, content, this);
 		} else {
-			// call addRoom
-			return Promise.reject("addRoom not implemented");
+			return addRoom(id, content, this);
 		}
 	}
 
