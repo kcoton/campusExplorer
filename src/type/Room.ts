@@ -1,24 +1,24 @@
 export interface Room {
-	fullname: string; // full building name
-	shortname: string; // short building name
-	number: string; // room number
-	name: string; // room id (rooms_shortname + _ + rooms_number)
-	address: string; // building address
-	lat: number; // lat of the building
-	lon: number; // lon of building
-	seats: number; // number of seats
-	type: string; // room type
-	furniture: string; // room furniture
-	href: string; // link to full details onl
+	fullname: string | null; // full building name
+	shortname: string | null; // short building name
+	number: string | null; // room number
+	name: string | null; // room id (rooms_shortname + _ + rooms_number)
+	address: string | null; // building address
+	lat: number | null; // lat of the building
+	lon: number | null; // lon of building
+	seats: number | null; // number of seats
+	type: string | null; // room type
+	furniture: string | null; // room furniture
+	href: string | null; // link to full details onl
 }
 
 export interface Building {
-	fullname: string,
-	shortname: string,
-	address: string,
-	lat: number,
-	lon: number,
-	href: string // link to the file to get the rooms for the building
+	fullname: string | null,
+	shortname: string | null,
+	address: string | null,
+	lat: number | null,
+	lon: number | null,
+	href: string | null // link to the file to get the rooms for the building
 }
 
 export interface GeoResponse {
