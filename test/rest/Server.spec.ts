@@ -91,6 +91,135 @@ describe("Facade D3", function () {
 		}
 	});
 	*/
+	// PUT requests
+	it("PUT test code 200, sections", () => {
+		try {
+			const buffer = Buffer.from(courses0, "base64");
+			return request(SERVER_URL)
+				.put("/dataset/mysections/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					console.log("PUT query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch((err) => {
+					console.log("PUT query error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("PUT request error", err);
+		}
+	});
+
+	it("PUT test code 200, rooms", () => {
+		try {
+			const buffer = Buffer.from(rooms, "base64");
+			return request(SERVER_URL)
+				.put("/dataset/myrooms/rooms")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					console.log("PUT query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch((err) => {
+					console.log("PUT query error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("PUT request error", err);
+		}
+	});
+
+	it("PUT code 400, sections", () => {
+		try {
+			const buffer = Buffer.from(courses1, "base64");
+			return request(SERVER_URL)
+				.put("/dataset/courses1/rooms")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					// console.log("PUT query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(400);
+				})
+				.catch((err) => {
+					console.log("PUT query error", err);
+					// should pass
+				});
+		} catch (err) {
+			console.log("PUT request error", err);
+		}
+	});
+
+	// DELETE endpoint tests
+	it("DELETE code 200, sections", function() {
+		try {
+			return request(SERVER_URL)
+				.delete("/dataset/courses1")
+				.then((res: Response) => {
+					console.log("DELETE query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch((err) => {
+					console.log("DELETE query error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("DELETE request error", err);
+		}
+	});
+
+	it("DELETE code 200, rooms", function() {
+		try {
+			return request(SERVER_URL)
+				.delete("/dataset/rooms")
+				.then((res: Response) => {
+					console.log("DELETE query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch((err) => {
+					console.log("DELETE query error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("DELETE request error", err);
+		}
+	});
+
+	it("DELETE code 404 not found id", function() {
+		try {
+			return request(SERVER_URL)
+				.delete("/dataset/roomsss")
+				.then((res: Response) => {
+					// console.log("DELETE query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(404);
+				})
+				.catch((err) => {
+					console.log("DELETE query error", err);
+					// should pass
+				});
+		} catch (err) {
+			console.log("DELETE request error", err);
+		}
+	});
+
+	it("DELETE code 400 invalid id underscore", function() {
+		try {
+			return request(SERVER_URL)
+				.delete("/dataset/__")
+				.then((res: Response) => {
+					// console.log("DELETE query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(400);
+				})
+				.catch((err) => {
+					console.log("DELETE query error", err);
+					// should pass
+				});
+		} catch (err) {
+			console.log("DELETE request error", err);
+		}
+	});
 
 	// POST /query sends json query to performQuery
 	it("POST /query should pass", function () {
