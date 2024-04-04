@@ -12,9 +12,13 @@ import {Dataset, Section} from "../type/Section";
 import fs from "fs-extra";
 import path from "path";
 import {isValidId, checkExistingId} from "../utils";
-import {Query, getKeyId, isValidQuery} from "./PerformQueryHelper";
+import {Query, getKeyId, isValidColumns, isValidQueryFormat} from "./PerformQueryHelper";
 import {handleWhere} from "./PerformQueryWhere";
-import {handleOptions} from "./PerformQueryOptions";
+import {filterColumns, handleOptions} from "./PerformQueryOptions";
+import {addSection} from "./SectionDataFunction";
+import {addRoom} from "./RoomDataFunction";
+import {handleTransformations} from "./PerformQueryTransformations";
+import {Room} from "../type/Room";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -37,51 +41,10 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("ID is invalid!"));
 		}
 
-		try {
-			let datasetList: Section[] = [];
-			let jszip = new JSZip();
-			const zip = await jszip.loadAsync(content, {base64: true});
-			let courses = Object.keys(zip.files);
-
-			await Promise.all(courses.map(async (course) => {
-				if (!course.startsWith("courses/")) {
-					return Promise.reject(new InsightError("Zip files do not start with courses/"));
-				}
-
-				await zip.file(course)?.async("string").then((fileContent) => {
-					const jsonContent = JSON.parse(fileContent);
-					if (jsonContent.result && jsonContent.result.length > 0) {
-						for (let section of jsonContent.result) {
-							const formattedSection: Section = {
-								uuid: section.id.toString(),
-								id: section.Course,
-								title: section.Title,
-								instructor: section.Professor,
-								dept: section.Subject,
-								year: section.Section === "overall" ? 1900 : parseInt(section.Year, 10),
-								avg: section.Avg,
-								pass: section.Pass,
-								fail: section.Fail,
-								audit: section.Audit
-							};
-							datasetList.push(formattedSection);
-						}
-					}
-				});
-			}));
-
-
-			if (datasetList.length === 0) {
-				return Promise.reject(new InsightError("No valid section inside the dataset!"));
-			}
-
-			const filePath = path.join(__dirname, "../../data/", `${id}.json`);
-			await fs.outputJson(filePath, JSON.stringify(datasetList, null, 2));
-
-			this.datasetCache[id] = datasetList;
-			return Promise.resolve(Object.keys(this.datasetCache));
-		} catch (error) {
-			return Promise.reject("Error while adding new dataset!");
+		if (kind === InsightDatasetKind.Sections) {
+			return await addSection(id, content, this);
+		} else {
+			return await addRoom(id, content, this);
 		}
 	}
 
@@ -118,11 +81,17 @@ export default class InsightFacade implements IInsightFacade {
 			const id = file.split(".")[0];
 			const filePath = path.join(__dirname, "../../data/", file);
 			const datasetContent = await fs.readJson(filePath);
-
+			const parsedContent = JSON.parse(datasetContent);
+			let kind: InsightDatasetKind;
+			if (parsedContent[0].fullname) {
+				kind = InsightDatasetKind.Rooms;
+			} else {
+				kind = InsightDatasetKind.Sections;
+			}
 			let insightData: InsightDataset = {
 				id: id,
-				kind: InsightDatasetKind.Sections,
-				numRows: JSON.parse(datasetContent).length
+				kind: kind,
+				numRows: parsedContent.length
 			};
 			dataset.push(insightData);
 		}));
@@ -131,9 +100,11 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public async performQuery(query: unknown): Promise<InsightResult[]> {
-		if (!isValidQuery(query)) {
-			throw new InsightError("performQuery: Not a valid query");
+		// Checks if query object structure is valid
+		if (!isValidQueryFormat(query)) {
+			throw new InsightError("performQuery: query is not structured correctly");
 		}
+
 		const checkedQuery: Query = query as Query;
 		const columnDatasetIds = checkedQuery.OPTIONS.COLUMNS
 			.filter((column) => column.includes("_")) // Ensure the column references a dataset
@@ -147,10 +118,25 @@ export default class InsightFacade implements IInsightFacade {
 		const id = datasetIds[0];
 		const data = this.datasetCache[id];
 
-		// Handles where and options to return array result
-		const whereResult = await handleWhere(data, checkedQuery);
-		const optionsResult = await handleOptions(whereResult, checkedQuery.OPTIONS);
-		const queryResult = optionsResult.flat(); // .flat() will concatenate all the arrays into a single array
+		// Checks if COLUMNS are valid for the dataset type (Room or Section)
+		if (!isValidColumns(checkedQuery.OPTIONS, checkedQuery.TRANSFORMATIONS, data)) {
+			throw new InsightError("performQuery: invalid columns for dataset type");
+		}
+
+		let handleResult: Section[] | Room[];
+
+		// Handles where, transformation (group + apply), option to return array result
+		handleResult = await handleWhere(data, checkedQuery);
+		handleResult = await handleTransformations(handleResult, checkedQuery);
+		handleResult = await handleOptions(handleResult, checkedQuery.OPTIONS);
+
+		// iterate through data, reduce to only columns specified
+		const columnResults: InsightResult[] = [];
+		handleResult.forEach((item: Section | Room) => {
+			const filteredData = filterColumns(checkedQuery.OPTIONS.COLUMNS, item);
+			columnResults.push(filteredData);
+		});
+		const queryResult = columnResults.flat(); // .flat() will concatenate all the arrays into a single array
 
 		if (queryResult.length > 5000) {
 			throw new ResultTooLargeError("performQuery: number of results greater > 5000");

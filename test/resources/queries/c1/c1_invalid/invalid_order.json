@@ -1,0 +1,18 @@
+{
+	"title": "invalid syntax order - not a column key",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 97
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_avg"
+			],
+			"ORDER": "asdfgh"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

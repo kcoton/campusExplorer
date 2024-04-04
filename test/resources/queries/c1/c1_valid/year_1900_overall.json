@@ -1,0 +1,89 @@
+{
+	"title": "year_1900_overall",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"sections_id": "213"
+					}
+				},
+				{
+					"IS": {
+						"sections_dept": "cpsc"
+					}
+				},
+				{
+					"EQ": {
+						"sections_year": 1900
+					}
+				},
+				{
+					"LT": {
+						"sections_avg": 80
+					}
+				},
+				{
+					"GT": {
+						"sections_fail": 15
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id",
+				"sections_year",
+				"sections_avg",
+				"sections_fail"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 67.97,
+			"sections_fail": 18
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 70.24,
+			"sections_fail": 17
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 73,
+			"sections_fail": 16
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 73.98,
+			"sections_fail": 34
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 74.93,
+			"sections_fail": 20
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_id": "213",
+			"sections_year": 1900,
+			"sections_avg": 75.29,
+			"sections_fail": 19
+		}
+	]
+}

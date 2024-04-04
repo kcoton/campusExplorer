@@ -1,0 +1,53 @@
+{
+	"title": "one_AND_NOT_LT",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"NOT": {
+						"LT": {
+							"sections_fail": 233
+						}
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_id": "121"
+		}
+	]
+}
