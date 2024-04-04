@@ -1,0 +1,42 @@
+{
+	"title": "invalid_key_in_AVG",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_href": "*s*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon",
+				"avgLAT"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"avgLAT"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon"
+			],
+			"APPLY": [
+				{
+					"avgLAT": {
+						"AVG": "rooms_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

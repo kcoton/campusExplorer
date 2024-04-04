@@ -1,0 +1,28 @@
+{
+	"title": "invalid_EQ - not an object",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"NOT": {
+						"IS": {
+							"sections_dept": "engl"
+						}
+					}
+				},
+				{
+					"EQ": []
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_pass"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

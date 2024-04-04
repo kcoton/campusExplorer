@@ -1,0 +1,31 @@
+{
+	"title": "one_AND_EQ",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"EQ": {
+						"sections_audit": 13
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "cnto",
+			"sections_id": "301"
+		},
+		{
+			"sections_dept": "rhsc",
+			"sections_id": "509"
+		}
+	]
+}

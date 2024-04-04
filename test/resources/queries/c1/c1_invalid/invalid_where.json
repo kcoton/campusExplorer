@@ -1,0 +1,13 @@
+{
+	"title": "invalid syntax where is string - not an object",
+	"input": {
+		"WHERE": "",
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

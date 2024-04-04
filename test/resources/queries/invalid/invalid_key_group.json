@@ -1,0 +1,43 @@
+{
+	"title": "invalid_key_group",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_href": "*s*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon",
+				"countlat"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"countlat"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"rooms_shortname",
+				"rooms_lat",
+				"rooms_seats",
+				"rooms_lon",
+				"countlat"
+			],
+			"APPLY": [
+				{
+					"countlat": {
+						"COUNT": "rooms_lat"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
