@@ -1,16 +1,19 @@
 import express, {Application, Request, Response} from "express";
 import * as http from "http";
 import cors from "cors";
+import InsightFacade from "../controller/InsightFacade";
 
 export default class Server {
 	private readonly port: number;
 	private express: Application;
 	private server: http.Server | undefined;
+	public static facade: InsightFacade;
 
 	constructor(port: number) {
 		console.info(`Server::<init>( ${port} )`);
 		this.port = port;
 		this.express = express();
+		Server.facade = new InsightFacade();
 
 		this.registerMiddleware();
 		this.registerRoutes();
@@ -18,7 +21,7 @@ export default class Server {
 		// NOTE: you can serve static frontend files in from your express server
 		// by uncommenting the line below. This makes files in ./frontend/public
 		// accessible at http://localhost:<port>/
-		// this.express.use(express.static("./frontend/public"))
+		this.express.use(express.static("./frontend/public"));
 	}
 
 	/**
@@ -82,11 +85,18 @@ export default class Server {
 	private registerRoutes() {
 		// This is an example endpoint this you can invoke by accessing this URL in your browser:
 		// http://localhost:4321/echo/hello
-		this.express.get("/echo/:msg", Server.echo);
+		// this.express.get("/echo/:msg", Server.echo);
 
 		// TODO: your other endpoints should go here
 
+		// POST /query sends json query to performQuery
+		this.express.post("/query", Server.performQuery); // http://localhost:4321/query
+
+		// GET /datasets returns a list of all datasets
+		this.express.get("/datasets", Server.listDatasets); // http://localhost:4321/datasets
 	}
+
+	/* These are examples of request handlers.
 
 	// The next two methods handle the echo service.
 	// These are almost certainly not the best place to put these, but are here for your reference.
@@ -101,11 +111,36 @@ export default class Server {
 		}
 	}
 
+
 	private static performEcho(msg: string): string {
 		if (typeof msg !== "undefined" && msg !== null) {
 			return `${msg}...${msg}`;
 		} else {
 			return "Message not provided";
+		}
+	}
+	*/
+
+	// POST /query sends json query to performQuery
+	private static async performQuery(req: Request, res: Response) {
+		console.log(`Server::query(..) - body: ${JSON.stringify(req.body)}`);
+		try {
+			const query = JSON.parse(JSON.stringify(req.body));
+			const response = await Server.facade.performQuery(query);
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in performQuery response: ${err}`});
+		}
+	}
+
+	// GET /datasets returns a list of all datasets
+	private static async listDatasets(req: Request, res: Response) {
+		console.log(`Server::datasets(..) - body: ${JSON.stringify(req.body)}`);
+		try {
+			const response = await Server.facade.listDatasets();
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in listDatasets response: ${err}`});
 		}
 	}
 }
