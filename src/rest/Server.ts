@@ -1,6 +1,7 @@
 import express, {Application, Request, Response} from "express";
 import * as http from "http";
 import cors from "cors";
+import {InsightDatasetKind, NotFoundError} from "../controller/IInsightFacade";
 import InsightFacade from "../controller/InsightFacade";
 
 export default class Server {
@@ -85,9 +86,50 @@ export default class Server {
 	private registerRoutes() {
 		// This is an example endpoint this you can invoke by accessing this URL in your browser:
 		// http://localhost:4321/echo/hello
-		// this.express.get("/echo/:msg", Server.echo);
+		this.express.get("/echo/:msg", Server.echo);
 
 		// TODO: your other endpoints should go here
+		// PUT request
+		this.express.put("/dataset/:id/:kind", (req, res) =>{
+			console.info("PUT request hit");
+
+			const id = req.params.id;
+			let kind: InsightDatasetKind;
+			if (req.params.kind === "sections") {
+				kind = InsightDatasetKind.Sections;
+			} else {
+				kind = InsightDatasetKind.Rooms;
+			}
+			const content = req.body.toString("base64");
+
+			Server.facade.addDataset(id, content, kind)
+				.then((result) => {
+					res.status(200);
+					res.send({result : result});
+				}).catch((err) => {
+					res.status(400);
+					res.send({err: err});
+				});
+		});
+
+		// DELETE request
+		this.express.delete("/dataset/:id", (req, res) => {
+			console.info("DELETE request hit");
+			const id = req.params.id;
+			Server.facade.removeDataset(id)
+				.then((result) => {
+					res.status(200);
+					res.send({result: result});
+				}).catch((err) => {
+					if (err instanceof NotFoundError) {
+						res.status(404);
+						res.send({err: err});
+					} else {
+						res.status(400);
+						res.send({err: err});
+					}
+				});
+		});
 
 		// POST /query sends json query to performQuery
 		this.express.post("/query", Server.performQuery); // http://localhost:4321/query
@@ -95,8 +137,6 @@ export default class Server {
 		// GET /datasets returns a list of all datasets
 		this.express.get("/datasets", Server.listDatasets); // http://localhost:4321/datasets
 	}
-
-	/* These are examples of request handlers.
 
 	// The next two methods handle the echo service.
 	// These are almost certainly not the best place to put these, but are here for your reference.
@@ -111,7 +151,6 @@ export default class Server {
 		}
 	}
 
-
 	private static performEcho(msg: string): string {
 		if (typeof msg !== "undefined" && msg !== null) {
 			return `${msg}...${msg}`;
@@ -119,9 +158,8 @@ export default class Server {
 			return "Message not provided";
 		}
 	}
-	*/
 
-	// POST /query sends json query to performQuery
+		// POST /query sends json query to performQuery
 	private static async performQuery(req: Request, res: Response) {
 		console.log(`Server::query(..) - body: ${JSON.stringify(req.body)}`);
 		try {
@@ -133,7 +171,7 @@ export default class Server {
 		}
 	}
 
-	// GET /datasets returns a list of all datasets
+		// GET /datasets returns a list of all datasets
 	private static async listDatasets(req: Request, res: Response) {
 		console.log(`Server::datasets(..) - body: ${JSON.stringify(req.body)}`);
 		try {
