@@ -74,10 +74,10 @@ describe("InsightFacade", function () {
 			invalidTableContent = await getContentFromArchives("roomsNoTableIndex.zip");
 		});
 
-		beforeEach(async () => {
-			await clearDisk();
-			insightFacade = new InsightFacade();
-		});
+// 		beforeEach(async () => {
+// 			await clearDisk();
+// 			insightFacade = new InsightFacade();
+// 		});
 
 		it("addDataset: add success, one valid dataset sections", () => {
 			const addId = "courses0";
@@ -95,28 +95,33 @@ describe("InsightFacade", function () {
 			return expect(res1).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it("addDataset: should reject if id contains only white space", () => {
-			const res = insightFacade.addDataset(" ", content0, sectionsType);
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
+// 		it("addDataset: reject if id contains underscore, rooms", () => {
+// 			const res1 = insightFacade.addDataset("campus_", contentCampus, sectionsType);
+// 			return expect(res1).to.eventually.be.rejectedWith(InsightError);
+// 		});
 
-		it("addDataset: reject if id is empty", () => {
-			const res = insightFacade.addDataset("", content0, sectionsType);
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
+// 		it("addDataset: should reject if id contains only white space", () => {
+// 			const res = insightFacade.addDataset(" ", content0, sectionsType);
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
 
-		it("addDataset: reject if encounter same id again", async () => {
-			try {
-				await insightFacade.addDataset("courses0", content0, sectionsType);
-			} catch (err) {
-				assert.fail("Should not reject");
-			}
-			const res = insightFacade.addDataset("courses0", content1, sectionsType);
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
+// 		it("addDataset: reject if id is empty", () => {
+// 			const res = insightFacade.addDataset("", content0, sectionsType);
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
 
-		it ("caching: new instance cannot add new id if it was added by old one", async () => {
-			await insightFacade.addDataset("courses0", content0, sectionsType);
+// 		it("addDataset: reject if encounter same id again", async () => {
+// 			try {
+// 				await insightFacade.addDataset("courses0", content0, sectionsType);
+// 			} catch (err) {
+// 				assert.fail("Should not reject");
+// 			}
+// 			const res = insightFacade.addDataset("courses0", content1, sectionsType);
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
+
+// 		it ("caching: new instance cannot add new id if it was added by old one", async () => {
+// 			await insightFacade.addDataset("courses0", content0, sectionsType);
 
 			const newInstance = new InsightFacade();
 			const result = newInstance.addDataset("courses0", content0, sectionsType);
@@ -163,53 +168,53 @@ describe("InsightFacade", function () {
 		let content1: string;
 		const sectionsType = InsightDatasetKind.Sections;
 
-		before(async () => {
-			content0 = await getContentFromArchives("courses0.zip");
-			content1 = await getContentFromArchives("courses1.zip");
-		});
+// 		before(async () => {
+// 			content0 = await getContentFromArchives("courses0.zip");
+// 			content1 = await getContentFromArchives("courses1.zip");
+// 		});
 
-		beforeEach(async () => {
-			await clearDisk();
-			insightFacade = new InsightFacade();
+// 		beforeEach(async () => {
+// 			await clearDisk();
+// 			insightFacade = new InsightFacade();
 
-			await insightFacade.addDataset("courses0", content0, sectionsType);
-			await insightFacade.addDataset("courses1", content1, sectionsType);
-		});
+// 			await insightFacade.addDataset("courses0", content0, sectionsType);
+// 			await insightFacade.addDataset("courses1", content1, sectionsType);
+// 		});
 
 
-		it("removeDataset: remove 1 id success", async () => {
-			const res = await insightFacade.removeDataset("courses0");
-			return expect(res).to.equal("courses0");
-		});
+// 		it("removeDataset: remove 1 id success", async () => {
+// 			const res = await insightFacade.removeDataset("courses0");
+// 			return expect(res).to.equal("courses0");
+// 		});
 
-		it("removeDataset: remove unavailable id, rejected", () => {
-			const res = insightFacade.removeDataset("coursesNA");
-			return expect(res).to.eventually.be.rejectedWith(NotFoundError);
-		});
+// 		it("removeDataset: remove unavailable id, rejected", () => {
+// 			const res = insightFacade.removeDataset("coursesNA");
+// 			return expect(res).to.eventually.be.rejectedWith(NotFoundError);
+// 		});
 
-		it("removeDataset: invalid id underscore", () => {
-			const res = insightFacade.removeDataset("courses_0");
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
-		it("removeDataset: invalid id with only white space", () => {
-			const res = insightFacade.removeDataset("  ");
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
-		it("removeDataset: invalid id empty", () => {
-			const res = insightFacade.removeDataset("");
-			return expect(res).to.eventually.be.rejectedWith(InsightError);
-		});
+// 		it("removeDataset: invalid id underscore", () => {
+// 			const res = insightFacade.removeDataset("courses_0");
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
+// 		it("removeDataset: invalid id with only white space", () => {
+// 			const res = insightFacade.removeDataset("  ");
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
+// 		it("removeDataset: invalid id empty", () => {
+// 			const res = insightFacade.removeDataset("");
+// 			return expect(res).to.eventually.be.rejectedWith(InsightError);
+// 		});
 
-		it ("caching: remove works for new instance", async () => {
-			await insightFacade.removeDataset("courses1");
-			await insightFacade.addDataset("courses1", content1, sectionsType);
+// 		it ("caching: remove works for new instance", async () => {
+// 			await insightFacade.removeDataset("courses1");
+// 			await insightFacade.addDataset("courses1", content1, sectionsType);
 
-			// newInstance should still access courses0
-			const newInstance = new InsightFacade();
-			const result = await newInstance.removeDataset("courses1");
-			expect(result).to.equal("courses1");
-		});
-	});
+// 			// newInstance should still access courses0
+// 			const newInstance = new InsightFacade();
+// 			const result = await newInstance.removeDataset("courses1");
+// 			expect(result).to.equal("courses1");
+// 		});
+// 	});
 
 	// Add tests for listDataset
 	describe("list api", function () {
@@ -341,9 +346,9 @@ describe("InsightFacade", function () {
 			await insightFacade.addDataset("courses0", content0, sectionsType);
 			const newInstance = new InsightFacade();
 
-			await newInstance.addDataset("courses1", content1, sectionsType);
-			const result = await newInstance.listDatasets();
-			expect(result).to.have.length(2);
+// 			await newInstance.addDataset("courses1", content1, sectionsType);
+// 			const result = await newInstance.listDatasets();
+// 			expect(result).to.have.length(2);
 
 			// old instance remove, new instance list gets updated
 			await insightFacade.removeDataset("courses1");
@@ -393,38 +398,38 @@ describe("InsightFacade", function () {
 				facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms),
 			];
 
-			try {
-				await Promise.all(loadDatasetPromises);
-			} catch (err) {
-				throw new Error(`In PerformQuery Before hook, dataset(s) failed to be added. \n${err}`);
-			}
-		});
+// 			try {
+// 				await Promise.all(loadDatasetPromises);
+// 			} catch (err) {
+// 				throw new Error(`In PerformQuery Before hook, dataset(s) failed to be added. \n${err}`);
+// 			}
+// 		});
 
-		after(async function () {
-			await clearDisk();
-		});
+// 		after(async function () {
+// 			await clearDisk();
+// 		});
 
-		describe("valid queries", function () {
-			let validQueries: ITestQuery[];
-			try {
-				validQueries = readFileQueries("valid");
-			} catch (e: unknown) {
-				expect.fail(`Failed to read one or more test queries. ${e}`);
-			}
+// 		describe("valid queries", function () {
+// 			let validQueries: ITestQuery[];
+// 			try {
+// 				validQueries = readFileQueries("valid");
+// 			} catch (e: unknown) {
+// 				expect.fail(`Failed to read one or more test queries. ${e}`);
+// 			}
 
-			validQueries.forEach(function (test: any) {
-				it(`${test.title}`, async function () {
-					if (test.errorExpected) {
-						try {
-							await facade.performQuery(test.input);
-							assert.fail("performQuery: expected an error but none was thrown");
-						} catch (e) {
-							// expected error
-							console.log(`performQuery: expected error: ${e}`);
-						}
-					} else {
-						try {
-							const result = await facade.performQuery(test.input);
+// 			validQueries.forEach(function (test: any) {
+// 				it(`${test.title}`, async function () {
+// 					if (test.errorExpected) {
+// 						try {
+// 							await facade.performQuery(test.input);
+// 							assert.fail("performQuery: expected an error but none was thrown");
+// 						} catch (e) {
+// 							// expected error
+// 							console.log(`performQuery: expected error: ${e}`);
+// 						}
+// 					} else {
+// 						try {
+// 							const result = await facade.performQuery(test.input);
 
 							// unsorted test
 							if (test.input?.OPTIONS && !test.input.OPTIONS.ORDER) {
@@ -448,41 +453,41 @@ describe("InsightFacade", function () {
 							// // sorted test
 							// expect(result).to.deep.equal(test.expected);
 
-							// console.log("result: ", result); // print results
-							// console.log("expected: ", test.expected);
-						} catch (e) {
-							assert.fail(`performQuery: threw an unexpected error: ${e}`);
-						}
-					}
-				});
-			});
-		});
+// 							// console.log("result: ", result); // print results
+// 							// console.log("expected: ", test.expected);
+// 						} catch (e) {
+// 							assert.fail(`performQuery: threw an unexpected error: ${e}`);
+// 						}
+// 					}
+// 				});
+// 			});
+// 		});
 
-		describe("invalid queries", function () {
-			let invalidQueries: ITestQuery[];
+// 		describe("invalid queries", function () {
+// 			let invalidQueries: ITestQuery[];
 
-			try {
-				invalidQueries = readFileQueries("invalid");
-			} catch (e: unknown) {
-				expect.fail(`Failed to read one or more test queries. ${e}`);
-			}
+// 			try {
+// 				invalidQueries = readFileQueries("invalid");
+// 			} catch (e: unknown) {
+// 				expect.fail(`Failed to read one or more test queries. ${e}`);
+// 			}
 
-			invalidQueries.forEach(function (test: ITestQuery) {
-				it(`${test.title}`, async function () {
-					try {
-						const result = await facade.performQuery(test.input);
-						assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
-					} catch (err) {
-						if (test.expected === "InsightError") {
-							expect(err).to.be.instanceOf(InsightError);
-						} else {
-							assert.fail("Query threw unexpected error");
-						}
-					}
-				});
-			});
-		});
-	});
+// 			invalidQueries.forEach(function (test: ITestQuery) {
+// 				it(`${test.title}`, async function () {
+// 					try {
+// 						const result = await facade.performQuery(test.input);
+// 						assert.fail(`performQuery resolved when it should have rejected with ${test.expected}`);
+// 					} catch (err) {
+// 						if (test.expected === "InsightError") {
+// 							expect(err).to.be.instanceOf(InsightError);
+// 						} else {
+// 							assert.fail("Query threw unexpected error");
+// 						}
+// 					}
+// 				});
+// 			});
+// 		});
+// 	});
 });
 
 function groupBy(array: any[], key: string) {

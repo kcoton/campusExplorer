@@ -8,21 +8,21 @@ export default class Server {
 	private readonly port: number;
 	private express: Application;
 	private server: http.Server | undefined;
-	private insightFacade: InsightFacade | undefined;
+	public static facade: InsightFacade;
 
 	constructor(port: number) {
 		console.info(`Server::<init>( ${port} )`);
 		this.port = port;
 		this.express = express();
+		Server.facade = new InsightFacade();
 
 		this.registerMiddleware();
 		this.registerRoutes();
-		this.insightFacade = new InsightFacade();
 
 		// NOTE: you can serve static frontend files in from your express server
 		// by uncommenting the line below. This makes files in ./frontend/public
 		// accessible at http://localhost:<port>/
-		// this.express.use(express.static("./frontend/public"))
+		this.express.use(express.static("./frontend/public"));
 	}
 
 	/**
@@ -89,6 +89,7 @@ export default class Server {
 		this.express.get("/echo/:msg", Server.echo);
 
 		// TODO: your other endpoints should go here
+		// PUT request
 		this.express.put("/dataset/:id/:kind", (req, res) =>{
 			console.info("PUT request hit");
 
@@ -99,10 +100,9 @@ export default class Server {
 			} else {
 				kind = InsightDatasetKind.Rooms;
 			}
-			const rawContent = req.body;
-			const content = rawContent.toString("base64");
+			const content = req.body.toString("base64");
 
-			this.insightFacade?.addDataset(id, content, kind)
+			Server.facade.addDataset(id, content, kind)
 				.then((result) => {
 					res.status(200);
 					res.send({result : result});
@@ -112,10 +112,11 @@ export default class Server {
 				});
 		});
 
+		// DELETE request
 		this.express.delete("/dataset/:id", (req, res) => {
 			console.info("DELETE request hit");
 			const id = req.params.id;
-			this.insightFacade?.removeDataset(id)
+			Server.facade.removeDataset(id)
 				.then((result) => {
 					res.status(200);
 					res.send({result: result});
@@ -129,6 +130,12 @@ export default class Server {
 					}
 				});
 		});
+
+		// POST /query sends json query to performQuery
+		this.express.post("/query", Server.performQuery); // http://localhost:4321/query
+
+		// GET /datasets returns a list of all datasets
+		this.express.get("/datasets", Server.listDatasets); // http://localhost:4321/datasets
 	}
 
 	// The next two methods handle the echo service.
@@ -149,6 +156,29 @@ export default class Server {
 			return `${msg}...${msg}`;
 		} else {
 			return "Message not provided";
+		}
+	}
+
+		// POST /query sends json query to performQuery
+	private static async performQuery(req: Request, res: Response) {
+		console.log(`Server::query(..) - body: ${JSON.stringify(req.body)}`);
+		try {
+			const query = JSON.parse(JSON.stringify(req.body));
+			const response = await Server.facade.performQuery(query);
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in performQuery response: ${err}`});
+		}
+	}
+
+		// GET /datasets returns a list of all datasets
+	private static async listDatasets(req: Request, res: Response) {
+		console.log(`Server::datasets(..) - body: ${JSON.stringify(req.body)}`);
+		try {
+			const response = await Server.facade.listDatasets();
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in listDatasets response: ${err}`});
 		}
 	}
 }
