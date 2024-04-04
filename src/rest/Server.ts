@@ -159,9 +159,9 @@ export default class Server {
 		}
 	}
 
-		// POST /query sends json query to performQuery
+	// POST /query sends json query to performQuery
 	private static async performQuery(req: Request, res: Response) {
-		console.log(`Server::query(..) - body: ${JSON.stringify(req.body)}`);
+		console.log(`Server::query(..) request hit - body: ${JSON.stringify(req.body)}`);
 		try {
 			const query = JSON.parse(JSON.stringify(req.body));
 			const response = await Server.facade.performQuery(query);
@@ -171,9 +171,9 @@ export default class Server {
 		}
 	}
 
-		// GET /datasets returns a list of all datasets
+	// GET /datasets returns a list of all datasets
 	private static async listDatasets(req: Request, res: Response) {
-		console.log(`Server::datasets(..) - body: ${JSON.stringify(req.body)}`);
+		console.log("Server::datasets(..)} request hit");
 		try {
 			const response = await Server.facade.listDatasets();
 			res.status(200).json({result: response});

@@ -221,46 +221,11 @@ describe("Facade D3", function () {
 		}
 	});
 
-	// POST /query sends json query to performQuery
-	it("POST /query should pass", function () {
-		const query = {
-			WHERE: {
-				GT: {
-					sections_avg: 97
-				}
-			},
-			OPTIONS: {
-				COLUMNS: [
-					"sections_dept",
-					"sections_avg"
-				],
-				ORDER: "sections_avg"
-			}
-		};
-
-		try {
-			return request(SERVER_URL)
-				.post("/query")
-				.send(query)
-				.set("Content-Type", "application/json")
-				.then(function (res: Response) {
-					console.log("POST query endpoint success", res.status, res.body);
-					expect(res.status).to.be.equal(200);
-				})
-				.catch(function (err) {
-					console.log("POST query response error", err);
-					expect.fail();
-				});
-		} catch (err) {
-			console.log("POST query request error", err);
-		}
-	});
-
 	// GET /datasets returns a list of all datasets
 	it("GET /datasets should pass", function () {
 		try {
 			return request(SERVER_URL)
-				.post("/datasets")
+				.get("/datasets")
 				.set("Content-Type", "application/x-zip-compressed")
 				.then(function (res: Response) {
 					console.log("GET datasets endpoint success", res.status, res.body);
@@ -272,6 +237,63 @@ describe("Facade D3", function () {
 				});
 		} catch (err) {
 			console.log("GET datasets request error", err);
+		}
+	});
+
+	// POST /query sends json query to performQuery
+	it("POST /query should pass", function () {
+		const query = {
+			WHERE: {
+				IS: {
+					myrooms_href: "*s*"
+				}
+			},
+			OPTIONS: {
+				COLUMNS: [
+					"myrooms_shortname",
+					"myrooms_lat",
+					"myrooms_lon",
+					"minLon"
+				],
+				ORDER: {
+					dir: "UP",
+					keys: [
+						"minLon"
+					]
+				}
+			},
+			TRANSFORMATIONS: {
+				GROUP: [
+					"myrooms_shortname",
+					"myrooms_lat",
+					"myrooms_href",
+					"myrooms_lon"
+				],
+				APPLY: [
+					{
+						minLon: {
+							MIN: "myrooms_lon"
+						}
+					}
+				]
+			}
+		};
+
+		try {
+			return request(SERVER_URL)
+				.post("/query")
+				.set("Content-Type", "application/json")
+				.send(query)
+				.then(function (res: Response) {
+					// console.log("POST query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch(function (err) {
+					console.log("POST query response error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("POST query request error", err);
 		}
 	});
 });
