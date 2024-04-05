@@ -108,7 +108,7 @@ export default class Server {
 					res.send({result : result});
 				}).catch((err) => {
 					res.status(400);
-					res.send({err: err});
+					res.send({error: err});
 				});
 		});
 
@@ -123,10 +123,10 @@ export default class Server {
 				}).catch((err) => {
 					if (err instanceof NotFoundError) {
 						res.status(404);
-						res.send({err: err});
+						res.send({error: err});
 					} else {
 						res.status(400);
-						res.send({err: err});
+						res.send({error: err});
 					}
 				});
 		});
