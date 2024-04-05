@@ -29,7 +29,7 @@ import {Building, BuildingList, Room} from "../type/Room";
 
 export default class InsightFacade implements IInsightFacade {
 	public datasetCache: Dataset; // { datasetId: Section[] | Room[] } all sections or room for each id dataset
-	public buildingsList: BuildingList; // { datasetId: Building[] } all buildings for each dataset 
+	public buildingsList: BuildingList; // { datasetId: Building[] } all buildings for each dataset
 
 	constructor() {
 		this.datasetCache = {};
