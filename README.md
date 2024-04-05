@@ -1,11 +1,14 @@
-# CPSC 310 Project Repository
+# CPSC 310: CAMPUS EXPLORER
 
-This repository contains starter code for the class project.
-Please keep your repository private.
+This is CAMPUS EXPLORER for CPSC310 project. The project gives insights into courses and facilities at UBC. In the Campus Explorer version, the user gets to see maps of buildings and information of rooms on UBC campus!
 
-For information about the project, autotest, and the checkpoints, see the course webpage.
+## Video Link:
 
-## Configuring your environment
+https://youtu.be/B98MBJ2eTdY
+
+## Getting Started
+
+### Configuring your environment
 
 To start using this project, you need to get your development environment configured so that you can build and execute the code.
 To do this, follow these steps; the specifics of each step will vary based on your operating system:
@@ -18,7 +21,7 @@ To do this, follow these steps; the specifics of each step will vary based on yo
 
 1. Clone your repository by running `git clone REPO_URL` from the command line. You can get the REPO_URL by clicking on the green button on your project repository page on GitHub. Note that due to new department changes you can no longer access private git resources using https and a username and password. You will need to use either [an access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) or [SSH](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
 
-## Project commands
+### Project commands
 
 Once your environment is configured you need to further prepare the project's tooling and dependencies.
 In the project folder:
@@ -35,6 +38,16 @@ In the project folder:
 1. `yarn pretty` to prettify your project code.
 
 If you are curious, some of these commands are actually shortcuts defined in [package.json -> scripts](./package.json).
+
+## Running the Project: 
+
+The project consists of a frontend, located in the `\frontend` folder. Go to this folder by running `cd frontend` in your terminal. Here you can run `npm run build` to create a build directory with a production build for the app.
+
+After building the frontend, you can now navigate back to the project root directory and run `yarn start` to start the full-stack application. 
+
+The application is now available on http://localhost:4321 !
+
+If you choose to run the frontend separately, from `\frontend` you can run `npm install`, and `npm run start` to start the frontend on `localhost:3000`. You can then run the server separately with `yarn start` from the root directory. 
 
 ## Running and testing from an IDE
 
