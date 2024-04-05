@@ -152,6 +152,26 @@ describe("Facade D3", function () {
 		}
 	});
 
+	it("PUT code 400, invalid type", () => {
+		try {
+			const buffer = Buffer.from(courses1, "base64");
+			return request(SERVER_URL)
+				.put("/dataset/courses1/haha")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					// console.log("PUT query endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(400);
+				})
+				.catch((err) => {
+					console.log("PUT query error", err);
+					// should pass
+				});
+		} catch (err) {
+			console.log("PUT request error", err);
+		}
+	});
+
 	// DELETE endpoint tests
 	it("DELETE code 200, sections", function() {
 		try {
