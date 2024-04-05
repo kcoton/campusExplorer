@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 function App() {
   return (
     <div className="App">
-      <p>CAMPUS EXPLORER</p>
+      <h1>CAMPUS EXPLORER</h1>
       <RoomInsights />
       <Box height={100}></Box>
       <MapComponent />

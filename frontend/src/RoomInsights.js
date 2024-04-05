@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const SERVER_URL = "http://localhost:4321";
 
@@ -24,7 +25,7 @@ export const RoomInsights = () => {
 
     return (
         <div>
-            <p>ROOM INSIGHTS</p>
+            <h3 style={{ textAlign: 'left', marginLeft: "30px" }}>ROOM INSIGHTS</h3>
             <Autocomplete
               multiple
               options={rooms}
@@ -36,16 +37,18 @@ export const RoomInsights = () => {
                 <TextField {...params} label="pick rooms" placeholder="Pick a room" />
               )}
               onChange={handleAutocompleteChange}
-              sx={{ width: '500px' }}
+              sx={{ width: '700px' }}
+              style={{ marginLeft: '30px'}}
             />
-            {/* <Button variant="contained" onClick={handleChooseButton}>Choose Rooms</Button> */}
-
-            <Box sx={{ width: '100%' }}>
-              <Stack spacing={2}>
-              {chosenRooms.map(room => (
-                <RoomInfo room={room} chosenRooms={chosenRooms} />
-              ))}
-              </Stack>
+            
+            <Box>
+              <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3}} style={{ margin: '30px' }}>
+                {chosenRooms.map(room => (
+                <Grid item style={{ padding: '30px'}}>
+                  <RoomInfo room={room} chosenRooms={chosenRooms} />
+                </Grid>
+                ))}
+              </Grid>
             </Box>
         </div>
     )
@@ -96,11 +99,11 @@ const RoomInfo = (props) => {
     const avgWalkingSpeed = 1.42 // in m/s
     const walkingTime = distance / avgWalkingSpeed;
     console.log(walkingTime)
-    return Math.round(walkingTime / 60); // convert from secs to mins
+    return Math.round(walkingTime / 60) + 3; // convert from secs to mins, plus 3 minutes to walk to stairs..
   }
 
   return (
-    <Box sx={{ border: '2px solid grey' }}>
+    <Box sx={{ border: '2px solid grey' }} style={{padding: '20px'}}>
       <p><strong>Fullname:</strong> {room.fullname}</p>
       <p><strong>Shortname:</strong> {room.shortname}</p>
       <p><strong>Number:</strong> {room.number}</p>
@@ -109,7 +112,7 @@ const RoomInfo = (props) => {
       <p><strong>Seats:</strong> {room.seats}</p>
       {pairings.map(pairing => 
         (
-          <p><strong>Estimated Walking Time to {pairing.room2}: </strong> {pairing.walkingTime} minutes</p>
+          <p><strong>Estimated Time to {pairing.room2}: </strong> {pairing.walkingTime} minutes</p>
         ))}
     </Box>
   )
