@@ -12,8 +12,6 @@ const SERVER_URL = "http://localhost:4321";
 export const RoomInsights = () => {
     const [rooms, setRooms] = useState([]);
     const [chosenRooms, setChosenRooms] = useState([]);
-    // const [displayRooms, setDisplayRooms] = useState([]);
-    // const [isDisplay, setIsDisplay] = useState(false);
 
     useEffect(() => {
       fetch(`${SERVER_URL}/rooms`)
@@ -34,6 +32,9 @@ export const RoomInsights = () => {
               multiple
               options={rooms}
               getOptionLabel={(option) => option.name}
+              getOptionDisabled={(option) => 
+                chosenRooms.length === 5
+              }
               renderInput={(params) => (
                 <TextField {...params} label="pick rooms" placeholder="Pick a room" />
               )}
