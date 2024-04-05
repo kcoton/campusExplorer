@@ -10,7 +10,8 @@ import {ChildNode} from "parse5/dist/tree-adapters/default";
 
 const http = require("node:http");
 
-export async function addRoom(id: string, content: string, insightFacade: InsightFacade): Promise<string[]> {
+export async function addRoom(id: string, content: string, insightFacade: InsightFacade):
+	Promise<{dataset: string[], buildings: Building[]}> {
 	try {
 		let jszip = new JSZip();
 		const zip = await jszip.loadAsync(content, {base64: true});
@@ -52,7 +53,7 @@ export async function addRoom(id: string, content: string, insightFacade: Insigh
 		await fs.outputJson(filePath, JSON.stringify(roomDataList, null, 2));
 
 		insightFacade.datasetCache[id] = roomDataList;
-		return Promise.resolve(Object.keys(insightFacade.datasetCache));
+		return Promise.resolve({dataset: Object.keys(insightFacade.datasetCache), buildings: buildingsList});
 	} catch (error) {
 		console.log(error);
 		return Promise.reject(new InsightError("Error while adding new dataset!"));
