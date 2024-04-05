@@ -96,7 +96,6 @@ export default class InsightFacade implements IInsightFacade {
 			} else {
 				kind = InsightDatasetKind.Sections;
 			}
-			console.log(parsedContent);
 			let insightData: InsightDataset = {
 				id: id,
 				kind: kind,
