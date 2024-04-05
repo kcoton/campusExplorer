@@ -54,6 +54,7 @@ describe("Facade D3", function () {
 	});
 
 	after(async function () {
+		await clearDisk();
 		try {
 			await server.stop();
 		} catch (err) {
