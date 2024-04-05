@@ -88,6 +88,7 @@ export default class InsightFacade implements IInsightFacade {
 			} else {
 				kind = InsightDatasetKind.Sections;
 			}
+			console.log(parsedContent);
 			let insightData: InsightDataset = {
 				id: id,
 				kind: kind,
@@ -115,6 +116,11 @@ export default class InsightFacade implements IInsightFacade {
 		if (datasetIds.length !== 1 || !this.datasetCache[datasetIds[0]]) {
 			throw new InsightError("performQuery: incorrect multiple datasets in query or no dataset");
 		}
+
+		// console.log(`datasetId: ${datasetIds}`);
+		const datasetIdsInCache = Object.keys(this.datasetCache);
+		console.log(`datasetIdsInCache: ${datasetIdsInCache}`);
+
 		const id = datasetIds[0];
 		const data = this.datasetCache[id];
 

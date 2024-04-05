@@ -1,3 +1,10 @@
+# To run the backend + frontend
+1. `yarn start` to run server on http://localhost:4321
+2. `cd frontend && npm i` to navigate and install react for frontend
+3. `npm run build && npm start` to start react on http://localhost:3000
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
