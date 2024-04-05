@@ -12,6 +12,10 @@ export interface Room {
 	href: string | null; // link to full details onl
 }
 
+export interface BuildingList {
+	[key: string]: Building[];
+}
+
 export interface Building {
 	fullname: string | null,
 	shortname: string | null,
