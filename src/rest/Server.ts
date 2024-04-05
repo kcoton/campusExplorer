@@ -3,7 +3,6 @@ import * as http from "http";
 import cors from "cors";
 import {InsightDatasetKind, NotFoundError} from "../controller/IInsightFacade";
 import InsightFacade from "../controller/InsightFacade";
-import {nextTick} from "process";
 
 export default class Server {
 	private readonly port: number;
@@ -23,7 +22,7 @@ export default class Server {
 		// NOTE: you can serve static frontend files in from your express server
 		// by uncommenting the line below. This makes files in ./frontend/public
 		// accessible at http://localhost:<port>/
-		this.express.use(express.static("./frontend/public"));
+		this.express.use(express.static("./frontend/src"));
 	}
 
 	/**
@@ -92,28 +91,6 @@ export default class Server {
 		// TODO: your other endpoints should go here
 		// PUT request
 		this.express.put("/dataset/:id/:kind", Server.addDatasets);
-		// (req, res) =>{
-		// 	console.info("PUT request hit");
-
-		// 	const id = req.params.id;
-		// 	let kind: InsightDatasetKind;
-		// 	if (req.params.kind === "sections") {
-		// 		kind = InsightDatasetKind.Sections;
-		// 	} else {
-		// 		kind = InsightDatasetKind.Rooms;
-		// 	}
-		// 	const content = req.body.toString("base64");
-
-		// 	Server.facade.addDataset(id, content, kind)
-		// 		.then((result) => {
-		// 			res.status(200);
-		// 			res.send({result : result});
-		// 		}).catch((err) => {
-		// 			console.log(err);
-		// 			res.status(400);
-		// 			res.send({error: err});
-		// 		});
-		// });
 
 		// DELETE request
 		this.express.delete("/dataset/:id", Server.deleteDatasets);
@@ -126,6 +103,7 @@ export default class Server {
 
 		// additional endpoints for frontend
 		this.express.get("/buildings", Server.getBuildings);
+		this.express.get("/rooms", Server.getRooms);
 	}
 
 	// The next two methods handle the echo service.
@@ -157,6 +135,17 @@ export default class Server {
 			res.status(200).json({result: response});
 		} catch (err) {
 			res.status(400).json({error: `error in getBuildings response: ${err}`});
+		}
+	}
+
+	// GET /rooms returns a list of all rooms for each dataset
+	private static async getRooms(req: Request, res: Response) {
+		console.log("Server::getRooms(..) request hit");
+		try {
+			const response = await Server.facade.getRooms();
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in getRooms response: ${err}`});
 		}
 	}
 

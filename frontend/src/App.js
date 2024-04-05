@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
+import MapComponent from './MapComponent';
+import { RoomInsights } from './RoomInsights';
+import Box from '@mui/material/Box';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Testing this page to see if it works
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>CAMPUS EXPLORER</p>
+      <RoomInsights />
+      <Box height={100}></Box>
+      <MapComponent />
     </div>
   );
 }
