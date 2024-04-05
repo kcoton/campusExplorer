@@ -1,11 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { RoomInsights } from './components/RoomInsights';
+import MapComponent from './MapComponent';
+import { RoomInsights } from './RoomInsights';
 
 function App() {
   return (
     <div className="App">
       <p>CAMPUS EXPLORER</p>
+      <MapComponent />
       <RoomInsights />
     </div>
   );
