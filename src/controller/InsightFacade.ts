@@ -29,7 +29,7 @@ import {Building, BuildingList, Room} from "../type/Room";
 
 export default class InsightFacade implements IInsightFacade {
 	public datasetCache: Dataset; // { datasetId: Section[] | Room[] } all sections or room for each id dataset
-	public buildingsList: BuildingList; // { datasetId: Building[] } all buildings for each dataset
+	public buildingsList: BuildingList; // { datasetId: Building[] } all buildings for each dataset 
 
 	constructor() {
 		this.datasetCache = {};
@@ -162,5 +162,31 @@ export default class InsightFacade implements IInsightFacade {
 	// gets all unique buildings use datasetCache
 	public async getBuildings(): Promise<BuildingList> {
 		return Promise.resolve(this.buildingsList);
+	}
+
+	public async getRooms(): Promise<Room[]> {
+		let roomsList: Room[] = [];
+
+		const files = await fs.readdir(path.join(__dirname, "../../data/"));
+		await Promise.all(files.map(async (file) => {
+			const id = file.split(".")[0];
+			const filePath = path.join(__dirname, "../../data/", file);
+			const datasetContent = await fs.readJson(filePath);
+			const parsedContent = JSON.parse(datasetContent);
+			let kind: InsightDatasetKind;
+			if (parsedContent[0].fullname) {
+				kind = InsightDatasetKind.Rooms;
+			} else {
+				kind = InsightDatasetKind.Sections;
+			}
+			let insightData: InsightDataset = {
+				id: id,
+				kind: kind,
+				numRows: parsedContent.length
+			};
+			roomsList = roomsList.concat(parsedContent);
+		}));
+
+		return Promise.resolve(roomsList);
 	}
 }

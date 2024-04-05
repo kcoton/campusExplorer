@@ -103,6 +103,7 @@ export default class Server {
 
 		// additional endpoints for frontend
 		this.express.get("/buildings", Server.getBuildings);
+		this.express.get("/rooms", Server.getRooms);
 	}
 
 	// The next two methods handle the echo service.
@@ -134,6 +135,17 @@ export default class Server {
 			res.status(200).json({result: response});
 		} catch (err) {
 			res.status(400).json({error: `error in getBuildings response: ${err}`});
+		}
+	}
+
+	// GET /rooms returns a list of all rooms for each dataset
+	private static async getRooms(req: Request, res: Response) {
+		console.log("Server::getRooms(..) request hit");
+		try {
+			const response = await Server.facade.getRooms();
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in getRooms response: ${err}`});
 		}
 	}
 
