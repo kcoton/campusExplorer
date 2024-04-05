@@ -3,7 +3,6 @@ import * as http from "http";
 import cors from "cors";
 import {InsightDatasetKind, NotFoundError} from "../controller/IInsightFacade";
 import InsightFacade from "../controller/InsightFacade";
-import {nextTick} from "process";
 
 export default class Server {
 	private readonly port: number;
@@ -101,6 +100,9 @@ export default class Server {
 
 		// GET /datasets returns a list of all datasets
 		this.express.get("/datasets", Server.listDatasets); // http://localhost:4321/datasets
+
+		// additional endpoints for frontend
+		this.express.get("/buildings", Server.getBuildings);
 	}
 
 	// The next two methods handle the echo service.
@@ -121,6 +123,17 @@ export default class Server {
 			return `${msg}...${msg}`;
 		} else {
 			return "Message not provided";
+		}
+	}
+
+	// GET /buildings returns a list of all buildings for each dataset
+	private static async getBuildings(req: Request, res: Response) {
+		console.log("Server::getBuildings(..) request hit");
+		try {
+			const response = await Server.facade.getBuildings();
+			res.status(200).json({result: response});
+		} catch (err) {
+			res.status(400).json({error: `error in getBuildings response: ${err}`});
 		}
 	}
 

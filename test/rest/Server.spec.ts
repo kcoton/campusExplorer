@@ -54,6 +54,7 @@ describe("Facade D3", function () {
 	});
 
 	after(async function () {
+		await clearDisk();
 		try {
 			await server.stop();
 		} catch (err) {
@@ -314,6 +315,28 @@ describe("Facade D3", function () {
 				});
 		} catch (err) {
 			console.log("POST query request error", err);
+		}
+	});
+
+
+	/* additional endpoints for frontend */
+
+	// GET /buildings returns a list of all buildings for each dataset
+	it("GET /buildings should pass", function () {
+		try {
+			return request(SERVER_URL)
+				.get("/buildings")
+				.set("Content-Type", "application/x-zip-compressed")
+				.then(function (res: Response) {
+					// console.log("GET buildings endpoint success", res.status, res.body);
+					expect(res.status).to.be.equal(200);
+				})
+				.catch(function (err) {
+					console.log("GET buildings response error", err);
+					expect.fail();
+				});
+		} catch (err) {
+			console.log("GET buildings request error", err);
 		}
 	});
 });

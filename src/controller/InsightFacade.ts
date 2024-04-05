@@ -18,7 +18,7 @@ import {filterColumns, handleOptions} from "./PerformQueryOptions";
 import {addSection} from "./SectionDataFunction";
 import {addRoom} from "./RoomDataFunction";
 import {handleTransformations} from "./PerformQueryTransformations";
-import {Room} from "../type/Room";
+import {Building, BuildingList, Room} from "../type/Room";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -28,10 +28,12 @@ import {Room} from "../type/Room";
 
 
 export default class InsightFacade implements IInsightFacade {
-	public datasetCache: Dataset; // array of all sections with id key
+	public datasetCache: Dataset; // { datasetId: Section[] | Room[] } all sections or room for each id dataset
+	public buildingsList: BuildingList; // { datasetId: Building[] } all buildings for each dataset
 
 	constructor() {
 		this.datasetCache = {};
+		this.buildingsList = {};
 		console.log("InsightFacadeImpl::init()");
 	}
 
@@ -44,7 +46,9 @@ export default class InsightFacade implements IInsightFacade {
 		if (kind === InsightDatasetKind.Sections) {
 			return await addSection(id, content, this);
 		} else {
-			return await addRoom(id, content, this);
+			const result = await addRoom(id, content, this);
+			this.buildingsList[id] = result.buildings;
+			return result.dataset;
 		}
 	}
 
@@ -63,6 +67,10 @@ export default class InsightFacade implements IInsightFacade {
 			await fs.remove(filePath);
 			if (this.datasetCache[id]) {
 				this.datasetCache[id].pop();
+			}
+
+			if (this.buildingsList[id]) {
+				this.buildingsList[id].pop();
 			}
 
 			console.log("delete success!");
@@ -149,5 +157,10 @@ export default class InsightFacade implements IInsightFacade {
 		}
 
 		return Promise.resolve(queryResult);
+	}
+
+	// gets all unique buildings use datasetCache
+	public async getBuildings(): Promise<BuildingList> {
+		return Promise.resolve(this.buildingsList);
 	}
 }
